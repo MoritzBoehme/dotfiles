@@ -1,0 +1,6 @@
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "FiraCode Nerd Font 14444";
+ combi-modi: "window,drun,ssh";
+ theme: "~/.config/rofi/dracula.rasi";
+}

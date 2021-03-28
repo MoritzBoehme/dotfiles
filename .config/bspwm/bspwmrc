@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# MONITORS #
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+# CONFIGURATION #
+
+bspc config border_width         2
+bspc config window_gap          10
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true
+
+# WINDOW RULES #
+
+# PROBLEMS WITH JAVA APPLICATIONS #
+wmname LG3D
+
+# AUTOSTART #
+[[ ! $(pidof -x sxhkd) ]] && sxhkd &
+[[ ! $(pidof -x picom) ]] && picom --experimental-backends &
+
+feh --bg-tile ~/Pictures/Wallpapers/avatar.png
+kdeconnect-cli --refresh && kdeconnect-cli -l >/dev/null
+sh ~/.config/polybar/launch.sh &
+
+
