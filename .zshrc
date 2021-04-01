@@ -26,8 +26,4 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
-cheat() {
-	curl -s "cheat.sh/$1" | bat
-}
-
 eval "$(LC_ALL="en_US.UTF-8" starship init zsh)"
