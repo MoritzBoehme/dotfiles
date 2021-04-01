@@ -14,7 +14,7 @@ bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
 # WINDOW RULES #
-
+bspc rule -a Steam state=floating
 # PROBLEMS WITH JAVA APPLICATIONS #
 wmname LG3D
 
