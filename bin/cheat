@@ -1,0 +1,3 @@
+#!/bin/bash
+cat="$(which bat 2>/dev/null || which cat)"
+curl -s "cheat.sh/$1" | eval $cat

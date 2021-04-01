@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo pacman -Qtdq | sudo pacman -Rns - 2> /dev/null|| echo "No orphans to remove"
