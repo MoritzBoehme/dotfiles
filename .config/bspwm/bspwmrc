@@ -25,5 +25,5 @@ wmname LG3D
 feh --bg-tile ~/Pictures/Wallpapers/avatar.png
 kdeconnect-cli --refresh && kdeconnect-cli -l >/dev/null
 sh ~/.config/polybar/launch.sh &
-
+synology-drive &
 
