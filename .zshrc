@@ -11,6 +11,7 @@ fi
 
 if [ -d "$HOME/bin" ] ; then
 	export PATH="$HOME/bin:$PATH"
+	chmod u+x $HOME/bin/*
 fi
 
 autoload -Uz compinit 
