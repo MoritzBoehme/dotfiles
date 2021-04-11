@@ -35,8 +35,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     done
     unset f
 fi
-
+# Automatic brightness controll
 clight &
-mount -a
 
-exec bspwm 2> .bspwm.err > .bspwm.log
+# Set cursor
+xsetroot -cursor_name left_ptr
+
+exec bspwm
