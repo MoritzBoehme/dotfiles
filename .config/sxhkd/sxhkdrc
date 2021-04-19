@@ -145,6 +145,8 @@ XF86MonBrightnessDown
 	xbacklight -dec 16
 XF86MonBrightnessUp
 	xbacklight -inc 16
+
+# Take a screenshot
 Print
 	flameshot gui
 
@@ -155,9 +157,12 @@ Print
 # start firefox
 super + f
 	firefox
+# start Networkmanager dmenu
 super + w
 	networkmanager_dmenu
+# start rofi-bluetooth
 super + b
 	rofi-bluetooth
+# start rofi-calc
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip"
