@@ -20,6 +20,7 @@ bspc config focus_follows_pointer true
 # WINDOW RULES #
 bspc rule -a Steam state=floating
 bspc rule -a Zathura state=tiled
+bspc rule -a Emacs state=tiled
 
 # PROBLEMS WITH JAVA APPLICATIONS #
 wmname LG3D
@@ -31,5 +32,5 @@ wmname LG3D
 feh --bg-tile ~/Pictures/Wallpapers/avatar.png
 kdeconnect-cli --refresh && kdeconnect-cli -l >/dev/null
 sh ~/.config/polybar/launch.sh &
-synology-drive &
+[[ ! $(pidof -x cloud-drive-daemon) ]] && synology-drive &
 
