@@ -42,4 +42,6 @@ fi
 # Set cursor
 xsetroot -cursor_name left_ptr
 
+[[ $(uname -n) == "arch-desktop" ]] && xrandr --output HDMI-0 --primary --output HDMI-1 --left-of HDMI-0
+
 exec bspwm
