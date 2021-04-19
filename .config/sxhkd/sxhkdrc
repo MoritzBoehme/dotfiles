@@ -145,6 +145,9 @@ XF86MonBrightnessDown
 	xbacklight -dec 16
 XF86MonBrightnessUp
 	xbacklight -inc 16
+Print
+	flameshot gui
+
 #
 # Favourite Progamms
 #
