@@ -20,7 +20,6 @@ bspc config focus_follows_pointer true
 # WINDOW RULES #
 bspc rule -a Steam state=floating
 bspc rule -a Zathura state=tiled
-bspc rule -a Emacs state=tiled
 
 # PROBLEMS WITH JAVA APPLICATIONS #
 wmname LG3D
