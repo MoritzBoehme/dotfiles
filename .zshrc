@@ -14,6 +14,10 @@ if [ -d "$HOME/bin" ] ; then
 	chmod u+x $HOME/bin/*
 fi
 
+if [ -d "$HOME/.emacs.d/bin" ] ; then
+	export PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
 autoload -Uz compinit 
 compinit
 
