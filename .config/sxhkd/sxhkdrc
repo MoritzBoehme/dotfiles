@@ -155,8 +155,8 @@ Print
 #
 
 # start firefox
-super + f
-	firefox
+super + {_,shift} +f
+	firefox {_,--private-window}
 # start Networkmanager dmenu
 super + w
 	networkmanager_dmenu
