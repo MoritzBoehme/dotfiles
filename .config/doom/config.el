@@ -53,5 +53,3 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 13) )
-
-(setq bookmark-default-file "~/.emacs.d/bookmarks")
