@@ -54,4 +54,4 @@
 ;; they are implemented.
 (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 13) )
 
-(setq bookmark-default-file "~/.config/doom/bookmarks")
+(setq bookmark-default-file "~/.emacs.d/bookmarks")
