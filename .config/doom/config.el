@@ -56,9 +56,6 @@
 ;; Set FiraCode as Font
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13) )
 
-;; Projectile Settings
-(setq projectile-project-root "~/Documents")
-
 ;; Switch Flyspell Dictionary
 (defun fd-switch-dictionary()
 (interactive)
@@ -69,14 +66,14 @@
   ))
 (global-set-key (kbd "<f8>")   'fd-switch-dictionary)
 
-;; Enable the www ligature in every possible major mode
+;; ;; Enable the www ligature in every possible major mode
 (ligature-set-ligatures 't '("www"))
 
 ;; Enable ligatures in programming modes
-(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
-                                     ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "::"
+                                     ":::" ":=" "!!" "!=" "!==" "-->" "->" "->>"
                                      "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
-                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/**"
                                      "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
                                      "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
                                      "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
