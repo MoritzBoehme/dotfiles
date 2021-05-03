@@ -16,6 +16,7 @@ flameshot
 grub
 jq
 kitty
+man-db
 mtr
 neofetch
 nerd-fonts-fira-code
