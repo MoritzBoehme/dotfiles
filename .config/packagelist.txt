@@ -38,6 +38,7 @@ texlive-science
 ufw
 vim
 wmname
+xorg-init
 yadm
 yay
 zsh-autosuggestions
