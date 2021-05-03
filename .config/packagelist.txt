@@ -26,6 +26,8 @@ picom-jonaburg-git
 playerctl
 polybar
 ranger
+rofi
+rofi-calc
 shellcheck
 signal-desktop
 spotify
