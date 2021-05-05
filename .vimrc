@@ -3,9 +3,7 @@ inoremap jk <ESC>
 set tabstop=4
 set shiftwidth=4
 
-packadd! dracula
 syntax on " highlight syntax
-colorscheme dracula
 
 set number " show line numbers
 set noswapfile " disable the swapfile
