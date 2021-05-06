@@ -56,6 +56,7 @@
 ;; Set FiraCode as Font
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13) )
 
+(setq ispell-dictionary "english")
 ;; Switch Flyspell Dictionary
 (defun fd-switch-dictionary()
 (interactive)
@@ -82,3 +83,5 @@
                                      "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
 
 (global-ligature-mode 't)
+
+(setq tab-width 4)
