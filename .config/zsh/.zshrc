@@ -33,5 +33,4 @@ alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias emacs='emacs -nw'
 
-eval "$(zoxide init zsh)"
 eval "$(LC_ALL="en_US.UTF-8" starship init zsh)"
