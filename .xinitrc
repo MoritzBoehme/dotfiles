@@ -37,11 +37,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Automatic brightness controll
-[[ $(uname -n) == "arch-laptop" ]] && clight &
+[[ $(uname -n) == *"laptop"* ]] && clight &
 
 # Set cursor
 xsetroot -cursor_name left_ptr
 
-[[ $(uname -n) == "arch-desktop" ]] && xrandr --output HDMI-0 --primary --output HDMI-1 --left-of HDMI-0
+[[ $(uname -n) == *"desktop"* ]] && xrandr --output HDMI-0 --primary --output HDMI-1 --left-of HDMI-0
 
 exec bspwm
