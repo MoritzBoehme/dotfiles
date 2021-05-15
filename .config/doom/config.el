@@ -83,5 +83,3 @@
                                      "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
 
 (global-ligature-mode 't)
-
-(setq tab-width 4)
