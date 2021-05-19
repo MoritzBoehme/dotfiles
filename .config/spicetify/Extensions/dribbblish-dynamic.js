@@ -1,6 +1,8 @@
 // Hide popover message
 document.getElementById("popover-container").style.height = 0;
+document.documentElement.style.setProperty('--warning_message', ' ');
 
+// Get stored hidden sidebar list
 let appHiddenList = [];
 try {
     const rawList = JSON.parse(localStorage.getItem("sidebar-app-hide-list"));
@@ -56,9 +58,9 @@ waitForElement([".LeftSidebar", ".LeftSidebar__section--rootlist .SidebarList__l
 
             if (href.indexOf("playlist-folder") != -1) {
                 const button = item.getElementsByTagName("button")[0]
-                button.classList.add("Button", "Button--style-icon-background", "Button--size-28",);
+                button.classList.add("Button", "Button--style-icon-background", "Button--folder");
                 item.setAttribute("data-tooltip", item.innerText);
-                link.firstChild.innerText = item.innerText.slice(0, 3);
+                replaceTextWithIcon(link.firstChild, 'spoticon-collection-24');
                 continue;
             }
 
@@ -121,7 +123,7 @@ waitForElement([".LeftSidebar", ".LeftSidebar__section--rootlist .SidebarList__l
         }
 
         if (iconName) {
-            el.classList.add(`spoticon-${iconName}-24`);
+            el.classList.add(iconName);
         }
 
         el.parentNode.setAttribute("data-tooltip", el.innerText);
@@ -136,9 +138,7 @@ waitForElement([".LeftSidebar", ".LeftSidebar__section--rootlist .SidebarList__l
                 case "genius":                  return "lyrics";
                 case "JQBX":                    return "addsuggestedsong";
                 case "bookmark":                return "tag";
-                case "reddit":                  return "discover";
-                case "made-for-you":            return "user";
-                case "recently-played":         return "time";
+                case "made-for-you":            return "user-circle";
                 case "collection-songs":        return "heart";
                 case "collection:albums":       return "album";
                 case "collection:artists":      return "artist";
@@ -153,12 +153,19 @@ waitForElement([".LeftSidebar", ".LeftSidebar__section--rootlist .SidebarList__l
                 //case "browse":                return "browse";
                 //case "radio":                 return "radio";
             }})(item.href.replace("spotify:app:", ""));
+            if (icon) {
+                icon = `spoticon-${icon}-24`;
+            }
+            else icon = ((app) => {switch (app) {
+                case "reddit":                  return "icomoon-reddit";
+                case "recently-played":         return "icomoon-recently-played";
+            }})(item.href.replace("spotify:app:", ""));
 
             replaceTextWithIcon(item.firstChild, icon);
         });
 
-    waitForElement([`[href="spotify:app:recently-played"]`], ([query]) => {
-        replaceTextWithIcon(query.firstChild, "time");
+    waitForElement([`[href="spotify:app:queue:history"]`], ([query]) => {
+        replaceTextWithIcon(query.firstChild);
     });
 });
 
@@ -218,6 +225,7 @@ let nearArtistSpan = null
 let mainColor = getComputedStyle(document.documentElement).getPropertyValue('--modspotify_main_fg')
 let mainColor2 = getComputedStyle(document.documentElement).getPropertyValue('--modspotify_main_bg')
 let isLightBg = isLight(mainColor2)
+let customDarken = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--custom_darken'))
 
 waitForElement([".artist"], (queries) => {
     nearArtistSpan = document.createElement("span");
@@ -225,12 +233,17 @@ waitForElement([".artist"], (queries) => {
     queries[0].append(nearArtistSpan);
 });
 
-function updateColors(root) {    
-    let colHex = mainColor
-    if( isLightBg ) colHex = LightenDarkenColor(colHex, -5) // vibrant color is always too bright for white bg mode
+function updateColors(root) {
+    if( root===null) return;
+    let colHex = LightenDarkenColor(mainColor, customDarken)
     let colRGB = hexToRgb(colHex)
-    let darkerColHex = LightenDarkenColor(colHex, isLightBg ? 40 : -40)
+    let darkerColHex = LightenDarkenColor(colHex, isLightBg ? 45 : -40)
     let darkerColRGB = hexToRgb(darkerColHex)
+
+    let sliderColHex = LightenDarkenColor(colHex, isLightBg ? 40 : -65)
+    let sliderColRGB = hexToRgb(sliderColHex)    
+    let buttonBgColHex = isLightBg ? "#FFFFFF" : LightenDarkenColor(colHex, -80)
+    let buttonBgColRGB = hexToRgb(buttonBgColHex)
 
     root.style.setProperty('--is_light', isLightBg ? 1 : 0)
     
@@ -238,23 +251,25 @@ function updateColors(root) {
     root.style.setProperty('--modspotify_active_control_fg', colHex)
     root.style.setProperty('--modspotify_secondary_bg', colHex)
     //root.style.setProperty('--modspotify_pressing_button_bg', colHex)
-    //root.style.setProperty('--modspotify_indicator_fg_and_button_bg', colHex)
+    root.style.setProperty('--modspotify_indicator_fg_and_button_bg', buttonBgColHex)
     root.style.setProperty('--modspotify_pressing_fg', colHex)
     root.style.setProperty('--modspotify_sidebar_indicator_and_hover_button_bg', colHex)
     //root.style.setProperty('--modspotify_scrollbar_fg_and_selected_row_bg', darkerColHex)
     root.style.setProperty('--modspotify_selected_button', darkerColHex)
     //root.style.setProperty('--modspotify_miscellaneous_hover_bg', colHex)
+    root.style.setProperty('--modspotify_slider_bg', sliderColHex)
     
     root.style.setProperty('--modspotify_rgb_main_fg', colRGB)
     root.style.setProperty('--modspotify_rgb_active_control_fgg', colRGB)
     root.style.setProperty('--modspotify_rgb_secondary_bg', colRGB)
     //root.style.setProperty('--modspotify_rgb_pressing_button_bg', colRGB)
-    //root.style.setProperty('--modspotify_rgb_indicator_fg_and_button_bg', colRGB)    
+    root.style.setProperty('--modspotify_rgb_indicator_fg_and_button_bg', buttonBgColRGB)    
     root.style.setProperty('--modspotify_rgb_pressing_fg', colRGB)
     root.style.setProperty('--modspotify_rgb_sidebar_indicator_and_hover_button_bg', colRGB)
     //root.style.setProperty('--modspotify_rgb_scrollbar_fg_and_selected_row_bg', darkerColRGB)
     root.style.setProperty('--modspotify_rgb_selected_button', darkerColRGB)
     //root.style.setProperty('--modspotify_rgb_miscellaneous_hover_bg', colRGB)
+    root.style.setProperty('--modspotify_rgb_slider_bg', sliderColRGB)
 
     // Also update the color of the icons for bright and white backgrounds to remain readable.
     let isLightFg = isLight(colHex);
@@ -264,32 +279,14 @@ function updateColors(root) {
 }
 
 function updateColorsAllIframes() {
-    // playing queue
-    if (document.querySelector("#app-queue")!=null) updateColors(document.querySelector("#app-queue").contentDocument.documentElement)
-    // collection (podcast, recent, etc.)
-    if (document.querySelector("#app-collection")!=null) updateColors(document.querySelector("#app-collection").contentDocument.documentElement)
-    // collection (local files)
-    if (document.querySelector("#app-collection-songs")!=null) updateColors(document.querySelector("#app-collection-songs").contentDocument.documentElement)
-    // buddy list
-    if (document.querySelector("#iframe-buddy-list")!=null) updateColors(document.querySelector("#iframe-buddy-list").contentDocument.documentElement)
-    // playlist
-    if (document.querySelector("#app-playlist")!=null) updateColors(document.querySelector("#app-playlist").contentDocument.documentElement)
-    // search
-    if (document.querySelector("#app-search")!=null) updateColors(document.querySelector("#app-search").contentDocument.documentElement)
-    // genius
-    if (document.querySelector("#app-genius")!=null) updateColors(document.querySelector("#app-genius").contentDocument.documentElement)
-    // browse
-    if (document.querySelector("#app-browse")!=null) updateColors(document.querySelector("#app-browse").contentDocument.documentElement)
-    // genre
-    if (document.querySelector("#app-genre")!=null) updateColors(document.querySelector("#app-genre").contentDocument.documentElement)
-    // artist
-    if (document.querySelector("#app-artist")!=null) updateColors(document.querySelector("#app-artist").contentDocument.documentElement)
-    
     // code below works but then generate many errors on page change.
-    frames = document.getElementsByTagName("iframe");
+    let frames = document.getElementsByTagName("iframe");
     for (i=0; i<frames.length; ++i) {
-        console.log(i+". "+frames[i].id)
-        updateColors(frames[i].contentDocument.documentElement)
+        try {
+            updateColors(frames[i].contentDocument.documentElement)
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 
@@ -350,10 +347,45 @@ async function songchange() {
 }
 
 Spicetify.Player.addEventListener("songchange", songchange)
-Spicetify.Player.addEventListener("appchange", ({"data": data}) => {
-    //console.log(data.container)
-    setTimeout(updateColorsAllIframes, 200)
-})
+
+window.addEventListener("message", ({data: info}) => {
+    if( info.type=="navigation_request_state" )
+        setTimeout(updateColorsAllIframes, 200)
+});
 
 // Add "About" item in profile menu
 new Spicetify.Menu.Item("About", false, () => window.open("spotify:app:about")).register();
+
+// Track elapsed time
+(function Dribbblish() {
+    if (!Spicetify.Player.origin || !Spicetify.EventDispatcher || !Spicetify.Event) {
+        setTimeout(Dribbblish, 300);
+        return;
+    }
+
+    const progBar = Spicetify.Player.origin.progressbar;
+
+    // Remove default elapsed element update since we already hide it
+    progBar._listenerMap["progress"].pop();
+
+    const tooltip = document.createElement("div");
+    tooltip.className = "handle prog-tooltip";
+    progBar._innerElement.append(tooltip);
+    
+    function updateTooltip(e) {
+        const curWidth = progBar._innerElement.offsetWidth;
+        const maxWidth = progBar._container.offsetWidth;
+        const ttWidth = tooltip.offsetWidth / 2;
+        if (curWidth < ttWidth) {
+            tooltip.style.right = String(-ttWidth * 2 + curWidth) + "px";
+        } else if (curWidth > maxWidth - ttWidth) {
+            tooltip.style.right = String(curWidth - maxWidth) + "px";
+        } else {
+            tooltip.style.right = String(-ttWidth) + "px";
+        }
+        tooltip.innerText = Spicetify.Player.formatTime(e) + " / " +
+            Spicetify.Player.formatTime(Spicetify.Player.getDuration());
+    }
+    progBar.addListener("progress", (e) => {updateTooltip(e.value)});
+    updateTooltip(progBar._currentValue);
+})();
