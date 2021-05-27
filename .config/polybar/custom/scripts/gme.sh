@@ -14,11 +14,13 @@ toggle() {
 trap "toggle" USR1
 
 while true; do
-    URL="https://query1.finance.yahoo.com/v8/finance/chart/GME"
-    res=$(curl -sf "$URL")
+    URL="https://api.nasdaq.com/api/quote/GME/info?assetclass=stocks"
+    res=$(curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' -sf "$URL")
 
-    close=$(jq '.["chart"]["result"][0]["meta"]["previousClose"]' <<< "$res")
-    current=$(jq '.["chart"]["result"][0]["meta"]["regularMarketPrice"]' <<< "$res")
+    close="$(jq '.["data"]["keyStats"]["PreviousClose"]["value"]' <<< "$res")"
+    close="${close//[^0-9.]/}"
+    current="$(jq '.["data"]["primaryData"]["lastSalePrice"]' <<< "$res")"
+    current="${current//[^0-9.]/}"
     shares="1.650981"
     buy="214"
 
@@ -49,7 +51,7 @@ while true; do
     fi
 
     echo "$output"
-    sleep 2 &
+    sleep 5 &
     sleep_pid=$!
     wait
 done
