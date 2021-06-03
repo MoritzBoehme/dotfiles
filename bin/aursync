@@ -1,0 +1,13 @@
+#!/bin/bash
+cd ~/custom-repo/x64_86
+repo-add -q custom.db.tar.gz *.pkg.* 
+if [[ "$#" -eq 1 ]]
+then
+	aur sync --repo custom --root "$(pwd)" --no-view "$1" > /dev/null
+fi 
+aur sync --repo custom --root "$(pwd)" --no-view -u > /dev/null
+mv custom.db.tar.gz custom.db
+mv custom.files.tar.gz custom.files
+git add .
+git commit -a -q -m "$(date +"%F %T")"
+git push -q
