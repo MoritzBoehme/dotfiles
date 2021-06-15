@@ -4,7 +4,7 @@ SAVEHIST=200
 HISTFILE=~/.zsh_history
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-	cbonsai -p --seed $RANDOM -m "Welcome back"
+	cbonsai -lp -t 0.005 -m "Welcome back"
 	sleep 2
 	startx &> /dev/null
 fi
