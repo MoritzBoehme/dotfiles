@@ -29,7 +29,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -62,24 +62,8 @@
 (interactive)
 (let* ((dic ispell-current-dictionary)
        (change (if (string= dic "deutsch") "english" "deutsch")))
-  (ispell-change-dictionary change)
-  (message "Dictionary switched from %s to %s" dic change)
-  ))
-(global-set-key (kbd "<f8>")   'fd-switch-dictionary)
+   (ispell-change-dictionary change)
+   (message "Dictionary switched from %s to %s" dic change)
+   ))
+ (global-set-key (kbd "<f8>")   'fd-switch-dictionary)
 
-;; ;; Enable the www ligature in every possible major mode
-(ligature-set-ligatures 't '("www"))
-
-;; Enable ligatures in programming modes
-(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "::"
-                                     ":::" ":=" "!!" "!=" "!==" "-->" "->" "->>"
-                                     "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
-                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/**"
-                                     "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
-                                     "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
-                                     "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
-                                     "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
-                                     "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
-                                     "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
-
-(global-ligature-mode 't)
