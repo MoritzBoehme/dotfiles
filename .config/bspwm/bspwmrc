@@ -35,6 +35,7 @@ wmname LG3D
 # AUTOSTART #
 [[ ! $(pidof -x sxhkd) ]] && sxhkd &
 [[ ! $(pidof -x picom) ]] && picom --experimental-backends &
+[[ ! $(pidof -x dunst) ]] && dunst &
 
 feh --bg-tile ~/Pictures/Wallpapers/avatar.png
 
