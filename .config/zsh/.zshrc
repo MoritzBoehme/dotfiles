@@ -4,21 +4,25 @@ SAVEHIST=200
 HISTFILE=~/.zsh_history
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-	cbonsai -lp -t 0.005 -m "Welcome back"
-	sleep 2
-	startx &> /dev/null
+    cbonsai -lp -t 0.005 -m "Welcome back"
+    sleep 2
+    startx &>/dev/null
 fi
 
-if [ -d "$HOME/bin" ] ; then
-	export PATH="$HOME/bin:$PATH"
-	chmod u+x $HOME/bin/*
+if [ -d "$HOME/bin" ]; then
+    export PATH="$HOME/bin:$PATH"
+    chmod u+x $HOME/bin/*
 fi
 
-if [ -d "$HOME/.emacs.d/bin" ] ; then
-	export PATH="$HOME/.emacs.d/bin:$PATH"
+if [ -d "$HOME/.emacs.d/bin" ]; then
+    export PATH="$HOME/.emacs.d/bin:$PATH"
 fi
 
-autoload -Uz compinit 
+if [ -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
+    export PATH="$XDG_CONFIG_HOME/emacs/bin:$PATH"
+fi
+
+autoload -Uz compinit
 compinit
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
