@@ -67,3 +67,5 @@
    ))
  (global-set-key (kbd "<f8>")   'fd-switch-dictionary)
 
+
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
