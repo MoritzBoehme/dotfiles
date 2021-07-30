@@ -1,7 +1,7 @@
 # Use powerline
 USE_POWERLINE="true"
-SAVEHIST=200
-HISTFILE=~/.zsh_history
+SAVEHIST=1000
+HISTFILE=$XDG_CONFIG_HOME/zsh/.zsh_history
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     cbonsai -lp -t 0.005 -m "Welcome back"
@@ -14,10 +14,7 @@ if [ -d "$HOME/bin" ]; then
     chmod u+x $HOME/bin/*
 fi
 
-if [ -d "$HOME/.emacs.d/bin" ]; then
-    export PATH="$HOME/.emacs.d/bin:$PATH"
-fi
-
+export EMACSDIR="$XDG_CONFIG_HOME/emacs"
 if [ -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
     export PATH="$XDG_CONFIG_HOME/emacs/bin:$PATH"
 fi
@@ -35,7 +32,6 @@ alias cat='bat'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
-alias emacs='emacs -nw'
 
 eval $(thefuck --alias)
 eval "$(LC_ALL="en_US.UTF-8" starship init zsh)"
