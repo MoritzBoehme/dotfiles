@@ -75,7 +75,11 @@
     home = "/home/moritz";
     extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
   };
-
+ 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ];})
+  ];
+ 
   # PACKAGES
   environment.systemPackages = with pkgs; [
     vim 
