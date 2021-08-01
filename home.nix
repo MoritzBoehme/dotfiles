@@ -87,7 +87,50 @@
     enable = true;
     enableZshIntegration = true;
   };
-
+  
+  services.polybar = {
+    enable = true;
+    script = ''
+             # Terminate already running bar instances
+             killall -q polybar
+    
+             # Wait until the processes have been shut down
+             while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+             while ! pgrep -x bspwm >/dev/null; do sleep 1; done
+    
+             # Launch Polybar
+             for m in $(polybar --list-monitors | cut -d":" -f1); do
+               MONITOR=$m polybar --reload bottom &
+             done
+             '';
+    config = {
+      "bar/bottom" = {
+         monitor = "\${env:MONITOR}";
+         bottom = true;
+         fixed-center = true;
+         width = "100%";
+         height = 25;
+         background = "\${color.background-alt}";
+         foreground = "\${color.foreground}";
+         line-size = 3;
+         border-size = 0;
+         padding-left = 1;
+         padding-right = 1;
+         module-margin-left = 3;
+         module-margin-right = 3;
+         font-0 = "NotoSans Nerd Font:size=11;0";
+         modules-left = "cpu memory wlan eth battery";
+         modules-center = "bspwm";
+         modules-right = "pulseaudio date powermenu";
+         tray-position = "right";
+         tray-background = "\${color.background-alt}";
+         tray-padding = 2;
+         wm-restack = "bspwm";
+         cursor-click = "pointer";
+      };
+    };
+  };
+  
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
