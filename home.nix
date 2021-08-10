@@ -73,7 +73,7 @@
       enable_audio_bell = false;
       cursor_shape = "underline";
     }; 
-    #extraConfig = builtins.readFile ./kitty/dracula.conf;
+    extraConfig = builtins.readFile .config/kitty/dracula.conf;
     font = {
       name = "FiraCode Nerd Font";
       size = 10;
