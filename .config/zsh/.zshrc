@@ -33,5 +33,4 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
-eval $(thefuck --alias)
 eval "$(LC_ALL="en_US.UTF-8" starship init zsh)"
