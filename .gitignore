@@ -62,6 +62,7 @@
 .icons/
 .java/
 .jd/
+.lesshsQ
 .lesshst
 .local/
 .m2/
@@ -72,6 +73,7 @@
 .pulse-cookie
 .putty/
 .ssh/
+.themes
 .tor-browser/
 .vim/
 .viminfo
@@ -87,6 +89,4 @@ Universitaet
 VirtualBox\ VMs/
 aur/
 dotfiles/
-.lesshsQ
 org-roam/
-.themes
