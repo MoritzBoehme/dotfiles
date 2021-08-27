@@ -12,4 +12,7 @@ xsetroot -cursor_name left_ptr
 
 [[ $(uname -n) == *"desktop"* ]] && xrandr --output HDMI-0 --primary --output HDMI-1 --left-of HDMI-0
 
+systemctl --user set-environment DISPLAY=:0
+systemctl --user --no-block start xsession.target
+
 exec bspwm
