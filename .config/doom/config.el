@@ -69,3 +69,25 @@
 
 
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+
+(setq org-roam-directory "~/org-roam")
+(after! org-roam
+  :custom
+  (setq org-roam-capture-templates
+        '(
+          ("d" "default" plain
+           "%?"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("s" "semester" plain (file "~/org-roam/templates/semester-template.org")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("m" "modul" plain (file "~/org-roam/templates/modul-template.org")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("D" "dozent" plain (file "~/org-roam/templates/dozent-template.org")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          )
+        )
+  )
