@@ -3,11 +3,11 @@ USE_POWERLINE="true"
 SAVEHIST=1000
 HISTFILE=$XDG_CONFIG_HOME/zsh/.zsh_history
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    cbonsai -lp -t 0.005 -m "Welcome back"
-    sleep 2
-    startx &>/dev/null
-fi
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#     cbonsai -lp -t 0.005 -m "Welcome back"
+#     sleep 2
+#     startx &>/dev/null
+# fi
 
 if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"

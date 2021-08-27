@@ -12,7 +12,7 @@ super + d
 
 # make sxhkd reload its configuration files:
 alt + shift + c
-	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+	systemctl --user reload sxhkd.service
 
 # Show help
 super + h
