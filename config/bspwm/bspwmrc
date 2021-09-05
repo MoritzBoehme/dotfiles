@@ -32,5 +32,4 @@ bspc rule -a Emacs state=tiled
 wmname LG3D
 
 # AUTOSTART #
-feh --bg-fill ~/Pictures/Wallpapers/dracula.png
-[[ ! $(pidof -x cloud-drive-daemon) ]] && synology-drive &
+[[ ! $(pidof -x sxhkd) ]] && sxhkd &
