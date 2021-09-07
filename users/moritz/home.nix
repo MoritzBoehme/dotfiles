@@ -64,6 +64,14 @@
           ];
   };
 
+  xdg = {
+    enable = true;
+    configFile = {
+      "sxhkd/sxhkdrc".source = ~/.dotfiles/config/sxhkd/sxhkdrc;
+      "bspwm/bspwmrc".source = ~/.dotfiles/config/bspwm/bspwmrc;
+    };
+  };
+
   # Kitty
   programs.kitty = { 
     enable = true;
@@ -86,54 +94,48 @@
     enable = true;
     enableZshIntegration = true;
   };
-  
+
   services.polybar = {
     enable = true;
-    script = ''
-             # Terminate already running bar instances
-             killall -q polybar
-    
-             # Wait until the processes have been shut down
-             while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-             while ! pgrep -x bspwm >/dev/null; do sleep 1; done
-    
-             # Launch Polybar
-             for m in $(polybar --list-monitors | cut -d":" -f1); do
-               MONITOR=$m polybar --reload bottom &
-             done
-             '';
-    config = {
-      "bar/bottom" = {
-         monitor = "\${env:MONITOR}";
-         bottom = true;
-         fixed-center = true;
-         width = "100%";
-         height = 25;
-         background = "\${color.background-alt}";
-         foreground = "\${color.foreground}";
-         line-size = 3;
-         border-size = 0;
-         padding-left = 1;
-         padding-right = 1;
-         module-margin-left = 3;
-         module-margin-right = 3;
-         font-0 = "NotoSans Nerd Font:size=11;0";
-         modules-left = "cpu memory wlan eth battery";
-         modules-center = "bspwm";
-         modules-right = "pulseaudio date powermenu";
-         tray-position = "right";
-         tray-background = "\${color.background-alt}";
-         tray-padding = 2;
-         wm-restack = "bspwm";
-         cursor-click = "pointer";
-      };
-    };
+    script = ''for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+  MONITOR=$m polybar --reload bottom &
+done
+'';
+    config = ~/.dotfiles/config/polybar/config.ini;
+    extraConfig = builtins.readFile ~/.dotfiles/config/polybar/modules.ini + 
+                  builtins.readFile ~/.dotfiles/config/polybar/colors.ini;
+  };
+
+  services.picom = {
+    enable = true;
+    inactiveOpacity = "0.95";
+    opacityRule = [
+      "100:fullscreen"
+      "80 :class_g   = 'Polybar'"
+    ];
+    blur = true;
+    inactiveDim = "0.1";
+  };
+
+  programs.rofi = {
+    enable = true;
+  };
+
+  programs.emacs.enable = true;
+
+  services.emacs.enable = true;
+
+  home.file.".doom.d" = {
+    source = ~/.dotfiles/config/doom;
+    recursive = true;
+    onChange = builtins.readFile ~/.dotfiles/config/doom/reload.sh;
   };
   
   home.packages = with pkgs; [
     neofetch
+    feh
   ];
-
+ 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

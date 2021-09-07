@@ -56,13 +56,14 @@
           enable = true;
         };
       };
-    
+      
+      libinput.enable = true;
+  
       windowManager.bspwm.enable = true;
     };
     printing.enable = true;
   };
-  # HOMEMANAGER
-
+  
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
