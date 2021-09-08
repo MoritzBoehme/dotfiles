@@ -70,7 +70,7 @@
         enable_audio_bell = false;
         cursor_shape = "underline";
       };
-      extraConfig = builtins.readFile ~/.config/kitty/dracula.conf;
+      extraConfig = builtins.readFile ~/.dotfiles/config/kitty/dracula.conf;
       font = {
         name = "FiraCode Nerd Font";
         size = 10;
@@ -87,7 +87,7 @@
 
     rofi = {
       enable = true;
-      theme = ~/.config/rofi/dracula_old.rasi;
+      theme = ~/.dotfiles/config/rofi/dracula_old.rasi;
     };
 
     emacs.enable = true;
@@ -109,13 +109,8 @@
         recursive = true;
         onChange = builtins.readFile ~/.dotfiles/config/doom/reload.sh;
       };
-      "kitty" = {
-        source = ~/.dotfiles/config/kitty;
-        recursive = true;
-      };
-      "rofi" = {
-        source = ~/.dotfiles/config/rofi;
-        recursive = true;
+      "dunst/dunstrc" = {
+        source = ~/.dotfiles/config/dunst/dunstrc;
       };
     };
   };
@@ -143,15 +138,29 @@
       inactiveDim = "0.1";
     };
 
-    emacs.enable = true;
+    emacs = {
+      enable = true;
+      package = pkgs.emacsUnstable;
+    };
+
+    dunst.enable = true;
+
+    kdeconnect.enable = true;
   };
 
 
   home.packages = with pkgs; [
     neofetch
     feh
+    keepassxc
   ];
- 
+
+  nixpkgs.overlays = [
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+      }))
+    ];
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

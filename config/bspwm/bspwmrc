@@ -28,3 +28,4 @@ bspc rule -a Emacs state=tiled
 # AUTOSTART #
 [[ ! $(pidof -x sxhkd) ]] && sxhkd &
 feh --bg-fill ~/.dotfiles/config/wallpaper/base.png
+systemctl --user start polybar

@@ -10,21 +10,29 @@
       ./hardware-configuration.nix
     ];
  
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # BOOT
-  boot.supportedFilesystems = [ "btrfs" ];
-  boot.loader = {
-      grub = {
-        enable = true;
-        version = 2;
-        device = "nodev";
-        efiSupport = true;
-      };
-      efi.canTouchEfiVariables = true;
+  boot = {
+    supportedFilesystems = [ "btrfs" ];
+    loader = {
+        grub = {
+          enable = true;
+          version = 2;
+          device = "nodev";
+          efiSupport = true;
+        };
+        efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
   };
 
   # NETWORKING
   networking = {
-    hostName = "nixos";
+    hostName = "nixos-laptop";
     networkmanager.enable = true;    
  
     useDHCP = false;
@@ -64,9 +72,12 @@
     printing.enable = true;
   };
   
-  # Enable sound.
+  # Enable sound
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Powersaving
+  services.tlp.enable = true;
 
   # USERS
   users.users.moritz = {
@@ -77,7 +88,7 @@
   };
  
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ];})
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"];})
   ];
  
   # PACKAGES

@@ -12,8 +12,8 @@
     };
   };
 
-  outputs = inputs@{ self, utils, home-manager, ...}: {
-    utils.lib.mkFlake = {
+  outputs = inputs@{ self, utils, home-manager, ...}:
+    utils.lib.mkFlake {
       inherit self inputs;
 
       # Channel definitions.
@@ -22,7 +22,7 @@
       channelsConfig.allowUnfree = true;
 
       hostDefaults.modules = [
-        home-manager.nixos.Modules.home-manager
+        home-manager.nixosModules.home-manager
         ./modules
       ];
 
@@ -30,5 +30,4 @@
         ./hosts/nixos-laptop
       ];
     };
-  };
 }
