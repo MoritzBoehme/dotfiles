@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 
   # paths it should manage.
   home.username = "moritz";
@@ -60,7 +60,7 @@
                       sha256 = "09ncmyqlk9a3h470z0wgbkrznb5zyc9dj96011wm89rdxc1irxk2";
                     };
                   }
-                ];
+      ];
     };
 
     kitty = {
@@ -101,13 +101,24 @@
         onChange = "pkill -USR1 -x sxhkd";
       };
       "bspwm/bspwmrc" = {
-        source = ~/.dotfiles/config/bspwm/bspwmrc;
+        source = /home/moritz/.dotfiles/config/bspwm/bspwmrc;
         onChange = "bspc wm -r";
       };
       "doom" = {
         source = ~/.dotfiles/config/doom;
         recursive = true;
-        onChange = builtins.readFile ~/.dotfiles/config/doom/reload.sh;
+        # onChange = builtins.readFile ~/.dotfiles/config/doom/reload.sh;
+        onChange = ''
+                   #!/bin/sh
+                   DOOM="$HOME/.emacs.d"
+                   if [ ! -d "$DOOM" ]; then
+                     git clone https://github.com/hlissner/doom-emacs.git "$DOOM"
+                     "$DOOM/bin/doom" -y install
+                   fi
+
+                   "$DOOM/bin/doom" sync
+
+                   '';
       };
       "dunst/dunstrc" = {
         source = ~/.dotfiles/config/dunst/dunstrc;
@@ -154,12 +165,6 @@
     feh
     keepassxc
   ];
-
-  nixpkgs.overlays = [
-      (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      }))
-    ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
