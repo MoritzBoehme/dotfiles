@@ -9,7 +9,7 @@ let
       enable = true;
       configFile = {
         "doom" = {
-          source = ~/doom;
+          source = ./doom;
           recursive = true;
           onChange = ''
                      #!/bin/sh
