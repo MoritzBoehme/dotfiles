@@ -7,7 +7,7 @@
     utils.url = github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code;
     
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = github:nix-community/home-manager/release-21.05;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
