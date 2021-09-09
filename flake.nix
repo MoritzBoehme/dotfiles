@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = inputs@{ self, utils, home-manager, ...}:
+  outputs = inputs@{ self, utils, home-manager, nixpkgs, ...}:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -23,6 +23,10 @@
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
         ./modules
       ];
 
