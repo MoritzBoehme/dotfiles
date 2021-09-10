@@ -19,6 +19,8 @@ let
     };
     home.packages = with pkgs; [
       feh
+      playerctl
+      pamixer
     ];
   };
 in
