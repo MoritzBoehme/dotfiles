@@ -6,10 +6,10 @@
     ./dunst
     ./emacs
     ./polybar
+    ./rofi
     ./git.nix
     ./kitty.nix
     ./picom.nix
-    ./rofi.nix
     ./zathura.nix
     ./zsh.nix
   ];
@@ -48,6 +48,8 @@
     home.packages = with pkgs; [
       neofetch
       keepassxc
+      spotify
+      spicetify-cli
     ];
 
     home.stateVersion = "21.05";
