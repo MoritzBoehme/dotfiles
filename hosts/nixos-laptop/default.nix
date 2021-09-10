@@ -25,13 +25,29 @@
     kernelPackages = pkgs.linuxPackages_zen;
   };
 
+  # SERVICES
   services = {
     xserver = {
+      enable = true;
+      layout = "de";
+
+      displayManager = {
+        defaultSession = "none+bspwm";
+
+        autoLogin = {
+          enable = true;
+          user = "moritz";
+        };
+        lightdm = {
+          enable = true;
+        };
+      };
+
       libinput.enable = true;
+      windowManager.bspwm.enable = true;
     };
     printing.enable = true;
   };
-
 
   # NETWORKING
   networking = {

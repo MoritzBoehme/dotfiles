@@ -23,24 +23,5 @@ let
   };
 in
 {
-  # SERVICES
-  services = {
-    xserver = {
-      enable = true;
-      layout = "de";
-
-      displayManager = {
-        defaultSession = "none+bspwm";
-
-        autoLogin = {
-          enable = true;
-          user = "moritz";
-        };
-        lightdm = {
-          enable = true;
-        };
-      };
-    };
-  };
   home-manager.users.moritz = {...}: (base);
 }
