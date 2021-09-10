@@ -10,6 +10,10 @@
       url = github:nix-community/home-manager/release-21.05;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    picom = {
+      url = github:jonaburg/picom;
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, utils, home-manager, nixpkgs, ...}:

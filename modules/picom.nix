@@ -12,6 +12,14 @@ let
       blur = true;
       inactiveDim = "0.1";
     };
+    extraOptions = ''
+                   corner-radius = 10;
+                   rounded-cornes-exclude = [
+                     "class_g = 'Polybar'",
+                     "class_g = 'Rofi'"
+                   ]
+                   round-borders = 1;
+                   '';
   };
 in
 {
