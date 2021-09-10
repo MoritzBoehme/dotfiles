@@ -1,2 +1,4 @@
 #!/bin/sh
-nix-channel --update
+pushd ~/.dotfiles
+sudo nixos-rebuild switch --flake .# --upgrade
+popd
