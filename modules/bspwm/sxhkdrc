@@ -129,11 +129,11 @@ alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 XF86AudioRaiseVolume 
-	pactl set-sink-volume @DEFAULT_SINK@ +5%
+	pamixer -i 5
 XF86AudioLowerVolume 
-	pactl set-sink-volume @DEFAULT_SINK@ -5%
+	pamixer -d 5
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pamixer -t
 XF86AudioPlay
 	playerctl -p "spotify,firefox" play-pause
 XF86AudioNext
