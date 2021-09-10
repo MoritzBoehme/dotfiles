@@ -47,6 +47,11 @@
       windowManager.bspwm.enable = true;
     };
     printing.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
   };
 
   # NETWORKING
