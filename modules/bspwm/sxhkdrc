@@ -142,9 +142,9 @@ XF86AudioPrev
 	playerctl -p "spotify,firefox" previous
 
 XF86MonBrightnessDown
-	xbacklight -dec 16
+	brightnessctl s 10%-
 XF86MonBrightnessUp
-	xbacklight -inc 16
+	brightnessctl s +10%
 
 # Take a screenshot
 Print

@@ -63,6 +63,10 @@
     interfaces.wlp1s0.useDHCP = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+  ];
+
   # Powersaving
   services.tlp.enable = true;
 
