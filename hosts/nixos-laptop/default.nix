@@ -25,6 +25,14 @@
     kernelPackages = pkgs.linuxPackages_zen;
   };
 
+  services = {
+    xserver = {
+      libinput.enable = true;
+    };
+    printing.enable = true;
+  };
+
+
   # NETWORKING
   networking = {
     hostName = "nixos-laptop";

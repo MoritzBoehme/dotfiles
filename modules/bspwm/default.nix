@@ -3,6 +3,7 @@
 let
   base = {
     xsession.windowManager.bspwm.enable = true;
+
     xdg = {
       enable = true;
       configFile = {
@@ -22,5 +23,24 @@ let
   };
 in
 {
+  # SERVICES
+  services = {
+    xserver = {
+      enable = true;
+      layout = "de";
+
+      displayManager = {
+        defaultSession = "none+bspwm";
+
+        autoLogin = {
+          enable = true;
+          user = "moritz";
+        };
+        lightdm = {
+          enable = true;
+        };
+      };
+    };
+  };
   home-manager.users.moritz = {...}: (base);
 }
