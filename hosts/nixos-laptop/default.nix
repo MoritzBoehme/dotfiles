@@ -9,11 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
- 
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
 
   # BOOT
   boot = {
@@ -39,64 +34,8 @@
     interfaces.wlp1s0.useDHCP = true;
   };
 
-  # LOCALS 
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "firacode-14";
-    keyMap = "de";
-  };
-  time.timeZone = "Europe/Berlin";
-
-  # SERVICES
-  services = {
-    xserver = {
-      enable = true;
-      layout = "de";
-    
-      displayManager = {
-        defaultSession = "none+bspwm";
-      
-        autoLogin = {
-          enable = true;
-          user = "moritz";
-        };
-        lightdm = {
-          enable = true;
-        };
-      };
-      
-      libinput.enable = true;
-  
-      windowManager.bspwm.enable = true;
-    };
-    printing.enable = true;
-  };
-  
-  # Enable sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Powersaving
   services.tlp.enable = true;
-
-  # USERS
-  users.users.moritz = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    home = "/home/moritz";
-    extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
-  };
- 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"];})
-  ];
- 
-  # PACKAGES
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    firefox
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

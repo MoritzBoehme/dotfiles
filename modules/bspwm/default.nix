@@ -2,6 +2,7 @@
 
 let
   base = {
+    xsession.windowManager.bspwm.enable = true;
     xdg = {
       enable = true;
       configFile = {

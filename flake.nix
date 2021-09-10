@@ -21,6 +21,12 @@
       # e.g the inputs which contain `legacyPackages` attribute are used.
       channelsConfig.allowUnfree = true;
 
+
+      nix.package = nixpkgs.nixFlakes;
+      nix.extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
+
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
         {
