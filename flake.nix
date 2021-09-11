@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code";
+    nur.url = "github:nix-community/NUR";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
@@ -27,6 +28,7 @@
         self.overlay
         inputs.utils.overlay
         inputs.emacs-overlay.overlay
+        inputs.nur.overlay
       ];
 
 
@@ -48,10 +50,6 @@
       nixosModules = utils.lib.exportModules [
         ./modules/default.nix
       ];
-      # nix.package = nixpkgs.nixFlakes;
-      # nix.extraOptions = ''
-      #   experimental-features = nix-command flakes
-      # '';
 
       hostDefaults.modules = [
         home-manager.nixosModule

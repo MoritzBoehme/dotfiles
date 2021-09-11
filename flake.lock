@@ -67,6 +67,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1631356739,
+        "narHash": "sha256-BFuSqK5U/xXMJx1nYkYgpm+5Xkcdey/QEpvbHkoUuuo=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "8442b8a7252b4c1c873c5ddbfacf89580548aa30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "picom": {
       "flake": false,
       "locked": {
@@ -88,6 +103,7 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "picom": "picom",
         "unstable": "unstable",
         "utils": "utils"
