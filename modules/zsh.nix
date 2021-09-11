@@ -15,14 +15,12 @@ let
         };
         plugins = [
                     {
-                      name = "zsh-autosuggestions";
-                      src = inputs.zsh-autosuggestions;
-                    }
-                    {
                       name = "zsh-syntax-highlighting";
                       src = inputs.zsh-syntax-highlighting;
                     }
         ];
+        enableAutosuggestions = true;
+        enableCompletion = true;
       };
       exa.enable = true;
       bat.enable = true;
@@ -35,5 +33,6 @@ let
   });
 in
 {
+  environment.pathsToLink = [ "/share/zsh" ];
   home-manager.users.moritz = {...}: (base "/home/moritz");
 }
