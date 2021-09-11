@@ -106,7 +106,8 @@
         "nur": "nur",
         "picom": "picom",
         "unstable": "unstable",
-        "utils": "utils"
+        "utils": "utils",
+        "zsh-autosuggestions": "zsh-autosuggestions"
       }
     },
     "unstable": {
@@ -141,6 +142,22 @@
         "owner": "gytis-ivaskevicius",
         "ref": "release-1.2.0-without-deprecated-code",
         "repo": "flake-utils-plus",
+        "type": "github"
+      }
+    },
+    "zsh-autosuggestions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622844304,
+        "narHash": "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=",
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
+        "rev": "a411ef3e0992d4839f0732ebeb9823024afaaaa8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
         "type": "github"
       }
     }

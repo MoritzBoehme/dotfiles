@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   base = (home: {
@@ -16,12 +16,7 @@ let
         plugins = [
                     {
                       name = "zsh-autosuggestions";
-                      src = pkgs.fetchFromGitHub {
-                        owner = "zsh-users";
-                        repo = "zsh-autosuggestions";
-                        rev = "v0.4.0";
-                        sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
-                      };
+                      src = inputs.zsh-autosuggestions;
                     }
                     {
                       name = "zsh-syntax-highlighting";

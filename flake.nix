@@ -17,6 +17,10 @@
       url = "github:jonaburg/picom";
       flake = false;
     };
+    zsh-autosuggestions = {
+      url = "github:zsh-users/zsh-autosuggestions";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, utils, home-manager, nixpkgs, ...}:
