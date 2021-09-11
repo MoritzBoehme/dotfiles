@@ -107,7 +107,8 @@
         "picom": "picom",
         "unstable": "unstable",
         "utils": "utils",
-        "zsh-autosuggestions": "zsh-autosuggestions"
+        "zsh-autosuggestions": "zsh-autosuggestions",
+        "zsh-syntax-highlighting": "zsh-syntax-highlighting"
       }
     },
     "unstable": {
@@ -158,6 +159,22 @@
       "original": {
         "owner": "zsh-users",
         "repo": "zsh-autosuggestions",
+        "type": "github"
+      }
+    },
+    "zsh-syntax-highlighting": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629459010,
+        "narHash": "sha256-m+gKQXNRYTpraWDXVMTU6UPJFivcyhOw3dNofFR4cyU=",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "6e0e950154a4c6983d9e077ed052298ad9126144",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
         "type": "github"
       }
     }

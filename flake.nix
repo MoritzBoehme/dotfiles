@@ -21,6 +21,10 @@
       url = "github:zsh-users/zsh-autosuggestions";
       flake = false;
     };
+    zsh-syntax-highlighting = {
+      url = "github:zsh-users/zsh-syntax-highlighting";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, utils, home-manager, nixpkgs, ...}:
