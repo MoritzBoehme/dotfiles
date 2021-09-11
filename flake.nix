@@ -22,24 +22,47 @@
     utils.lib.mkFlake {
       inherit self inputs;
 
-      # Channel definitions.
-      # Channels are automatically generated from nixpkgs inputs
-      # e.g the inputs which contain `legacyPackages` attribute are used.
+
+      channels.nixpkgs.overlaysBuilder = channels: [
+        self.overlay
+        inputs.utils.overlay
+        inputs.emacs-overlay.overlay
+      ];
+
+
+      overlay = import ./overlays { inherit inputs; };
+      overlays = utils.lib.exportOverlays {
+        inherit (self) pkgs inputs;
+      };
+
+
+      outputsBuilder = channels: {
+        packages = utils.lib.exportPackages self.overlays channels;
+        devShell = channels.nixpkgs.mkShell {
+          packages = with channels.nixpkgs; [ nixpkgs-fmt rnix-lsp ];
+        };
+      };
+
       channelsConfig.allowUnfree = true;
 
-
-      nix.package = nixpkgs.nixFlakes;
-      nix.extraOptions = ''
-        experimental-features = nix-command flakes
-      '';
+      nixosModules = utils.lib.exportModules [
+        ./modules/default.nix
+      ];
+      # nix.package = nixpkgs.nixFlakes;
+      # nix.extraOptions = ''
+      #   experimental-features = nix-command flakes
+      # '';
 
       hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
+        home-manager.nixosModule
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit inputs self; };
+          };
         }
-        ./modules
+        self.nixosModules.default
       ];
 
       hosts.nixos-laptop.modules = [

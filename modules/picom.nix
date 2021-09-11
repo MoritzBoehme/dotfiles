@@ -4,13 +4,13 @@ let
   base = {
     services.picom = {
       enable = true;
-      inactiveOpacity = "0.95";
+      inactiveOpacity = "0.90";
       opacityRule = [
         "100:fullscreen"
         "80 :class_g   = 'Polybar'"
       ];
       blur = true;
-      inactiveDim = "0.1";
+      # inactiveDim = "0.1";
       experimentalBackends = true;
       extraOptions = ''
                      corner-radius = 10;
@@ -29,8 +29,8 @@ let
 
                      # dual kawase blur
                      blur-background-fixed = false;
-                     # blur-method = "dual_kawase";
-                     blur-strength = 10;
+                     blur-method = "dual_kawase";
+                     blur-strength = 5;
                      use-ewmh-active-win = true;
                      detect-rounded-corners = true;
 
