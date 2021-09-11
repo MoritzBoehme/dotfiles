@@ -8,8 +8,8 @@ let
         scrollback_lines = 10000;
         enable_audio_bell = false;
         cursor_shape = "underline";
+        window_padding_width = 3;
       };
-      # extraConfig = builtins.readFile ~/.dotfiles/config/kitty/dracula.conf;
       extraConfig = ''
                     foreground            #f8f8f2
                     background            #282a36
