@@ -12,6 +12,7 @@
     ./picom.nix
     ./zathura.nix
     ./zsh.nix
+    ./nix.nix
   ];
 
   # USERS
