@@ -67,6 +67,8 @@
     brightnessctl
   ];
 
+  time.timeZone = "Europe/Berlin";
+
   # Powersaving
   services.tlp.enable = true;
 
