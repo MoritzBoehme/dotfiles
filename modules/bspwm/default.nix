@@ -11,9 +11,12 @@ let
           source = ./bspwmrc;
           onChange = "bspc wm -r";
         };
-      "sxhkd/sxhkdrc" = {
-          source = ./sxhkdrc;
-          onChange = "pkill -USR1 -x sxhkd";
+        "sxhkd/sxhkdrc" = {
+            source = ./sxhkdrc;
+            onChange = "pkill -USR1 -x sxhkd";
+          };
+        "wallpaper/dracula.png" = {
+          source = ./dracula.png;
         };
       };
     };
