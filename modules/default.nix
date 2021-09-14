@@ -5,6 +5,7 @@
     ./apps
     ./cli
     ./desktop
+    ./gaming
     ./services
   ];
 
