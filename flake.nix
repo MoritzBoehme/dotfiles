@@ -4,7 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code";
+    utils.url =
+      "github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code";
     nur.url = "github:nix-community/NUR";
     agenix.url = "github:ryantm/agenix";
 
@@ -33,9 +34,7 @@
       inherit self inputs;
 
       overlay = import ./overlays { inherit inputs; };
-      overlays = utils.lib.exportOverlays {
-        inherit (self) pkgs inputs;
-      };
+      overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
       channels.nixpkgs.overlaysBuilder = channels: [
         self.overlay
@@ -53,9 +52,7 @@
 
       channelsConfig.allowUnfree = true;
 
-      nixosModules = utils.lib.exportModules [
-        ./modules/default.nix
-      ];
+      nixosModules = utils.lib.exportModules [ ./modules/default.nix ];
 
       hostDefaults.modules = [
         home-manager.nixosModule
@@ -70,8 +67,6 @@
         agenix.nixosModules.age
       ];
 
-      hosts.nixos-laptop.modules = [
-        ./hosts/nixos-laptop
-      ];
+      hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
     };
 }
