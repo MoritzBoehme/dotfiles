@@ -27,25 +27,7 @@
 
   # SERVICES
   services = {
-    xserver = {
-      enable = true;
-      layout = "de";
-
-      displayManager = {
-        defaultSession = "none+bspwm";
-
-        autoLogin = {
-          enable = true;
-          user = "moritz";
-        };
-        lightdm = {
-          enable = true;
-        };
-      };
-
-      libinput.enable = true;
-      windowManager.bspwm.enable = true;
-    };
+    xserver.libinput.enable = true;
     printing.enable = true;
     pipewire = {
       enable = true;
@@ -62,10 +44,6 @@
     useDHCP = false;
     interfaces.wlp1s0.useDHCP = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
 
   time.timeZone = "Europe/Berlin";
 

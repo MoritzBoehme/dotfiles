@@ -1,7 +1,26 @@
 { config, lib, pkgs, ... }:
 
-let
-  base = {
+{
+  services = {
+    xserver = {
+      enable = true;
+      layout = "de";
+
+      displayManager = {
+        defaultSession = "none+bspwm";
+
+        autoLogin = {
+          enable = true;
+          user = "moritz";
+        };
+        lightdm = {
+          enable = true;
+        };
+      };
+      windowManager.bspwm.enable = true;
+    };
+  };
+  home-manager.users.moritz = {
     xsession.windowManager.bspwm.enable = true;
 
     xdg = {
@@ -24,9 +43,7 @@ let
       feh
       playerctl
       pamixer
+      brightnessctl
     ];
   };
-in
-{
-  home-manager.users.moritz = {...}: (base);
 }
