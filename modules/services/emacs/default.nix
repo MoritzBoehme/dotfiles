@@ -44,6 +44,7 @@ let
       fd # faster projectile indexing
       imagemagick # for image-dired
       zstd # for undo-fu-session/undo-tree compression
+      nixfmt # for formating nix
 
       ## Module dependencies
       # :checkers spell
