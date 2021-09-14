@@ -6,6 +6,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code";
     nur.url = "github:nix-community/NUR";
+    agenix.url = "github:ryantm/agenix";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
@@ -27,7 +28,7 @@
     };
   };
 
-  outputs = inputs@{ self, utils, home-manager, nixpkgs, ...}:
+  outputs = inputs@{ self, utils, home-manager, nixpkgs, agenix, ...}:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -69,6 +70,7 @@
           };
         }
         self.nixosModules.default
+        agenix.nixosModules.age
       ];
 
       hosts.nixos-laptop.modules = [

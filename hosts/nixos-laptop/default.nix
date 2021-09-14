@@ -69,6 +69,8 @@
 
   time.timeZone = "Europe/Berlin";
 
+  services.sshd.enable = true;
+
   # Powersaving
   services.tlp.enable = true;
   powerManagement.enable = true;

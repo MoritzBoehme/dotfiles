@@ -7,6 +7,7 @@
     ./emacs
     ./polybar
     ./rofi
+    ./agenix.nix
     ./git.nix
     ./kitty.nix
     ./picom.nix
