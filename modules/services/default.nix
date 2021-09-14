@@ -3,9 +3,9 @@
 {
   imports = [
     ./dunst
+    ./diskstation
     ./emacs
     ./agenix.nix
-    ./diskstation.nix
     ./picom.nix
   ];
 
