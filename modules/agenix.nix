@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  services.sshd.enable = true;
   environment.systemPackages = [
     inputs.agenix.defaultPackage.x86_64-linux
   ];
