@@ -32,6 +32,10 @@
     utils.lib.mkFlake {
       inherit self inputs;
 
+      overlay = import ./overlays { inherit inputs; };
+      overlays = utils.lib.exportOverlays {
+        inherit (self) pkgs inputs;
+      };
 
       channels.nixpkgs.overlaysBuilder = channels: [
         self.overlay
@@ -39,13 +43,6 @@
         inputs.emacs-overlay.overlay
         inputs.nur.overlay
       ];
-
-
-      overlay = import ./overlays { inherit inputs; };
-      overlays = utils.lib.exportOverlays {
-        inherit (self) pkgs inputs;
-      };
-
 
       outputsBuilder = channels: {
         packages = utils.lib.exportPackages self.overlays channels;
