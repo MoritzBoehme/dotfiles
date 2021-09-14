@@ -8,4 +8,7 @@ final: prev: {
     system = prev.system;
     config.allowUnfree = true;
   };
+  nur = import inputs.nur {
+    system = prev.system;
+  };
 }

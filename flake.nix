@@ -1,6 +1,6 @@
 {
   description = "My awesome system config";
-  
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -28,7 +28,7 @@
     };
   };
 
-  outputs = inputs@{ self, utils, home-manager, nixpkgs, agenix, ...}:
+  outputs = inputs@{ self, utils, home-manager, nixpkgs, agenix, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 

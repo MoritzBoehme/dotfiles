@@ -14,9 +14,9 @@
           diskstation -fstype=davfs,uid=1000 :https\://192.168.0.2\:5006/home/Drive/
         '';
       in
-        ''
-          /auto file:${mapConf}
-        '';
+      ''
+        /auto file:${mapConf}
+      '';
     debug = true;
   };
   environment.etc."davfs2/certs/diskstation.pem" = {

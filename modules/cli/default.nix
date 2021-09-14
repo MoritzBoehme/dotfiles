@@ -2,8 +2,8 @@
 
 {
   imports = [
-   ./git.nix
-   ./nix.nix
-   ./zsh.nix
+    ./git.nix
+    ./nix.nix
+    ./zsh.nix
   ];
 }

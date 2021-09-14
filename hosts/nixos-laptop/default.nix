@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -14,13 +15,13 @@
   boot = {
     supportedFilesystems = [ "btrfs" ];
     loader = {
-        grub = {
-          enable = true;
-          version = 2;
-          device = "nodev";
-          efiSupport = true;
-        };
-        efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        version = 2;
+        device = "nodev";
+        efiSupport = true;
+      };
+      efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_zen;
   };
@@ -39,8 +40,8 @@
   # NETWORKING
   networking = {
     hostName = "nixos-laptop";
-    networkmanager.enable = true;    
- 
+    networkmanager.enable = true;
+
     useDHCP = false;
     interfaces.wlp1s0.useDHCP = true;
   };

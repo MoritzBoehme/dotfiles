@@ -10,5 +10,5 @@ let
   });
 in
 {
-  home-manager.users.moritz = {...}: (base "/home/moritz");
+  home-manager.users.moritz = { ... }: (base "/home/moritz");
 }

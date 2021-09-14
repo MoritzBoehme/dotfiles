@@ -10,6 +10,6 @@
   ];
 
   home-manager.users.moritz.services = {
-      kdeconnect.enable = true;
+    kdeconnect.enable = true;
   };
 }

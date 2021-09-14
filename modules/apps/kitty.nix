@@ -11,56 +11,56 @@ let
         window_padding_width = 3;
       };
       extraConfig = ''
-                    foreground            #f8f8f2
-                    background            #282a36
-                    #background            #000000
-                    selection_foreground  #44475a
-                    selection_background  #f8f8f2
+        foreground            #f8f8f2
+        background            #282a36
+        #background            #000000
+        selection_foreground  #44475a
+        selection_background  #f8f8f2
 
-                    url_color #ffb86c
+        url_color #ffb86c
 
-                    # black
-                    color0  #21222c
-                    color8  #6272a4
+        # black
+        color0  #21222c
+        color8  #6272a4
 
-                    # red
-                    color1  #ff5555
-                    color9  #ff6e6e
+        # red
+        color1  #ff5555
+        color9  #ff6e6e
 
-                    # green
-                    color2  #50fa7b
-                    color10 #69ff94
+        # green
+        color2  #50fa7b
+        color10 #69ff94
 
-                    # yellow
-                    color3  #f1fa8c
-                    color11 #ffffa5
+        # yellow
+        color3  #f1fa8c
+        color11 #ffffa5
 
-                    # blue
-                    color4  #bd93f9
-                    color12 #d6acff
+        # blue
+        color4  #bd93f9
+        color12 #d6acff
 
-                    # magenta
-                    color5  #ff79c6
-                    color13 #ff92df
+        # magenta
+        color5  #ff79c6
+        color13 #ff92df
 
-                    # cyan
-                    color6  #8be9fd
-                    color14 #a4ffff
+        # cyan
+        color6  #8be9fd
+        color14 #a4ffff
 
-                    # white
-                    color7  #f8f8f2
-                    color15 #ffffff
+        # white
+        color7  #f8f8f2
+        color15 #ffffff
 
-                    # Cursor colors
-                    cursor            #6272a4
-                    cursor_text_color background
+        # Cursor colors
+        cursor            #6272a4
+        cursor_text_color background
 
-                    # Tab bar colors
-                    active_tab_foreground   #44475a
-                    active_tab_background   #f8f8f2
-                    inactive_tab_foreground #282a36
-                    inactive_tab_background #6272a4
-                    '';
+        # Tab bar colors
+        active_tab_foreground   #44475a
+        active_tab_background   #f8f8f2
+        inactive_tab_foreground #282a36
+        inactive_tab_background #6272a4
+      '';
       font = {
         name = "FiraCode Nerd Font";
         size = 10;
@@ -69,5 +69,5 @@ let
   };
 in
 {
-  home-manager.users.moritz = {...}: (base);
+  home-manager.users.moritz = { ... }: (base);
 }
