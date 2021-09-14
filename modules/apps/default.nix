@@ -8,8 +8,8 @@
   ];
   home-manager.users.moritz.home.packages = with pkgs; [
     neofetch
-    keepassxc
-    spotify
+    unstable.keepassxc
+    unstable.spotify
     spicetify-cli
   ];
 }
