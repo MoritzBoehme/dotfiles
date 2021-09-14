@@ -7,4 +7,5 @@ let
 in
 {
   "nordvpn.age".publicKeys = users ++ hosts;
+  "davfs.age".publicKeys = users ++ hosts;
 }

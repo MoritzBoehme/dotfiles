@@ -8,6 +8,7 @@
     ./polybar
     ./rofi
     ./agenix.nix
+    ./diskstation.nix
     ./git.nix
     ./kitty.nix
     ./picom.nix
