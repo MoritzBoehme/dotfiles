@@ -2,19 +2,10 @@
 
 {
   imports = [
-    ./bspwm
-    ./dunst
-    ./emacs
-    ./polybar
-    ./rofi
-    ./agenix.nix
-    ./diskstation.nix
-    ./git.nix
-    ./kitty.nix
-    ./picom.nix
-    ./zathura.nix
-    ./zsh.nix
-    ./nix.nix
+    ./apps
+    ./cli
+    ./desktop
+    ./services
   ];
 
   # USERS
@@ -43,17 +34,6 @@
     # paths it should manage.
     home.username = "moritz";
     home.homeDirectory = "/home/moritz";
-
-    services = {
-      kdeconnect.enable = true;
-    };
-
-    home.packages = with pkgs; [
-      neofetch
-      keepassxc
-      spotify
-      spicetify-cli
-    ];
 
     home.stateVersion = "21.05";
   };
