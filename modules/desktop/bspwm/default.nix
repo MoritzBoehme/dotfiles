@@ -6,6 +6,8 @@
       enable = true;
       layout = "de";
 
+      videoDrivers = [ "nvidia" ];
+
       displayManager = {
         defaultSession = "none+bspwm";
 
@@ -20,6 +22,9 @@
       windowManager.bspwm.enable = true;
     };
   };
+  
+  console.keyMap = "de"; 
+
   home-manager.users.moritz = {
     xsession.windowManager.bspwm.enable = true;
 
