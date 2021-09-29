@@ -68,6 +68,6 @@
       ];
 
       hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
-      hosts.nixos-desktop.modules = [ ./hosts/nixos-desktop ];
+      hosts.nixos-desktop.modules = [ ./hosts/nixos-desktop ./modules/gaming ];
     };
 }
