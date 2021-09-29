@@ -44,28 +44,26 @@ let
       fd # faster projectile indexing
       imagemagick # for image-dired
       zstd # for undo-fu-session/undo-tree compression
-      nixfmt # for formating nix
 
       ## Module dependencies
       # :checkers spell
-      (aspellWithDicts (ds: with ds; [
-        en
-        en-computers
-        en-science
-        de
-      ]))
+      (aspellWithDicts (ds: with ds; [ en en-computers en-science de ]))
       # :checkers grammar
       languagetool
       # :tools lookup & :lang org +roam
       sqlite
       # :lang latex & :lang org (latex previews)
       texlive.combined.scheme-medium
+      # :lang nix
+      nixfmt # for formating nix
+      # :app everywhere
+      xdotool
+      xorg.xwininfo
+      xclip
+      xorg.xprop
     ];
   };
-in
-{
-  nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-
+in {
   fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
   home-manager.users.moritz = { ... }: (base);

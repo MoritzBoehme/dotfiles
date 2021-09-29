@@ -86,7 +86,7 @@
        :tools
        ;;ansible
        ;;debugger           ; FIXME stepping through code, to help you add bugs
-       ;;direnv
+       direnv
        ;;docker
        ;;editorconfig       ; let someone else argue about tabs vs spaces
        ;;ein                ; tame Jupyter notebooks with emacs
@@ -178,7 +178,7 @@
        :app
        ;;calendar
        ;;emms
-       ;;everywhere         ; *leave* Emacs!? You must be joking
+       everywhere         ; *leave* Emacs!? You must be joking
        ;;irc                ; how neckbeards socialize
        ;;(rss +org)         ; emacs as an RSS reader
        ;;twitter            ; twitter client https://twitter.com/vnought
