@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # BOOT
   boot = {
@@ -44,6 +43,7 @@
 
     useDHCP = false;
     interfaces.wlp1s0.useDHCP = true;
+    interfaces.enp4s0f4u2.useDHCP = true;
   };
 
   time.timeZone = "Europe/Berlin";
