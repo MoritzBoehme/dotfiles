@@ -167,5 +167,8 @@ super + b
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort | xclip -selection clipboard
 # start emacs
-super + e
+super  + e
 	emacsclient -c -a emacs
+super + shift + e
+	bspc rule -a 'Emacs' -o state=floating sticky=on; \
+	emacsclient --eval "(emacs-everywhere)"
