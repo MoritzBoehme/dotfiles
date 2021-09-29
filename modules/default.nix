@@ -20,6 +20,8 @@
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
   ];
 
+  time.timeZone = "Europe/Berlin";
+
   # PACKAGES
   environment.systemPackages = with pkgs; [
     vim
