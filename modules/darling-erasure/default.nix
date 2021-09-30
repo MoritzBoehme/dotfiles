@@ -8,6 +8,8 @@
     adjtime.source = "/persist/etc/adjtime";
     NIXOS.source = "/persist/etc/NIXOS";
     machine-id.source = "/persist/etc/machine-id";
+    ssh.source = "/persist/etc/ssh";
+    shadow.source = "/persist/etc/shadow";
   };
   systemd.tmpfiles.rules = [
     "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
@@ -58,4 +60,7 @@
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
+
+  # In case one forgets to move /etc/shadow to /persist
+  users.users.moritz.initialPassword = "password";
 }
