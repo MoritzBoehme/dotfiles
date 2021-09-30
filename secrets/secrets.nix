@@ -6,7 +6,7 @@ let
   nixos-laptop =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhtwHDGAZshiQWKkCcPWV9tC83b+bKBgjDcjP/N2CKO";
   nixos-desktop =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQyvmbmn1dF2CK+vAHHetyEjb0pMIxT6wlVtmdsTnrj";
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKl8gMhwSf1NsP5gp14xbbyjqQLZzcHLb/XKRMoHdXgI";
   hosts = [ nixos-laptop nixos-desktop ];
 in {
   "nordvpn.age".publicKeys = users ++ hosts;
