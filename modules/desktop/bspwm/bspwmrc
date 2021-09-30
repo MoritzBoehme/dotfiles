@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 # MONITORS #
-if [[ "$(uname -n)" == *'desktop'* ]]; then
-    bspc monitor HDMI-0 -d 1 2 3 4 5
-    bspc monitor HDMI-1 -d 6 7 8 9 10
-else
-    bspc monitor -d 1 2 3 4 5 6 7 8 9
-fi
+monitors=($(bspc query -M --names))
+desktops=$(expr 10 / ${#monitors[@]})
+start=1
+end=$desktops
+for monitor in ${monitors[@]}; do
+    bspc monitor $monitor -d $(seq -s ' ' $start $end)
+    start=$(expr $start + $desktops)
+    end=$(expr $end + $desktops)
+done
 
 # CONFIGURATION #
 
