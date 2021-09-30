@@ -58,4 +58,7 @@
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
+
+  # In case one forgets to move /etc/shadow to /persist
+  users.users.moritz.initialPassword = "password";
 }
