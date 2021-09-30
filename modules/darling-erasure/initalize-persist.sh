@@ -9,5 +9,5 @@ sudo cp -r {,/persist}/etc/nixos
 sudo cp {,/persist}/etc/adjtime
 sudo cp {,/persist}/etc/NIXOS
 
-sudo cp -r {,/persist}/etc/ssh
+sudo cp {,/persist}/etc/ssh/ssh_host_*
 sudo cp {,/persist}/etc/shadow
