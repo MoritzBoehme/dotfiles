@@ -71,7 +71,7 @@
       hosts.nixos-desktop.modules = [
         ./hosts/nixos-desktop
         ./modules/gaming
-        ./modules/darling-erasure.nix
+        ./modules/darling-erasure
       ];
     };
 }
