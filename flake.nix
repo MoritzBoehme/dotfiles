@@ -66,8 +66,8 @@
         agenix.nixosModules.age
       ];
 
-      hosts.nixos-laptop.modules =
-        [ ./hosts/nixos-laptop ./modules/containers ];
-      hosts.nixos-desktop.modules = [ ./hosts/nixos-desktop ./modules/gaming ];
+      hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
+      hosts.nixos-desktop.modules =
+        [ ./hosts/nixos-desktop ./modules/gaming ./modules/containers ];
     };
 }
