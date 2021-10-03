@@ -4,8 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    utils.url =
-      "github:gytis-ivaskevicius/flake-utils-plus/release-1.2.0-without-deprecated-code";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/1.3.0";
     nur.url = "github:nix-community/NUR";
     agenix.url = "github:ryantm/agenix";
 
@@ -67,11 +66,8 @@
         agenix.nixosModules.age
       ];
 
-      hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
-      hosts.nixos-desktop.modules = [
-        ./hosts/nixos-desktop
-        ./modules/gaming
-        ./modules/darling-erasure
-      ];
+      hosts.nixos-laptop.modules =
+        [ ./hosts/nixos-laptop ./modules/containers ];
+      hosts.nixos-desktop.modules = [ ./hosts/nixos-desktop ./modules/gaming ];
     };
 }
