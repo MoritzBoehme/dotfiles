@@ -6,8 +6,6 @@
       enable = true;
       layout = "de";
 
-      videoDrivers = [ "nvidia" ];
-
       displayManager = {
         defaultSession = "none+bspwm";
 
@@ -15,15 +13,13 @@
           enable = true;
           user = "moritz";
         };
-        lightdm = {
-          enable = true;
-        };
+        lightdm = { enable = true; };
       };
       windowManager.bspwm.enable = true;
     };
   };
-  
-  console.keyMap = "de"; 
+
+  console.keyMap = "de";
 
   home-manager.users.moritz = {
     xsession.windowManager.bspwm.enable = true;
@@ -39,16 +35,9 @@
           source = ./sxhkdrc;
           onChange = "pkill -USR1 -x sxhkd";
         };
-        "wallpaper/dracula.png" = {
-          source = ./dracula.png;
-        };
+        "wallpaper/dracula.png" = { source = ./dracula.png; };
       };
     };
-    home.packages = with pkgs; [
-      feh
-      playerctl
-      pamixer
-      brightnessctl
-    ];
+    home.packages = with pkgs; [ feh playerctl pamixer brightnessctl ];
   };
 }
