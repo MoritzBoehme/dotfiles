@@ -34,8 +34,8 @@
         "TZ" = "DE";
       };
       volumes = [
-        "/home/moritz/Docker/jackett/config:/config"
-        "/home/moritz/Docker/jackett/blackhole:/downloads"
+        "/home/moritz/Docker/Jackett/config:/config"
+        "/home/moritz/Docker/Jackett/blackhole:/downloads"
       ];
       ports = [ "9117:9117" ];
     };
@@ -49,8 +49,8 @@
       };
       volumes = [
         "/auto/media/movies:/movies"
-        "/home/moritz/Docker/transmission/completed/movies:/downloads"
-        "/home/moritz/Docker/radarr"
+        "/home/moritz/Docker/Transmission/completed/movies:/downloads"
+        "/home/moritz/Docker/Radarr:/config"
       ];
       ports = [ "7878:7878" ];
     };
@@ -63,8 +63,8 @@
       };
       volumes = [
         "/auto/media/tv:/tv"
-        "/home/moritz/Docker/transmission/completed/movies:/downloads"
-        "/home/moritz/Docker/sonarr"
+        "/home/moritz/Docker/Transmission/completed/tv:/downloads"
+        "/home/moritz/Docker/Sonarr:/config"
       ];
       ports = [ "8989:8989" ];
     };
