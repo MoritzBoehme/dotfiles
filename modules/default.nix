@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./apps ./cli ./desktop ./services ./security.nix ];
+  imports = [ ./apps ./cli ./desktop ./services ];
 
   # USERS
   users.users.moritz = {
@@ -31,6 +31,11 @@
     # paths it should manage.
     home.username = "moritz";
     home.homeDirectory = "/home/moritz";
+
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
 
     home.stateVersion = "21.05";
   };

@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # BOOT
   boot = {
@@ -35,6 +34,8 @@
     useDHCP = false;
     interfaces.enp42s0.useDHCP = true;
   };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Powersaving
   services.tlp.enable = true;
