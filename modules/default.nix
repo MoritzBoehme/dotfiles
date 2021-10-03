@@ -32,6 +32,11 @@
     home.username = "moritz";
     home.homeDirectory = "/home/moritz";
 
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+
     home.stateVersion = "21.05";
   };
 }
