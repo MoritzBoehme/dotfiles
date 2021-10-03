@@ -18,6 +18,7 @@
         "TRANSMISSION_RATIO_LIMIT_ENABLED" = "true";
         "TZ" = "DE";
         "ENABLE_UFW" = "true";
+        "UFW_ALLOW_GW_NET" = "true";
         "PUID" = "1000";
         "PGID" = "100";
       };
