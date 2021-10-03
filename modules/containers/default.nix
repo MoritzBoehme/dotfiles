@@ -2,4 +2,5 @@
 
 {
   imports = [ ./media.nix ];
+  virtualisation.docker.enable = true;
 }

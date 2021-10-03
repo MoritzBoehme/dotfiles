@@ -1,53 +1,72 @@
 { config, lib, pkgs, ... }:
 
 {
-  containers.radarr = {
-    config = { config, pkgs, ... }: { services.radarr.enable = true; };
-    bindMounts = {
-      "/dowloads" = {
-        hostPath = "/var/lib/Transmission/Downloads/completed/";
-        isReadOnly = true;
+  virtualisation.oci-containers.containers = {
+    "transmission" = {
+      image = "haugene/transmission-openvpn";
+      environmentFiles = [ /run/secrets/nordvpn ];
+      environment = {
+        "LOCAL_NETWORK" = "192.168.0.0/24";
+        "OPENVPN_PROVIDER" = "NORDVPN";
+        "TRANSMISSION_ALT_SPEED_DOWN" = "20000";
+        "TRANSMISSION_ALT_SPEED_TIME_ENABLED" = "true";
+        "TRANSMISSION_ALT_SPEED_UP" = "2000";
+        "TRANSMISSION_MAX_PEERS_GLOBAL" = "1000";
+        "TRANSMISSION_PEER_LIMIT_GLOBAL" = "1000";
+        "TRANSMISSION_PEER_LIMIT_PER_TORRENT" = "100";
+        "TRANSMISSION_RATIO_LIMIT" = "10";
+        "TRANSMISSION_RATIO_LIMIT_ENABLED" = "true";
+        "TZ" = "DE";
+        "ENABLE_UFW" = "true";
+        "PUID" = "1000";
+        "PGID" = "100";
       };
+      ports = [ "9091:9091" ];
+      volumes = [ "/home/moritz/Docker/Transmission:/data/" ];
+      extraOptions = [ "--cap-add=NET_ADMIN" ];
     };
-  };
-  containers.sonarr = {
-    config = { config, pkgs, ... }: { services.sonarr.enable = true; };
-    bindMounts = {
-      "/dowloads" = {
-        hostPath = "/var/lib/Transmission/Downloads/completed/";
-        isReadOnly = true;
+
+    "jackett" = {
+      image = "linuxserver/jackett";
+      environment = {
+        "PUID" = "1000";
+        "PGID" = "100";
+        "TZ" = "DE";
       };
+      volumes = [
+        "/home/moritz/Docker/jackett/config:/config"
+        "/home/moritz/Docker/jackett/blackhole:/downloads"
+      ];
+      ports = [ "9117:9117" ];
     };
-  };
-  containers.jackett = {
-    config = { config, pkgs, ... }: { services.jackett.enable = true; };
-  };
-  containers.transmission = {
-    config = { config, pkgs, ... }: {
-      # services.openvpn = { servers = { nordvpn = { }; }; };
-      networking.firewall = {
-        enable = true;
-        # extraStopCommands = ''
-        #   sudo iptables -N ALLOWVPN
-        #   sudo iptables -N BLOCKALL
 
-        #   # allow access for the interfaces loopback, tun, and tap
-        #   sudo iptables -A OUTPUT -o tun+ -j ACCEPT;
-        #   sudo iptables -A OUTPUT -o tap+ -j ACCEPT;
-        #   sudo iptables -A OUTPUT -o lo+ -j ACCEPT;
-
-        #   # route outgoing data via our created chains
-        #   sudo iptables -A OUTPUT -j ALLOWVPN;
-        #   sudo iptables -A OUTPUT -j BLOCKALL;
-
-        #   # block all disallowed connections
-        #   sudo iptables -A BLOCKALL -j DROP
-        # '';
+    "radarr" = {
+      image = "linuxserver/radarr";
+      environment = {
+        "PUID" = "1000";
+        "PGID" = "100";
+        "TZ" = "DE";
       };
+      volumes = [
+        "/auto/media/movies:/movies"
+        "/home/moritz/Docker/transmission/completed/movies:/downloads"
+        "/home/moritz/Docker/radarr"
+      ];
+      ports = [ "7878:7878" ];
     };
-    bindMounts = {
-      "/var/lib/transmission" = { hostPath = "/home/moritz/Transmission/"; };
+    "sonarr" = {
+      image = "linuxserver/sonarr";
+      environment = {
+        "PUID" = "1000";
+        "PGID" = "100";
+        "TZ" = "DE";
+      };
+      volumes = [
+        "/auto/media/tv:/tv"
+        "/home/moritz/Docker/transmission/completed/movies:/downloads"
+        "/home/moritz/Docker/sonarr"
+      ];
+      ports = [ "8989:8989" ];
     };
   };
-
 }
