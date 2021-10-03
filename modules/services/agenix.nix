@@ -9,4 +9,6 @@
     mode = "600";
     path = "/etc/davfs2/secrets";
   };
+  age.secrets.smbMoritz.file = ../../secrets/smbMoritz.age;
+  age.secrets.smbMedia.file = ../../secrets/smbMedia.age;
 }

@@ -4,13 +4,6 @@
   services.davfs2 = {
     enable = true;
     extraConfig = ''
-      buf_size 32
-      use_compression 1
-      table_size 4096
-      [/auto/diskstation]
-      trust_server_cert diskstation.pem
-      [/auto/media]
-      trust_server_cert diskstation.pem
       [/auto/keepass]
       trust_server_cert home-boehmies-de.pem
     '';
@@ -20,8 +13,6 @@
     autoMaster = let
       mapConf = pkgs.writeText "auto" ''
         keepass -fstype=davfs,uid=1000 :https\://davs.home.boehmies.de/home/Drive/
-        diskstation -fstype=davfs,uid=1000 :https\://192.168.0.2\:5006/home/Drive/
-        media -fstype=davfs,uid=1000 :https\://192.168.0.2\:5006/media
       '';
     in ''
       /auto file:${mapConf}
@@ -31,8 +22,31 @@
   environment.etc."davfs2/certs/diskstation.pem" = {
     text = builtins.readFile ./diskstation.pem;
   };
-  environment.etc."davfs2/certs/home-boehmies-de.pem" = {
-    text = builtins.readFile ./home-boehmies-de.pem;
+
+  fileSystems."/media/media" = {
+    device = "//192.168.0.2/media";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts =
+        "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in [
+      "${automount_opts},credentials=/run/secrets/smbMedia,uid=1000,gid=100"
+    ];
+  };
+
+  fileSystems."/media/diskstation" = {
+    device = "//192.168.0.2/home/Drive";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts =
+        "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in [
+      "${automount_opts},credentials=/run/secrets/smbMoritz,uid=1000,gid=100"
+    ];
   };
 
   home-manager.users.moritz = {
@@ -41,7 +55,7 @@
       pairs = {
         keepass.roots = [ "/home/moritz/Keepass" "/auto/keepass" ];
         diskstation = {
-          roots = [ "/home/moritz/Documents" "/auto/diskstation" ];
+          roots = [ "/home/moritz/Documents" "/media/diskstation" ];
           commandOptions = {
             auto = "true";
             batch = "true";

@@ -11,4 +11,6 @@ let
 in {
   "nordvpn.age".publicKeys = users ++ hosts;
   "davfs.age".publicKeys = users ++ hosts;
+  "smbMoritz.age".publicKeys = users ++ hosts;
+  "smbMedia.age".publicKeys = users ++ hosts;
 }
