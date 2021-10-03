@@ -4,59 +4,52 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
+    fsType = "btrfs";
+    options = [ "subvol=root" ];
+  };
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/078b81ba-238e-471d-9951-b743588532b8";
+  boot.initrd.luks.devices."enc".device =
+    "/dev/disk/by-uuid/078b81ba-238e-471d-9951-b743588532b8";
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/log" = {
+    device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
+    fsType = "btrfs";
+    options = [ "subvol=log" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/nix" =
-    {
-      device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
+  };
 
-  fileSystems."/persist" =
-    {
-      device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
-      fsType = "btrfs";
-      options = [ "subvol=persist" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/938D-F813";
+    fsType = "vfat";
+  };
 
-  fileSystems."/log" =
-    {
-      device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-      neededForBoot = true;
-    };
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
+    fsType = "btrfs";
+    options = [ "subvol=persist" ];
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/938D-F813";
-      fsType = "vfat";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/4a91d3eb-1633-42d9-8304-c10e49a61154";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/29ebf65f-e6ca-4625-9f72-a9321152be1b"; }];
