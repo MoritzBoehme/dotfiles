@@ -49,7 +49,7 @@
         "TZ" = "DE";
       };
       volumes = [
-        "/auto/media/movies:/movies"
+        "/media/media/movies:/movies"
         "/home/moritz/Docker/Transmission/completed/movies:/downloads"
         "/home/moritz/Docker/Radarr:/config"
       ];
@@ -63,7 +63,7 @@
         "TZ" = "DE";
       };
       volumes = [
-        "/auto/media/tv:/tv"
+        "/media/media/tv:/tv"
         "/home/moritz/Docker/Transmission/completed/tv:/downloads"
         "/home/moritz/Docker/Sonarr:/config"
       ];
