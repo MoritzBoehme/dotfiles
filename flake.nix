@@ -68,10 +68,6 @@
       ];
 
       hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
-      hosts.nixos-desktop.modules = [
-        ./hosts/nixos-desktop
-        ./modules/gaming
-        ./modules/darling-erasure
-      ];
+      hosts.nixos-desktop.modules = [ ./hosts/nixos-desktop ./modules/gaming ];
     };
 }
