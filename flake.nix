@@ -28,7 +28,7 @@
     };
   };
 
-  outputs = inputs@{ self, utils, home-manager, nixpkgs, agenix, ... }:
+  outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -51,7 +51,11 @@
 
       channelsConfig.allowUnfree = true;
 
-      nixosModules = utils.lib.exportModules [ ./modules/default.nix ];
+      nixosModules = utils.lib.exportModules [
+        ./modules/default.nix
+        ./modules/containers
+        ./modules/gaming
+      ];
 
       hostDefaults.modules = [
         home-manager.nixosModule
@@ -67,7 +71,10 @@
       ];
 
       hosts.nixos-laptop.modules = [ ./hosts/nixos-laptop ];
-      hosts.nixos-desktop.modules =
-        [ ./hosts/nixos-desktop ./modules/gaming ./modules/containers ];
+      hosts.nixos-desktop.modules = [
+        ./hosts/nixos-desktop
+        self.nixosModules.containers
+        self.nixosModules.gaming
+      ];
     };
 }
