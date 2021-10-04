@@ -45,7 +45,10 @@
       outputsBuilder = channels: {
         packages = utils.lib.exportPackages self.overlays channels;
         devShell = channels.nixpkgs.mkShell {
-          packages = with channels.nixpkgs; [ nixpkgs-fmt rnix-lsp ];
+          packages = with channels.nixpkgs; [
+            nixpkgs-fmt
+            agenix.defaultPackage.x86_64-linux
+          ];
         };
       };
 
