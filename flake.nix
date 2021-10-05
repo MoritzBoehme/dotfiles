@@ -32,6 +32,7 @@
     utils.lib.mkFlake {
       inherit self inputs;
 
+      channelsConfig.allowUnfree = true;
       overlay = import ./overlays { inherit inputs; };
       overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
@@ -42,17 +43,6 @@
         inputs.nur.overlay
       ];
 
-      outputsBuilder = channels: {
-        packages = utils.lib.exportPackages self.overlays channels;
-        devShell = channels.nixpkgs.mkShell {
-          packages = with channels.nixpkgs; [
-            nixpkgs-fmt
-            agenix.defaultPackage.x86_64-linux
-          ];
-        };
-      };
-
-      channelsConfig.allowUnfree = true;
 
       nixosModules = utils.lib.exportModules [
         ./modules/default.nix
@@ -79,5 +69,12 @@
         self.nixosModules.containers
         self.nixosModules.gaming
       ];
+      outputsBuilder = channels:
+        with channels.nixpkgs; {
+          devShell = mkShell {
+            name = "dotfiles";
+            packages = [ nixpkgs-fmt agenix.defaultPackage.x86_64-linux ];
+          };
+        };
     };
 }
