@@ -1,6 +1,10 @@
 {
   description = "My awesome system config";
 
+  ##############
+  ### Inputs ###
+  ##############
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -33,6 +37,11 @@
       inherit self inputs;
 
       channelsConfig.allowUnfree = true;
+
+      ################
+      ### Overlays ###
+      ################
+
       overlay = import ./overlays { inherit inputs; };
       overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
@@ -43,6 +52,9 @@
         inputs.nur.overlay
       ];
 
+      ###############
+      ### Modules ###
+      ###############
 
       nixosModules = utils.lib.exportModules [
         ./modules/default.nix
@@ -69,6 +81,11 @@
         self.nixosModules.containers
         self.nixosModules.gaming
       ];
+
+      ###############
+      ### Outputs ###
+      ###############
+
       outputsBuilder = channels:
         with channels.nixpkgs; {
           devShell = mkShell {
