@@ -8,6 +8,8 @@ let
       opacityRule = [
         "100:fullscreen"
         "80 :class_g   = 'Polybar'"
+        "85 :class_g   = 'kitty' && !focused"
+        "90 :class_g   = 'kitty' && focused"
       ];
       blur = true;
       # inactiveDim = "0.1";
@@ -30,7 +32,7 @@ let
         # dual kawase blur
         blur-background-fixed = false;
         blur-method = "dual_kawase";
-        blur-strength = 5;
+        blur-strength = 2;
         use-ewmh-active-win = true;
         detect-rounded-corners = true;
 
@@ -46,7 +48,4 @@ let
       '';
     };
   };
-in
-{
-  home-manager.users.moritz = { ... }: (base);
-}
+in { home-manager.users.moritz = { ... }: (base); }
