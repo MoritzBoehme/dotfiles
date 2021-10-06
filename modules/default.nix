@@ -32,6 +32,12 @@
     home.username = "moritz";
     home.homeDirectory = "/home/moritz";
 
+    home.sessionPath = [ "/home/moritz/bin" ];
+    home.file."bin" = {
+      recursive = true;
+      source = ../bin;
+    };
+
     xdg.userDirs = {
       enable = true;
       createDirectories = true;
