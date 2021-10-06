@@ -69,5 +69,19 @@
       ];
       ports = [ "8989:8989" ];
     };
+    "bazarr" = {
+      image = "linuxserver/bazarr";
+      environment = {
+        "PUID" = "1000";
+        "PGID" = "100";
+        "TZ" = "DE";
+      };
+      volumes = [
+        "/media/media/tv:/tv"
+        "/media/media/movies:/movies"
+        "/home/moritz/Docker/Bazarr:/config"
+      ];
+      ports = [ "6767:6767" ];
+    };
   };
 }
