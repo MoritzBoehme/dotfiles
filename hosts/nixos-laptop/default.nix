@@ -43,7 +43,7 @@
 
     useDHCP = false;
     interfaces.wlp1s0.useDHCP = true;
-    interfaces.enp4s0f4u2.useDHCP = true;
+    # interfaces.enp4s0f4u2.useDHCP = true;
   };
 
   time.timeZone = "Europe/Berlin";
