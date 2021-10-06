@@ -19,8 +19,8 @@
     '';
     debug = true;
   };
-  environment.etc."davfs2/certs/diskstation.pem" = {
-    text = builtins.readFile ./diskstation.pem;
+  environment.etc."davfs2/certs/home-boehmies-de.pem" = {
+    text = builtins.readFile ./home-boehmies-de.pem;
   };
 
   fileSystems."/media/media" = {
