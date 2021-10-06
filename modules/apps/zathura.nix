@@ -20,7 +20,4 @@ let
       };
     };
   };
-in
-{
-  home-manager.users.moritz = { ... }: (base);
-}
+in { home-manager.users.moritz = { ... }: (base); }
