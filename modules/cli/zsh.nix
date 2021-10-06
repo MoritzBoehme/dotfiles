@@ -10,6 +10,7 @@ let
         shellAliases = {
           ls = "exa -lh";
           cat = "bat";
+          feh = "feh --auto-zoom --scale-down";
         };
         plugins = [{
           name = "zsh-syntax-highlighting";
