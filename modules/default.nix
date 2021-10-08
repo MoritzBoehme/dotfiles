@@ -37,6 +37,13 @@
       createDirectories = true;
     };
 
+    home.language = {
+      base = "en_US.UTF-8";
+      time = "de_DE.UTF-8";
+      numeric = "de_DE.UTF-8";
+      paper = "de_DE.UTF-8";
+    };
+
     home.stateVersion = "21.05";
   };
 }
