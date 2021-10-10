@@ -18,6 +18,7 @@ let
         }];
         enableAutosuggestions = true;
         enableCompletion = true;
+        initExtra = ''export DIRENV_LOG_FORMAT=""'';
       };
       exa.enable = true;
       bat.enable = true;

@@ -11,5 +11,6 @@
     xfce.xfconf
     xfce.tumbler
     xfce.exo
+    libreoffice
   ];
 }
