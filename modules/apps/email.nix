@@ -2,7 +2,6 @@
 
 {
   home-manager.users.moritz = { home.packages = with pkgs; [ thunderbird ]; };
-  services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [ protonmail-bridge ];
   systemd.user.services.protonmail-bridge = {
     description = "Protonmail Bridge";
