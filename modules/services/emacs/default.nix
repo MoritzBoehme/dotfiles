@@ -1,11 +1,16 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  base = {
+  emacsVtermGit = with pkgs;
+    ((emacsPackagesNgGen emacsGit).emacsWithPackages (epkgs: [ epkgs.vterm ]));
+in {
+  fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
+
+  home-manager.users.moritz = {
     programs.emacs.enable = true;
-    programs.emacs.package = pkgs.emacsGit;
+    programs.emacs.package = emacsVtermGit;
     services.emacs.enable = true;
-    services.emacs.package = pkgs.emacsGit;
+    services.emacs.package = emacsVtermGit;
 
     xdg = {
       enable = true;
@@ -63,8 +68,4 @@ let
       xorg.xprop
     ];
   };
-in {
-  fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
-
-  home-manager.users.moritz = { ... }: (base);
 }
