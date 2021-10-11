@@ -12,26 +12,6 @@ in {
     services.emacs.enable = true;
     services.emacs.package = emacsVtermGit;
 
-    xdg = {
-      enable = true;
-      configFile = {
-        "doom" = {
-          source = ./doom;
-          recursive = true;
-          onChange = ''
-            #!/bin/sh
-            DOOM="$HOME/.emacs.d"
-            if [ ! -d "$DOOM" ]; then
-              git clone https://github.com/hlissner/doom-emacs.git "$DOOM"
-              "$DOOM/bin/doom" -y install
-            fi
-
-            "$DOOM/bin/doom" sync
-          '';
-        };
-      };
-    };
-
     home.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
