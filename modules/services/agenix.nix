@@ -10,4 +10,8 @@
   };
   age.secrets.smbMoritz.file = ../../secrets/smbMoritz.age;
   age.secrets.smbMedia.file = ../../secrets/smbMedia.age;
+  age.secrets.spotify = {
+    file = ../../secrets/spotify.age;
+    owner = "1000";
+  };
 }
