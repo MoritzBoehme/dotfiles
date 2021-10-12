@@ -28,6 +28,7 @@
   # SERVICES
   services = {
     xserver.libinput.enable = true;
+    xserver.libinput.touchpad.disableWhileTyping = true;
     printing.enable = true;
     pipewire = {
       enable = true;
