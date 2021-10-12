@@ -36,6 +36,7 @@
       pulse.enable = true;
     };
   };
+  hardware.bluetooth.enable = true;
 
   # NETWORKING
   networking = {
