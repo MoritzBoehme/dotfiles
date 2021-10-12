@@ -23,13 +23,7 @@
           bitrate = 320;
 
           # Volume on startup between 0 and 100
-          initial_volume = "50";
-
-          # If set to true, enables volume normalisation between songs.
-          volume_normalisation = true;
-
-          # The normalisation pregain that is applied for each song.
-          normalisation_pregain = -10;
+          initial_volume = "70";
         };
       };
     };
@@ -54,6 +48,8 @@
         text: "248,248,242"                  # text in panes
         header: "248,248,242"                # header text in panes (e.g. 'Title',
                                              # 'Artist', etc.)
+      behavior:
+        volume_increment: 5
     '';
   };
 }
