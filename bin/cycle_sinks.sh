@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env nix-shell
+#! nix-shell -p pulseaudio -i bash
 
 # get the default sink
 default_sink="$(pactl info | grep -e "Default Sink:" | awk '{print $3}')"
