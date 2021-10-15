@@ -32,7 +32,11 @@ in {
 
       ## Module dependencies
       # :checkers spell
-      (aspellWithDicts (ds: with ds; [ en en-computers en-science de ]))
+      # (aspellWithDicts (ds: with ds; [ en en-computers en-science de ]))
+      hunspell
+      hunspellDicts.en_GB-ize
+      hunspellDicts.en_US
+      hunspellDicts.de_DE
       # :checkers grammar
       languagetool
       # :tools lookup & :lang org +roam
