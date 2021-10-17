@@ -49,38 +49,38 @@
     ];
   };
 
-  home-manager.users.moritz = {
-    services.unison = {
-      enable = true;
-      pairs = {
-        keepass = {
-          roots = [ "/home/moritz/Keepass" "/auto/keepass" ];
-          commandOptions = {
-            auto = "true";
-            batch = "true";
-            log = "false";
-            repeat = "watch";
-            sshcmd = "\${pkgs.openssh}/bin/ssh";
-            ui = "text";
-            ignore = "Name {lost+found}";
-          };
-        };
-        diskstation = {
-          roots = [ "/home/moritz/Documents" "/media/diskstation" ];
-          commandOptions = {
-            auto = "true";
-            batch = "true";
-            log = "false";
-            repeat = "watch";
-            sshcmd = "\${pkgs.openssh}/bin/ssh";
-            ui = "text";
-            fastcheck = "true";
-            # debug = "verbose";
-            perms = "0o1666";
-            ignore = "Name {.direnv}";
-          };
-        };
-      };
-    };
-  };
+  # home-manager.users.moritz = {
+  #   services.unison = {
+  #     enable = true;
+  #     pairs = {
+  #       keepass = {
+  #         roots = [ "/home/moritz/Keepass" "/auto/keepass" ];
+  #         commandOptions = {
+  #           auto = "true";
+  #           batch = "true";
+  #           log = "false";
+  #           repeat = "watch";
+  #           sshcmd = "\${pkgs.openssh}/bin/ssh";
+  #           ui = "text";
+  #           ignore = "Name {lost+found}";
+  #         };
+  #       };
+  #       diskstation = {
+  #         roots = [ "/home/moritz/Documents" "/media/diskstation" ];
+  #         commandOptions = {
+  #           auto = "true";
+  #           batch = "true";
+  #           log = "false";
+  #           repeat = "watch";
+  #           sshcmd = "\${pkgs.openssh}/bin/ssh";
+  #           ui = "text";
+  #           fastcheck = "true";
+  #           # debug = "verbose";
+  #           perms = "0o1666";
+  #           ignore = "Name {.direnv}";
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
 }
