@@ -12,4 +12,8 @@
     libreoffice
     signal-desktop
   ];
+  services.gvfs = {
+    enable = true;
+    package = lib.mkForce pkgs.gnome3.gvfs;
+  };
 }
