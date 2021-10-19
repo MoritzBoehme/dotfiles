@@ -2,7 +2,7 @@
 
 final: prev: {
   picom = prev.picom.overrideAttrs (old: { src = inputs.picom; });
-  unstable = import inputs.unstable {
+  stable = import inputs.stable {
     system = prev.system;
     config.allowUnfree = true;
   };

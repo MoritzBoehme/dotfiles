@@ -6,18 +6,17 @@
   ##############
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
+    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable.url = "github:nixos/nixpkgs/release-21.05";
     nur.url = "github:nix-community/NUR";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/1.3.0";
     agenix.url = "github:ryantm/agenix";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-21.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager = { url = "github:nix-community/home-manager"; };
     picom = {
       url = "github:jonaburg/picom";
       flake = false;
