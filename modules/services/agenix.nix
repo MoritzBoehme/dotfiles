@@ -2,16 +2,24 @@
 
 {
   services.sshd.enable = true;
-  age.secrets.nordvpn.file = ../../secrets/nordvpn.age;
-  age.secrets.davfs = {
-    file = ../../secrets/davfs.age;
-    mode = "600";
-    path = "/etc/davfs2/secrets";
-  };
-  age.secrets.smbMoritz.file = ../../secrets/smbMoritz.age;
-  age.secrets.smbMedia.file = ../../secrets/smbMedia.age;
-  age.secrets.spotify = {
-    file = ../../secrets/spotify.age;
-    owner = "1000";
+  age.secrets = {
+    nordvpn.file = ../../secrets/nordvpn.age;
+    davfs = {
+      file = ../../secrets/davfs.age;
+      mode = "600";
+      path = "/etc/davfs2/secrets";
+    };
+    smbMoritz.file = ../../secrets/smbMoritz.age;
+    smbMedia.file = ../../secrets/smbMedia.age;
+    spotifyd = {
+      file = ../../secrets/spotifyd.age;
+      owner = "1000";
+    };
+    spotify-tui = {
+      file = ../../secrets/spotify-tui.age;
+      owner = "1000";
+      mode = "777";
+      path = "/home/moritz/.config/spotify-tui/client.yml";
+    };
   };
 }

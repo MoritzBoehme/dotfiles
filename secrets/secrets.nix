@@ -13,5 +13,6 @@ in {
   "davfs.age".publicKeys = users ++ hosts;
   "smbMoritz.age".publicKeys = users ++ hosts;
   "smbMedia.age".publicKeys = users ++ hosts;
-  "spotify.age".publicKeys = users ++ hosts;
+  "spotifyd.age".publicKeys = users ++ hosts;
+  "spotify-tui.age".publicKeys = users ++ hosts;
 }
