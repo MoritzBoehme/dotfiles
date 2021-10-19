@@ -10,5 +10,6 @@
     xfce.tumbler
     xfce.exo
     libreoffice
+    signal-desktop
   ];
 }
