@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./dunst ./diskstation ./emacs ./agenix.nix ./picom.nix ];
+  imports = [ ./dunst ./emacs ./agenix.nix ./picom.nix ];
 
   home-manager.users.moritz.services = { kdeconnect.enable = true; };
 
