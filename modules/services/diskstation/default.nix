@@ -17,7 +17,6 @@
     in ''
       /auto file:${mapConf}
     '';
-    debug = true;
   };
   environment.etc."davfs2/certs/home-boehmies-de.pem" = {
     text = builtins.readFile ./home-boehmies-de.pem;
