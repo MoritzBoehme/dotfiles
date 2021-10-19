@@ -5,7 +5,6 @@ let
     programs.rofi = {
       enable = true;
       package = pkgs.rofi.override { plugins = with pkgs; [ rofi-calc ]; };
-      # theme = ~/.dotfiles/config/rofi/dracula_old.rasi;
       theme = ./dracula.rasi;
     };
     home.packages = with pkgs; [ networkmanager_dmenu ];
