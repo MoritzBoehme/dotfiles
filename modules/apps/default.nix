@@ -11,6 +11,7 @@
     xfce.exo
     libreoffice
     signal-desktop
+    anki
   ];
   services.gvfs = {
     enable = true;
