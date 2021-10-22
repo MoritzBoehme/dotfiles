@@ -12,6 +12,7 @@
     libreoffice
     signal-desktop
     anki
+    vscodium-fhs
   ];
   services.gvfs = {
     enable = true;
