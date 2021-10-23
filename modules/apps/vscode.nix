@@ -9,6 +9,7 @@
         vscode-extensions.vscodevim.vim
         vscode-extensions.dracula-theme.theme-dracula
         vscode-extensions.esbenp.prettier-vscode
+        vscode-extensions.pkief.material-icon-theme
       ];
     };
   };
