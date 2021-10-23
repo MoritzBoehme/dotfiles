@@ -89,7 +89,8 @@
         with channels.nixpkgs; {
           devShell = mkShell {
             name = "dotfiles";
-            packages = [ nixpkgs-fmt agenix.defaultPackage.x86_64-linux ];
+            packages =
+              [ nixpkgs-fmt agenix.defaultPackage.x86_64-linux cachix ];
           };
         };
     };
