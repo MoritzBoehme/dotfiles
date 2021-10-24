@@ -7,12 +7,12 @@ let
       inactiveOpacity = "0.90";
       opacityRule = [
         "100:fullscreen"
-        "80 :class_g   = 'Polybar'"
+        "100:class_g   = 'Polybar'"
         "85 :class_g   = 'kitty' && !focused"
         "90 :class_g   = 'kitty' && focused"
       ];
       blur = true;
-      # inactiveDim = "0.1";
+      blurExclude = [ "class_g = 'Polybar'" ];
       experimentalBackends = true;
       extraOptions = ''
         corner-radius = 10;
