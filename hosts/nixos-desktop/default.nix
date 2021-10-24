@@ -12,7 +12,7 @@
 
   # BOOT
   boot = {
-    supportedFilesystems = [ "btrfs" ];
+    supportedFilesystems = [ "btrfs" "ntfs" ];
     loader = {
       grub = {
         enable = true;
