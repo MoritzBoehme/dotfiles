@@ -21,14 +21,6 @@
       url = "github:jonaburg/picom";
       flake = false;
     };
-    zsh-autosuggestions = {
-      url = "github:zsh-users/zsh-autosuggestions";
-      flake = false;
-    };
-    zsh-syntax-highlighting = {
-      url = "github:zsh-users/zsh-syntax-highlighting";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:

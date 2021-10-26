@@ -12,10 +12,7 @@ let
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
         };
-        plugins = [{
-          name = "zsh-syntax-highlighting";
-          src = inputs.zsh-syntax-highlighting;
-        }];
+        enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
         enableCompletion = true;
         initExtra = ''export DIRENV_LOG_FORMAT=""'';
