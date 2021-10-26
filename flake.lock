@@ -149,9 +149,7 @@
         "nur": "nur",
         "picom": "picom",
         "stable": "stable",
-        "utils": "utils",
-        "zsh-autosuggestions": "zsh-autosuggestions",
-        "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+        "utils": "utils"
       }
     },
     "stable": {
@@ -186,38 +184,6 @@
         "owner": "gytis-ivaskevicius",
         "ref": "1.3.0",
         "repo": "flake-utils-plus",
-        "type": "github"
-      }
-    },
-    "zsh-autosuggestions": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1622844304,
-        "narHash": "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=",
-        "owner": "zsh-users",
-        "repo": "zsh-autosuggestions",
-        "rev": "a411ef3e0992d4839f0732ebeb9823024afaaaa8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zsh-users",
-        "repo": "zsh-autosuggestions",
-        "type": "github"
-      }
-    },
-    "zsh-syntax-highlighting": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1632454857,
-        "narHash": "sha256-vwtgFWEs51ZfrUbWmRjcHZz+WPMFUrSHfIt4FjrMOoU=",
-        "owner": "zsh-users",
-        "repo": "zsh-syntax-highlighting",
-        "rev": "1a9264bc661b3d52756916bf9ec3f41687d64db2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zsh-users",
-        "repo": "zsh-syntax-highlighting",
         "type": "github"
       }
     }
