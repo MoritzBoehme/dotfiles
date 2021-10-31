@@ -3,7 +3,10 @@
 {
   services.sshd.enable = true;
   age.secrets = {
-    nordvpn.file = ../../secrets/nordvpn.age;
+    nordvpn = {
+      file = ../../secrets/nordvpn.age;
+      owner = "1000";
+    };
     davfs = {
       file = ../../secrets/davfs.age;
       mode = "600";
