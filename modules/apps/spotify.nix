@@ -9,11 +9,13 @@
         global = {
           # A command that gets executed and can be used to
           # retrieve your username.
-          username_cmd = "${pkgs.coreutils}/bin/head -n 1 /run/secrets/spotify";
+          username_cmd =
+            "${pkgs.coreutils}/bin/head -n 1 /run/secrets/spotifyd";
 
           # A command that gets executed and can be used to
           # retrieve your password.
-          password_cmd = "${pkgs.coreutils}/bin/tail -n 1 /run/secrets/spotify";
+          password_cmd =
+            "${pkgs.coreutils}/bin/tail -n 1 /run/secrets/spotifyd";
 
           # The name that gets displayed under the connect tab on
           # official clients. Spaces are not allowed!
