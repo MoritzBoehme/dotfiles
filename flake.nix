@@ -19,6 +19,10 @@
       url = "github:jonaburg/picom";
       flake = false;
     };
+    forgit-git = {
+      url = "github:wfxr/forgit";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
