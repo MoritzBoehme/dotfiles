@@ -1,24 +1,20 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  emacsVtermGit = with pkgs;
-    ((emacsPackagesNgGen emacsGit).emacsWithPackages (epkgs: [ epkgs.vterm ]));
+  emacs = with pkgs;
+    ((emacsPackagesNgGen emacsGcc).emacsWithPackages (epkgs: [ epkgs.vterm ]));
 in {
   fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
   home-manager.users.moritz = {
     programs.emacs.enable = true;
-    programs.emacs.package = emacsVtermGit;
+    programs.emacs.package = emacs;
     services.emacs.enable = true;
-    services.emacs.package = emacsVtermGit;
+    services.emacs.package = emacs;
 
     home.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
-      # emacsPgtkGcc   # 28 + pgtk + native-comp
-      # ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages (epkgs: [
-      #   epkgs.vterm
-      # ]))
 
       ## Doom dependencies
       git
@@ -45,6 +41,8 @@ in {
       texlive.combined.scheme-full
       # :lang nix
       nixfmt # for formating nix
+      # :lang markdown
+      pandoc
       # :app everywhere
       xdotool
       xorg.xwininfo
