@@ -135,11 +135,11 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pamixer -t
 XF86AudioPlay
-	playerctl -p "spotify,firefox" play-pause
+	[ $(playerctl -p "spotifyd,firefox" status) = "Playing" ] && playerctl -p "spotifyd,firefox" pause || playerctl -p "spotifyd,firefox" play
 XF86AudioNext
-	playerctl -p "spotify,firefox" next
+	playerctl -p "spotify,spotifyd,firefox" next
 XF86AudioPrev
-	playerctl -p "spotify,firefox" previous
+	playerctl -p "spotify,spotifyd,firefox" previous
 
 XF86MonBrightnessDown
 	brightnessctl s 10%-

@@ -5,6 +5,7 @@
     home.packages = with pkgs; [ spotify-tui ];
     services.spotifyd = {
       enable = true;
+      package = pkgs.spotifyd.override { withMpris = true; };
       settings = {
         global = {
           # A command that gets executed and can be used to
