@@ -2,12 +2,14 @@
 
 let
   base = (home: {
+    home.packages = with pkgs; [ du-dust ];
     programs = {
       zsh = {
         enable = true;
         dotDir = ".config/zsh";
         history = { expireDuplicatesFirst = true; };
         shellAliases = {
+          du = "dust";
           ls = "exa -lh";
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
