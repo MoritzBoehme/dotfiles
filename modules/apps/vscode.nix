@@ -4,12 +4,12 @@
   home-manager.users.moritz = {
     programs.vscode = {
       enable = true;
-      package = pkgs.vscodium-fhs;
-      extensions = with pkgs; [
-        vscode-extensions.vscodevim.vim
-        vscode-extensions.dracula-theme.theme-dracula
-        vscode-extensions.esbenp.prettier-vscode
-        vscode-extensions.pkief.material-icon-theme
+      package = pkgs.vscodium-fhsWithPackages (ps: with ps; [ git ]);
+      extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+        dracula-theme.theme-dracula
+        esbenp.prettier-vscode
+        pkief.material-icon-theme
       ];
     };
   };
