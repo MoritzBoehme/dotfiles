@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./dunst ./agenix.nix ./diskstation ./picom.nix ];
-
-  home-manager.users.moritz.services = { kdeconnect.enable = true; };
+  imports = [ ./dunst ./agenix.nix ./diskstation ./picom.nix ./kdeconnect.nix ];
 
   services = {
     printing.enable = true;
