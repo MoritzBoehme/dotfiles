@@ -37,6 +37,7 @@ in {
       languagetool
       # :tools lookup & :lang org +roam
       sqlite
+      graphviz
       # :lang latex & :lang org (latex previews)
       texlive.combined.scheme-full
       # :lang nix
