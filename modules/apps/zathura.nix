@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  base = {
+{
+  home-manager.users.moritz = {
+
     programs.zathura = {
       enable = true;
       options = {
@@ -51,4 +52,4 @@ let
       };
     };
   };
-in { home-manager.users.moritz = { ... }: (base); }
+}

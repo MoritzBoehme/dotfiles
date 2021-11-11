@@ -5,7 +5,8 @@ let
   puid = "1000";
   pgid = "100";
   timeZone = "Europe/Berlin";
-in {
+in
+{
   home-manager.users.moritz = {
     home.packages = with pkgs; [ docker-compose ];
     home.file = {

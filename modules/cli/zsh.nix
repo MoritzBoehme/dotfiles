@@ -36,7 +36,8 @@ let
       };
     };
   });
-in {
+in
+{
   environment.pathsToLink = [ "/share/zsh" ];
   home-manager.users.moritz = { ... }: (base "/home/moritz");
 }

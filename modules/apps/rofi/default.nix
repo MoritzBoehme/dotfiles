@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  base = (home: {
+{
+  home-manager.users.moritz = {
+
     programs.rofi = {
       enable = true;
       package = pkgs.rofi.override { plugins = with pkgs; [ rofi-calc ]; };
@@ -15,5 +16,5 @@ let
         dmenu_command = rofi
       '';
     };
-  });
-in { home-manager.users.moritz = { ... }: (base "/home/moritz/"); }
+  };
+}

@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  base = (home: {
+{
+  home-manager.users.moritz = {
+
     programs.git = {
       enable = true;
       userName = "MoritzBoehme";
@@ -9,5 +10,5 @@ let
       extraConfig = { init.defaultBranch = "main"; };
       delta.enable = true;
     };
-  });
-in { home-manager.users.moritz = { ... }: (base "/home/moritz"); }
+  };
+}

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let
-  base = {
+{
+  home-manager.users.moritz = {
     programs.kitty = {
       enable = true;
       settings = {
@@ -67,4 +67,4 @@ let
       };
     };
   };
-in { home-manager.users.moritz = { ... }: (base); }
+}

@@ -14,7 +14,8 @@
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    home-manager = { url = "github:nix-community/home-manager"; };
+    home-manager.url = "github:nix-community/home-manager";
+
     picom = {
       url = "github:jonaburg/picom";
       flake = false;
