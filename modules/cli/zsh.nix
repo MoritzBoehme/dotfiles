@@ -17,7 +17,7 @@ let
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
         enableCompletion = true;
-        initExtra = ''export DIRENV_LOG_FORMAT=""'';
+        # initExtra = ''export DIRENV_LOG_FORMAT=""'';
         plugins = [{
           name = "forgit";
           src = inputs.forgit-git;
