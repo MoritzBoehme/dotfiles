@@ -26,7 +26,7 @@
           bitrate = 320;
 
           # Volume on startup between 0 and 100
-          initial_volume = "70";
+          initial_volume = "71";
         };
       };
     };
