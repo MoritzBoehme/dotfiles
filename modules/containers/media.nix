@@ -43,7 +43,7 @@ in
                 max-size: 10m
             ports:
               - '9091:9091'
-            image: haugene/transmission-openvpn
+            image: haugene/transmission-openvpn:3.7.1
             restart: unless-stopped
             networks:
               - default
