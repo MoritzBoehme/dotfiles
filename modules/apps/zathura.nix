@@ -2,7 +2,6 @@
 
 {
   home-manager.users.moritz = {
-
     programs.zathura = {
       enable = true;
       options = {
@@ -41,6 +40,10 @@
         inputbar-fg = "#8be9fd";
         statusbar-bg = "#282a36";
         statusbar-fg = "#f8f8f2";
+
+        render-loading = true;
+        render-loading-fg = "#282a36";
+        render-loading-bg = "#f8f8f2";
 
         #
         # Recolor settings
