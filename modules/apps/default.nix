@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./rofi ./kitty.nix ./zathura.nix ./spotify.nix ];
+  imports = [ ./rofi ./kitty.nix ./zathura.nix ./spotify.nix ./firefox.nix ];
   home-manager.users.moritz.home.packages = with pkgs; [
     neofetch
     keepassxc
