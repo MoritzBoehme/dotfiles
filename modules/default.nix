@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./apps ./cli ./desktop ./editors ./services ./cachix.nix ];
+  imports = [ ./cachix.nix ./cli ./desktop ./editors ./services ];
 
   # USERS
   users.users.moritz = {
