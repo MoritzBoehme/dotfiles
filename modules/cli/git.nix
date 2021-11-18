@@ -2,7 +2,6 @@
 
 {
   home-manager.users.moritz = {
-
     programs.git = {
       enable = true;
       userName = "MoritzBoehme";
