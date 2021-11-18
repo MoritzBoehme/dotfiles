@@ -7,5 +7,4 @@ final: prev: {
     config.allowUnfree = true;
   };
   nur = import inputs.nur { inherit (prev) system; };
-  nixStable = prev.nix_2_4;
 }
