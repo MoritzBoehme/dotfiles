@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./git.nix ./nix.nix ./zsh.nix ./direnv.nix ./adb.nix ];
+  imports = [ ./adb.nix ./direnv.nix ./git.nix ./gpg.nix ./nix.nix ./zsh.nix ];
 }
