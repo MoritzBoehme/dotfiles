@@ -50,6 +50,8 @@ in
       xorg.xwininfo
       xclip
       xorg.xprop
+      # :lang python
+      python-language-server
     ];
   };
 }
