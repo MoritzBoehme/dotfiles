@@ -16,6 +16,8 @@
 
     home-manager.url = "github:nix-community/home-manager";
 
+    statix.url = "github:nerdypepper/statix";
+
     picom = {
       url = "github:jonaburg/picom";
       flake = false;
@@ -84,8 +86,27 @@
         with channels.nixpkgs; {
           devShell = mkShell {
             name = "dotfiles";
-            packages =
-              [ nixpkgs-fmt agenix.defaultPackage.x86_64-linux cachix ];
+            shellHook = ''
+              alias "lint"='echo "Running nixpkgs-fmt ..."
+                            nixpkgs-fmt --check $(find . -name "*.nix")
+                            echo ""
+                            echo "Running statix ..."
+                            statix check'
+              alias "fix"='echo "Running nixpkgs-fmt ..."
+                            nixpkgs-fmt $(find . -name "*.nix")
+                            echo ""
+                            echo "Running statix ..."
+                            statix fix'
+            '';
+            packages = [
+              # Linting
+              nixpkgs-fmt
+              statix
+              # Secrets
+              agenix.defaultPackage.x86_64-linux
+              # chachix
+              cachix
+            ];
           };
         };
     };
