@@ -39,6 +39,7 @@
       startupPrograms = [
         "${pkgs.systemd}/bin/systemctl --user start polybar.service"
         "feh --bg-fill ~/.config/wallpaper/dracula.png"
+        "synology-drive"
       ];
       extraConfig = builtins.readFile ./bspwmrc;
 
