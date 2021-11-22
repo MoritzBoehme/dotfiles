@@ -1,7 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
-  base = (home: {
+{
+  environment.pathsToLink = [ "/share/zsh" ];
+  home-manager.users.moritz = {
     home.packages = with pkgs; [ du-dust ];
     programs = {
       zsh = {
@@ -35,9 +36,5 @@ let
         enableZshIntegration = true;
       };
     };
-  });
-in
-{
-  environment.pathsToLink = [ "/share/zsh" ];
-  home-manager.users.moritz = { ... }: (base "/home/moritz");
+  };
 }

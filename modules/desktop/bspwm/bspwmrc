@@ -11,12 +11,5 @@ for monitor in ${monitors[@]}; do
     end=$(expr $end + $desktops)
 done
 
-# CONFIGURATION #
-
-
 # Dracula theme #
-
 bspc config focused_border_color "#bd93f9"
-
-# AUTOSTART #
-feh --bg-fill ~/.config/wallpaper/dracula.png

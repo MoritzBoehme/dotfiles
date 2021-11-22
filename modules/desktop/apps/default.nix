@@ -3,15 +3,15 @@
 {
   imports = [ ./rofi ./kitty.nix ./zathura.nix ./spotify.nix ./firefox.nix ];
   home-manager.users.moritz.home.packages = with pkgs; [
-    neofetch
-    keepassxc
-    xfce.thunar
-    xfce.xfconf
-    xfce.tumbler
-    xfce.exo
-    libreoffice
-    signal-desktop
     anki
+    keepassxc
+    libreoffice
+    neofetch
+    signal-desktop
+    xfce.exo
+    xfce.thunar
+    xfce.tumbler
+    xfce.xfconf
   ];
   services.gvfs = {
     enable = true;
