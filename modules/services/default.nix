@@ -1,7 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./dunst ./agenix.nix ./diskstation ./picom.nix ./kdeconnect.nix ];
+  imports = [
+    ./agenix.nix
+    ./diskstation
+    ./dunst
+    ./jupyter.nix
+    ./kdeconnect.nix
+    ./picom.nix
+  ];
 
   services = {
     printing.enable = true;
