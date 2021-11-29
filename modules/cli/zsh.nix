@@ -2,8 +2,8 @@
 
 {
   environment.pathsToLink = [ "/share/zsh" ];
+  users.users.moritz.shell = pkgs.zsh;
   home-manager.users.moritz = {
-    shell = pkgs.zsh;
     home.packages = with pkgs; [ du-dust ];
     programs = {
       zsh = {
