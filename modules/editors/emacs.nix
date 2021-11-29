@@ -2,13 +2,13 @@
 
 let
   emacs = with pkgs;
-    ((emacsPackagesNgGen emacsGcc).emacsWithPackages
+    ((emacsPackagesNgGen emacsGcc28).emacsWithPackages
       (epkgs: [ epkgs.vterm epkgs.emacsql-sqlite3 ]));
-in
-{
+in {
   fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
   home-manager.users.moritz = {
+    home.sessionPath = [ "/home/moritz/.config/emacs/bin/" ];
     programs.emacs.enable = true;
     programs.emacs.package = emacs;
     services.emacs.enable = true;
