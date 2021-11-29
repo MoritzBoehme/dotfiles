@@ -5,7 +5,6 @@
 
   # USERS
   users.users.moritz = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     home = "/home/moritz";
     extraGroups =

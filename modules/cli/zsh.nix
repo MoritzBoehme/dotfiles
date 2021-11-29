@@ -3,6 +3,7 @@
 {
   environment.pathsToLink = [ "/share/zsh" ];
   home-manager.users.moritz = {
+    shell = pkgs.zsh;
     home.packages = with pkgs; [ du-dust ];
     programs = {
       zsh = {
@@ -14,11 +15,18 @@
           ls = "exa -lh";
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
+
+          us = "systemctl --user";
+          rs = "sudo systemctl";
         };
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
         enableCompletion = true;
-        # initExtra = ''export DIRENV_LOG_FORMAT=""'';
+        initExtra = ''
+          function nix-which() {
+                   readlink -f $(which $1)
+          }
+        '';
         plugins = [{
           name = "forgit";
           src = inputs.forgit-git;
