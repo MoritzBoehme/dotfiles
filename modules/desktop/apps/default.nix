@@ -7,7 +7,9 @@
     keepassxc
     libreoffice
     neofetch
+    pavucontrol
     signal-desktop
+    virtualboxWithExtpack
     xfce.exo
     xfce.thunar
     xfce.tumbler
