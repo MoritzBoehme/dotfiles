@@ -17,9 +17,8 @@
       experimentalBackends = true;
       extraOptions = ''
         corner-radius = 10;
-        rounded-cornes-exclude = [
-          "class_g = 'Polybar'",
-          "class_g = 'Rofi'"
+        rounded-corners-exclude = [
+          "class_g = 'Polybar'"
         ]
         round-borders = 1;
 
