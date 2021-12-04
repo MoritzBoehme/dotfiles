@@ -32,13 +32,10 @@
           src = inputs.forgit-git;
         }];
       };
-      exa.enable = true;
-      bat.enable = true;
       fzf = {
         enable = true;
         enableZshIntegration = true;
       };
-
       starship = {
         enable = true;
         enableZshIntegration = true;
