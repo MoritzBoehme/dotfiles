@@ -36,6 +36,13 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.xrandrHeads = [
+    { output = "HDMI-1"; }
+    {
+      output = "HDMI-0";
+      primary = true;
+    }
+  ];
 
   # Powersaving
   services.tlp.enable = true;
