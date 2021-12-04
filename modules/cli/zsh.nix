@@ -9,15 +9,24 @@
       zsh = {
         enable = true;
         dotDir = ".config/zsh";
-        history = { expireDuplicatesFirst = true; };
+        history.expireDuplicatesFirst = true;
         shellAliases = {
           du = "dust";
-          ls = "exa -lh";
+          ls = "exa -lh --icons --git";
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
 
           us = "systemctl --user";
           rs = "sudo systemctl";
+
+          ga = "git add";
+          gb = "git branch";
+          gc = "git commit";
+          gco = "git checkout";
+          gd = "git diff";
+          gds = "git diff --staged";
+          gp = "git push";
+          gs = "git status";
         };
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
