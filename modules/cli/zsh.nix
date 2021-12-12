@@ -28,6 +28,8 @@
           gds = "git diff --staged";
           gp = "git push";
           gs = "git status";
+
+          ssh = "TERM=xterm-color ssh";
         };
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
