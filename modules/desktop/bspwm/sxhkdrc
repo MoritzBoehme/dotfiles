@@ -7,7 +7,7 @@ alt + {1-9,0}
 	bspc desktop -f {6-9,10,1-5}
 
 # Move node to desktop
-alt + shift + {1-9,10}
+alt + shift + {1-9,0}
 	bspc node -d {6-9,10,1-5}
 
 
