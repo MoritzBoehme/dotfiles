@@ -2,7 +2,7 @@
 
 let
   emacs = with pkgs;
-    ((emacsPackagesNgGen emacsGcc28).emacsWithPackages
+    ((emacsPackagesNgGen emacsUnstableGcc).emacsWithPackages
       (epkgs: [ epkgs.vterm epkgs.emacsql-sqlite3 ]));
 in {
   fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
