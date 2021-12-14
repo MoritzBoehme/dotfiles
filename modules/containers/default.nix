@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./media.nix ];
-  virtualisation.docker.enable = true;
+  # imports = [ ./media.nix ];
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 }
