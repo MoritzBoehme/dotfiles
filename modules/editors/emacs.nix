@@ -2,10 +2,9 @@
 
 let
   emacs = with pkgs;
-    ((emacsPackagesNgGen emacsUnstableGcc).emacsWithPackages
+    ((emacsPackagesNgGen emacsGcc).emacsWithPackages
       (epkgs: [ epkgs.vterm epkgs.emacsql-sqlite3 ]));
-in
-{
+in {
   fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
   home-manager.users.moritz = {
