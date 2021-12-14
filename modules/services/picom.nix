@@ -6,12 +6,7 @@
     services.picom = {
       enable = true;
       inactiveOpacity = "0.90";
-      opacityRule = [
-        "100:fullscreen"
-        "100:class_g   = 'Polybar'"
-        "85 :class_g   = 'kitty' && !focused"
-        "90 :class_g   = 'kitty' && focused"
-      ];
+      opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
       blur = true;
       blurExclude = [ "class_g = 'Polybar'" ];
       experimentalBackends = true;
