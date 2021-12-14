@@ -30,6 +30,11 @@
           gs = "git status";
 
           ssh = "TERM=xterm-color ssh";
+
+          nix-switch = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+          nix-boot = "sudo nixos-rebuild boot --flake ~/.dotfiles";
+          nix-lock =
+            "sudo nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
         };
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;
