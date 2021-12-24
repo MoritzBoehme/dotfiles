@@ -7,13 +7,15 @@
       # archives
       p7zip
 
-      # file manager
+      # file management
       ranger
-
       trash-cli
 
       # fetcher
       neofetch
+
+      # typing
+      ttyper
     ];
     programs = {
       exa.enable = true;
