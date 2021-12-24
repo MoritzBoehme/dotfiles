@@ -22,5 +22,10 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    redshift = { enable = true; };
+  };
+  location = {
+    latitude = 52.3;
+    longitude = 12.4;
   };
 }
