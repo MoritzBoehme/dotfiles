@@ -10,6 +10,10 @@
         cursor_shape = "underline";
         window_padding_width = 3;
       };
+      keybindings = {
+        "ctrl+plus" = "change_font_size all +2.0";
+        "ctrl+minus" = "change_font_size all -2.0";
+      };
       extraConfig = ''
         foreground            #f8f8f2
         background            #282a36
