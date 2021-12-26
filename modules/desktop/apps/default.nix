@@ -14,14 +14,12 @@
       neofetch
       pavucontrol
       signal-desktop
-      virtualboxWithExtpack
       xfce.exo
       xfce.thunar
       xfce.tumbler
       xfce.xfconf
     ];
   };
-  virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "moritz" ];
   services.gvfs = {
     enable = true;
