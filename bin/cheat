@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-curl -s "cheat.sh/$1" | bat

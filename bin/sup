@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-pushd ~/.dotfiles
-if [[ $1 =~ (update) ]]; then
-    sudo nixos-rebuild switch --flake .# --recreate-lock-file
-fi
-if [[ $1 =~ (apply) ]]; then
-    sudo nixos-rebuild switch --flake .#
-fi
-popd

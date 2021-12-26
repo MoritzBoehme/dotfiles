@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./adb.nix ./direnv.nix ./git.nix ./nix.nix ./zsh.nix ];
+  imports = [ ./bin ./adb.nix ./direnv.nix ./git.nix ./nix.nix ./zsh.nix ];
   home-manager.users.moritz = {
     home.packages = with pkgs; [
       # archives

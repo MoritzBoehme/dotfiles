@@ -94,7 +94,7 @@ super + c
 
 # Show help
 super + h
-	~/bin/sxhkd-help
+	sxhkd-help
 
 # Apps
 # start firefox
