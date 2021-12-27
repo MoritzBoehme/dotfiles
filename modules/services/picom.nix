@@ -5,11 +5,12 @@
 
     services.picom = {
       enable = true;
-      inactiveOpacity = "0.90";
-      opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
       blur = true;
       blurExclude = [ "class_g = 'Polybar'" ];
       experimentalBackends = true;
+      inactiveOpacity = "0.90";
+      opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
+      vSync = true;
       extraOptions = ''
         corner-radius = 10;
         rounded-corners-exclude = [
