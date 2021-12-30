@@ -100,10 +100,10 @@ pkgs.writeShellApplication {
       fi
     }
 
-    if [[ $# -eq 0 ]]; then
+    if [[ "$#" -eq 0 ]]; then
       version="$(curl -s $latesturi | grep -E -m1 "tag_name" | cut -d \" -f4)"
-      url=$(curl -s $latesturi | grep -E -m1 "browser_download_url.*.tar.gz" | cut -d \" -f4)
-      sha512url=$(curl -s $latesturi | grep -E -m1 "browser_download_url.*.sha512sum" | cut -d \" -f4)
+      url="$(curl -s $latesturi | grep -E -m1 "browser_download_url.*.tar.gz" | cut -d \" -f4)"
+      sha512url="$(curl -s $latesturi | grep -E -m1 "browser_download_url.*.sha512sum" | cut -d \" -f4)"
       if [ -d "$dstpath"/Proton-"$version" ]; then
         echo "Proton $version is the latest version and is already installed."
       else
