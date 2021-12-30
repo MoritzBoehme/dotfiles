@@ -1,7 +1,8 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./cachix.nix ./cli ./desktop ./editors ./services ];
+  imports =
+    [ ./cachix.nix ./cli ./desktop ./editors ./services ./security.nix ];
 
   # USERS
   users.users.moritz = {
@@ -22,7 +23,7 @@
   time.timeZone = "Europe/Berlin";
 
   # PACKAGES
-  environment.systemPackages = with pkgs; [ vim wget firefox ];
+  environment.systemPackages = with pkgs; [ vim wget firefox git ];
 
   home-manager.users.moritz = {
     # Let Home Manager install and manage itself.

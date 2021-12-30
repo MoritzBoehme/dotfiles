@@ -18,7 +18,7 @@
           feh = "feh --auto-zoom --scale-down";
 
           us = "systemctl --user";
-          rs = "sudo systemctl";
+          rs = "doas systemctl";
 
           ga = "git add";
           gb = "git branch";
@@ -31,10 +31,10 @@
 
           ssh = "TERM=xterm-color ssh";
 
-          nix-switch = "sudo nixos-rebuild switch --flake ~/.dotfiles";
-          nix-boot = "sudo nixos-rebuild boot --flake ~/.dotfiles";
+          nix-switch = "doas nixos-rebuild switch --flake ~/.dotfiles";
+          nix-boot = "doas nixos-rebuild boot --flake ~/.dotfiles";
           nix-lock =
-            "sudo nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
+            "doas nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
         };
         enableSyntaxHighlighting = true;
         enableAutosuggestions = true;

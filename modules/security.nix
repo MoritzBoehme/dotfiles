@@ -25,12 +25,6 @@
     # Disable it, since we don't need it, and is a potential security concern.
     "kernel.sysrq" = 0;
 
-    # Restrict dmesg access for normal users
-    "kernel.dmesg_restrict" = 1;
-
-    # Restrict printing of kernel addresses
-    "kernel.kptr_restrict" = 2;
-
     ## TCP hardening
     # Prevent bogus ICMP errors from filling up logs.
     "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
@@ -69,4 +63,17 @@
 
   # So we don't have to do this later...
   security.acme.acceptTerms = true;
+
+  # Enable doas as an alternative to sudo
+  security.doas = {
+    enable = true;
+    extraRules = [
+      # Do not ask for a password again for some time after the user successfully authenticates.
+      {
+        groups = [ "wheel" "doas" ];
+        persist = true;
+      }
+    ];
+  };
+  security.sudo.enable = !config.security.doas.enable;
 }
