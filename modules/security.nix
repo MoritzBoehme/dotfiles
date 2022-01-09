@@ -66,7 +66,7 @@
 
   # Enable doas as an alternative to sudo
   security.doas = {
-    enable = true;
+    enable = lib.mkDefault true;
     extraRules = [
       # Do not ask for a password again for some time after the user successfully authenticates.
       {
@@ -75,5 +75,5 @@
       }
     ];
   };
-  security.sudo.enable = !config.security.doas.enable;
+  security.sudo.enable = lib.mkDefault (!config.security.doas.enable);
 }
