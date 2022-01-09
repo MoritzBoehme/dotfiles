@@ -29,10 +29,19 @@
   # NETWORKING
   networking = {
     hostName = "nixos-desktop";
-    networkmanager.enable = true;
-
+    defaultGateway = "192.168.0.1";
+    nameservers = [ "192.168.0.4" ];
     useDHCP = false;
-    interfaces.enp42s0.useDHCP = true;
+    interfaces.enp42s0 = {
+      useDHCP = false;
+      ipv4 = {
+        addresses = [{
+          address = "192.168.0.10";
+          prefixLength = 24;
+        }];
+      };
+    };
+    networkmanager.enable = true;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
