@@ -11,11 +11,11 @@
   ];
 
   services = {
-    avahi = {
     printing = {
       enable = true;
       drivers = with pkgs; [ epson-escpr2 epson-escpr ];
     };
+    avahi = lib.mkIf config.services.printing.enable {
       enable = true;
       nssmdns = true;
     };
