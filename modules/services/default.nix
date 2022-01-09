@@ -25,6 +25,9 @@
       pulse.enable = true;
     };
     redshift.enable = true;
+    btrfs.autoScrub.enable = lib.mkDefault
+      (builtins.any (filesystem: filesystem.fsType == "btrfs")
+        (builtins.attrValues config.fileSystems));
   };
   location = {
     latitude = 52.3;
