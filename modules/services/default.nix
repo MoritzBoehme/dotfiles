@@ -11,9 +11,11 @@
   ];
 
   services = {
-    printing.enable = true;
-    printing.drivers = with pkgs; [ epson-escpr2 epson-escpr ];
     avahi = {
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ epson-escpr2 epson-escpr ];
+    };
       enable = true;
       nssmdns = true;
     };
@@ -22,7 +24,7 @@
       alsa.enable = true;
       pulse.enable = true;
     };
-    redshift = { enable = true; };
+    redshift.enable = true;
   };
   location = {
     latitude = 52.3;
