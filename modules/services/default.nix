@@ -7,6 +7,7 @@
     ./dunst
     ./jupyter.nix
     ./kdeconnect.nix
+    ./keyring.nix
     ./picom.nix
   ];
 
