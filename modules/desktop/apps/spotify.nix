@@ -25,6 +25,12 @@
 
           # Volume on startup between 0 and 100
           initial_volume = "71";
+
+          # The directory used to cache audio data.
+          cache_path = "/tmp/spotifyd-cache";
+
+          # The displayed device type in Spotify clients.
+          device_type = "computer";
         };
       };
     };
