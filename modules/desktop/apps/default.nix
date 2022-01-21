@@ -13,7 +13,9 @@
       libreoffice
       neofetch
       pavucontrol
+      picard
       signal-desktop
+      vlc
       xfce.exo
       xfce.thunar
       xfce.tumbler
