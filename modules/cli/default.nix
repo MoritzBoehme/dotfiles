@@ -16,6 +16,10 @@
 
       # typing
       ttyper
+
+      # ripping
+      abcde
+      handbrake
     ];
     programs = {
       exa.enable = true;
