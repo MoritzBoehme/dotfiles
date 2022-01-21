@@ -24,6 +24,7 @@
 
   # PACKAGES
   environment.systemPackages = with pkgs; [ vim wget firefox git ];
+  programs.mtr.enable = true;
 
   home-manager.users.moritz = {
     # Let Home Manager install and manage itself.
