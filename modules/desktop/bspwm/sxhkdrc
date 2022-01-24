@@ -30,10 +30,6 @@ alt + shift + c
 alt + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
-alt + ctrl + {m,l,s,p,}
-	bspc node -g {marked,locked,sticky,private}
-
 
 # Focus/Swap Nodes
 # focus the node in the given direction
