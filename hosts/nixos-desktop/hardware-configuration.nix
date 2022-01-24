@@ -7,7 +7,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -59,4 +59,6 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/00ad6f74-f23e-4ac0-abfb-89bdfe5ab8ae"; }];
 
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
