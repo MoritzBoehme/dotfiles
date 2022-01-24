@@ -10,6 +10,3 @@ for monitor in ${monitors[@]}; do
     start=$(expr $start + $desktops)
     end=$(expr $end + $desktops)
 done
-
-# Dracula theme #
-bspc config focused_border_color "#bd93f9"

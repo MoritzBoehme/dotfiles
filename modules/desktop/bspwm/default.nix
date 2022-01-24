@@ -35,6 +35,11 @@
         borderless_monocle = true;
         gapless_monocle = true;
         focus_follows_pointer = true;
+
+        # Dracula theme #
+        focused_border_color = "#bd93f9";
+        normal_border_color = "#44475a";
+        active_border_color = "#6272a4";
       };
       startupPrograms = [
         "${pkgs.systemd}/bin/systemctl --user start polybar.service"
