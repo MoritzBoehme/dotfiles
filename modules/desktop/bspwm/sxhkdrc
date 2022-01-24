@@ -92,14 +92,18 @@ super + c
 super + h
 	sxhkd-help
 
+# script for sharing files
+super + s
+    share
+
 # Apps
 # start firefox
-super + {_,shift} +f
+super + {_,shift} + f
 	firefox {_,--private-window}
 
 # terminal emulator
-super + Return
-	kitty
+super + {_,shift} + Return
+	{_,bspc rule -a "kitty" -o state=floating;} kitty
 
 
 # Emacs
