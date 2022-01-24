@@ -24,6 +24,7 @@
     programs = {
       exa.enable = true;
       bat.enable = true;
+      gpg.enable = true;
     };
   };
 }
