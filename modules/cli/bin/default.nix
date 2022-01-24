@@ -6,7 +6,8 @@ let
   protonge = import ./protonge.nix { inherit pkgs; };
   share = import ./share.nix { inherit pkgs; };
   sxhkdHelp = import ./sxhkdHelp.nix { inherit pkgs; };
+  git-switch = import ./git-switch.nix { inherit pkgs; };
 in {
   home-manager.users.moritz.home.packages =
-    [ cheat cycleSinks protonge share sxhkdHelp ];
+    [ cheat cycleSinks protonge share sxhkdHelp git-switch ];
 }
