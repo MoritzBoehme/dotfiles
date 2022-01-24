@@ -16,6 +16,7 @@
           ls = "exa -lh --icons --git";
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
+          grep = "rg";
 
           us = "systemctl --user";
           rs = "doas systemctl";
