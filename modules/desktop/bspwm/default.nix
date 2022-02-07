@@ -43,7 +43,7 @@
       };
       startupPrograms = [
         "${pkgs.systemd}/bin/systemctl --user start polybar.service"
-        "feh --bg-fill ~/.config/wallpaper/dracula.png"
+        "randomWallpaper"
         "synology-drive"
       ];
       extraConfig = builtins.readFile ./bspwmrc;
@@ -54,10 +54,6 @@
       extraConfig = builtins.readFile ./sxhkdrc;
     };
 
-    xdg = {
-      enable = true;
-      configFile = { "wallpaper/dracula.png" = { source = ./dracula.png; }; };
-    };
     home.packages = with pkgs; [ feh playerctl pamixer brightnessctl ];
   };
 }
