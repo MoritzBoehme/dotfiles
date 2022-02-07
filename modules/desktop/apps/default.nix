@@ -9,6 +9,7 @@
     };
     home.packages = with pkgs; [
       anki
+      calibre
       keepassxc
       libreoffice
       neofetch
