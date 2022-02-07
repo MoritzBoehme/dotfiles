@@ -18,10 +18,6 @@
 
     statix.url = "github:nerdypepper/statix";
 
-    picom = {
-      url = "github:jonaburg/picom";
-      flake = false;
-    };
     forgit-git = {
       url = "github:wfxr/forgit";
       flake = false;

@@ -2,22 +2,16 @@
 
 {
   home-manager.users.moritz = {
-
     services.picom = {
       enable = true;
+      package = pkgs.picom-next;
       blur = true;
       blurExclude = [ "class_g = 'Polybar'" ];
       experimentalBackends = true;
-      inactiveOpacity = "0.90";
+      inactiveOpacity = "0.97";
       opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
       vSync = true;
       extraOptions = ''
-        corner-radius = 10;
-        rounded-corners-exclude = [
-          "class_g = 'Polybar'"
-        ]
-        round-borders = 1;
-
         # improve performance
         glx-no-rebind-pixmap = true;
         glx-no-stencil = true;
@@ -29,11 +23,6 @@
         blur-background-fixed = false;
         blur-method = "dual_kawase";
         blur-strength = 2;
-        use-ewmh-active-win = true;
-        detect-rounded-corners = true;
-
-        # stop compositing if there's a fullscreen program
-        unredir-if-possible = true;
 
         # group wintypes and don't focus a menu (Telegram)
         detect-transient = true;
