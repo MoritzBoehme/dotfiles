@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports = [
@@ -33,8 +33,13 @@
     nameservers = [ "192.168.0.4" ];
     useDHCP = false;
     interfaces.enp42s0.useDHCP = true;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dns = lib.mkIf (config.services.resolved.enable) "systemd-resolved";
+    };
   };
+
+  services.resolved.enable = lib.mkDefault false;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.xrandrHeads = [
