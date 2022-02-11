@@ -58,6 +58,7 @@
         enable = true;
         enableZshIntegration = true;
       };
+      command-not-found.enable = true;
     };
   };
 }
