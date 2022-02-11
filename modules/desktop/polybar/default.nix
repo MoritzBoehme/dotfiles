@@ -38,9 +38,13 @@
           radius = 10;
           offset-x = 10;
           offset-y = 5;
+          padding = 1;
 
           line-size = 3;
           line-color = colors.pink;
+
+          module-margin = 1;
+          separator = "|";
 
           font-0 = "FiraCode Nerd Font:size=10;0";
 
@@ -60,16 +64,13 @@
           time-format = "%H:%M";
 
           format-charging = "<animation-charging>  <label-charging>";
-          format-charging-underline = colors.green;
-          format-charging-padding = 1;
+          format-charging-foreground = colors.green;
 
           format-discharging = "<animation-discharging>  <label-discharging>";
-          format-discharging-underline = colors.red;
-          format-discharging-padding = 1;
+          format-discharging-foreground = colors.red;
 
           format-full = "<label-full>";
-          format-full-underline = colors.green;
-          format-full-padding = 1;
+          format-full-foreground = colors.green;
 
           label-charging = "%percentage%% %time% remaining";
           label-discharging = "%percentage%% %time% remaining";
@@ -119,8 +120,6 @@
           interval = 2;
           format-prefix = " ";
           format-prefix-foreground = colors.red;
-          format-underline = colors.red;
-          format-padding = 2;
           label = "%percentage:2%%";
         };
         "module/date" = {
@@ -133,9 +132,6 @@
           time = "%H:%M";
           time-alt = "%H:%M:%S";
 
-          format-underline = colors.purple;
-          format-padding = 2;
-
           label = "%date% %time%";
 
           click-middle = "${pkgs.kitty}/bin/kitty cal -m3";
@@ -145,8 +141,6 @@
           interval = 2;
           format-prefix = " ";
           format-prefix-foreground = colors.green;
-          format-underline = colors.green;
-          format-padding = 2;
 
           label = "%percentage_used%%";
         };
@@ -154,16 +148,21 @@
           type = "internal/pulseaudio";
 
           format-volume = "<ramp-volume> <label-volume>";
-          format-padding = 2;
           format-underline = colors.orange;
           label-volume = "%percentage%%";
-          label-volume-foreground = colors.foreground;
 
           label-muted = "婢 muted";
           label-muted-foreground = colors.red;
           ramp-volume-0 = "奄";
-          ramp-volume-1 = "奔";
-          ramp-volume-2 = "墳";
+          ramp-volume-0-foreground = colors.green;
+          ramp-volume-1 = "奄";
+          ramp-volume-1-foreground = colors.green;
+          ramp-volume-2 = "奔";
+          ramp-volume-2-foreground = colors.green;
+          ramp-volume-3 = "墳";
+          ramp-volume-3-foreground = colors.orange;
+          ramp-volume-4 = "墳";
+          ramp-volume-4-foreground = colors.red;
 
           click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
@@ -171,19 +170,15 @@
           type = "internal/network";
           interface = "enp42s0";
           interval = 3;
-          format-connected-underline = colors.purple;
           format-connected = "<label-connected>";
           label-connected = "祝 %upspeed%  %downspeed%";
-          format-connected-padding = 2;
         };
         "module/wlan" = {
           type = "internal/network";
           interface = "wlp1s0";
           interval = 3;
-          format-connected-underline = colors.purple;
           format-connected = "<label-connected>";
           label-connected = "祝 %upspeed%  %downspeed%";
-          format-connected-padding = 2;
         };
       };
     };
