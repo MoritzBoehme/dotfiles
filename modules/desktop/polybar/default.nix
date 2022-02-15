@@ -52,6 +52,9 @@
           modules-center = "bspwm";
           modules-right = "pulseaudio date";
 
+          tray-position = "right";
+          tray-padding = 2;
+
           wm-restack = "bspwm";
 
           cursor-click = "pointer";
