@@ -31,6 +31,9 @@
 
           # The displayed device type in Spotify clients.
           device_type = "computer";
+
+          # set backend to pulseaudio
+          backend = "pulseaudio";
         };
       };
     };
