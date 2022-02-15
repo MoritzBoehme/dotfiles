@@ -7,6 +7,7 @@
     ./kitty.nix
     ./rofi
     ./spotify.nix
+    ./xdg-mime.nix
     ./zathura.nix
   ];
   home-manager.users.moritz = {
