@@ -8,11 +8,11 @@ let
   nixos-desktop =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKl8gMhwSf1NsP5gp14xbbyjqQLZzcHLb/XKRMoHdXgI";
   hosts = [ nixos-laptop nixos-desktop ];
-in
-{
+in {
   "nordvpn.age".publicKeys = users ++ hosts;
   "davfs.age".publicKeys = users ++ hosts;
   "smbMoritz.age".publicKeys = users ++ hosts;
   "smbMedia.age".publicKeys = users ++ hosts;
   "spotifyd.age".publicKeys = users ++ hosts;
+  "email.age".publicKeys = users ++ hosts;
 }

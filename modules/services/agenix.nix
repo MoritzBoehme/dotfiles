@@ -18,5 +18,9 @@
       file = ../../secrets/spotifyd.age;
       owner = "1000";
     };
+    email = {
+      file = ../../secrets/email.age;
+      owner = "1000";
+    };
   };
 }

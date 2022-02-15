@@ -9,8 +9,10 @@ in {
 
   home-manager.users.moritz = {
     home.sessionPath = [ "/home/moritz/.config/emacs/bin/" ];
-    services.emacs.enable = true;
-    services.emacs.package = emacs;
+    services.emacs = {
+      enable = true;
+      package = emacs;
+    };
 
     home.packages = with pkgs; [
       ## Emacs itself
@@ -60,6 +62,10 @@ in {
 
       # :lang python
       python-language-server
+
+      # :email
+      mu
+      isync
     ];
   };
 }
