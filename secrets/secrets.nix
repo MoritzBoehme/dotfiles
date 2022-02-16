@@ -14,5 +14,6 @@ in {
   "smbMoritz.age".publicKeys = users ++ hosts;
   "smbMedia.age".publicKeys = users ++ hosts;
   "spotifyd.age".publicKeys = users ++ hosts;
-  "email.age".publicKeys = users ++ hosts;
+  "email-desktop.age".publicKeys = users ++ hosts;
+  "email-laptop.age".publicKeys = users ++ hosts;
 }
