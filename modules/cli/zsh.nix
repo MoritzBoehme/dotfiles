@@ -10,7 +10,7 @@
         enable = true;
         dotDir = ".config/zsh";
         history.expireDuplicatesFirst = true;
-        localVariables = { EDITOR = "emacsclient -nw -a 'emacs -nw'"; };
+        localVariables = { EDITOR = "emacsclient -nw"; };
         shellAliases = {
           du = "dust";
           ls = "exa -lh --icons --git";
