@@ -54,9 +54,6 @@
   services.tlp.enable = true;
   powerManagement.enable = true;
 
-  # Suspend to disk instead of ram
-  services.logind.lidSwitch = "hibernate";
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
