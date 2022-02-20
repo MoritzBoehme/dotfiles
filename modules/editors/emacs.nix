@@ -47,6 +47,7 @@ in {
 
       # :lang latex & :lang org (latex previews)
       texlive.combined.scheme-full
+      texlab
 
       # :lang nix
       nixfmt # for formating nix
