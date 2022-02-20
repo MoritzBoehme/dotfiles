@@ -49,7 +49,6 @@ in {
           };
           realName = name;
           msmtp.enable = true;
-          mu.enable = true;
           imap = {
             host = "127.0.0.1";
             port = 1143;
