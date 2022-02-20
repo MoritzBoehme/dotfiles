@@ -61,7 +61,8 @@ in {
       xorg.xprop
 
       # :lang python
-      python-language-server
+      nodePackages.pyright
+      python-dev
 
       # :email
       mu
