@@ -2,7 +2,7 @@
 
 {
   home-manager.users.moritz = {
-    home.packages = with pkgs; [ spotify-tui ];
+    home.packages = with pkgs; [ spotify-tui sptlrx ];
     services.spotifyd = {
       enable = true;
       package = pkgs.spotifyd.override { withMpris = true; };
