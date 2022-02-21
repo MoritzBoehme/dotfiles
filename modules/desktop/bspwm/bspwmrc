@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # MONITORS #
-monitors=($(bspc query -M --names))
+monitors=($(bspc query -M --names | sort -r))
 desktops=$(expr 10 / ${#monitors[@]})
 start=1
 end=$desktops
