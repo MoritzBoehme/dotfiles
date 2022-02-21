@@ -48,7 +48,7 @@
 
           font-0 = "FiraCode Nerd Font:size=10;0";
 
-          modules-left = "cpu memory wlan eth battery";
+          modules-left = "cpu memory network battery";
           modules-center = "bspwm";
           modules-right = "pulseaudio date";
 
@@ -169,19 +169,14 @@
 
           click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
-        "module/eth" = {
+        "module/network" = {
           type = "internal/network";
-          interface = "enp42s0";
+          interface =
+            builtins.head (builtins.attrNames config.networking.interfaces);
           interval = 3;
           format-connected = "<label-connected>";
-          label-connected = "祝 %upspeed%  %downspeed%";
-        };
-        "module/wlan" = {
-          type = "internal/network";
-          interface = "wlp1s0";
-          interval = 3;
-          format-connected = "<label-connected>";
-          label-connected = "祝 %upspeed%  %downspeed%";
+          label-connected =
+            "%{F${colors.purple}}祝%{F-} %upspeed% %{F${colors.pink}}%{F-} %downspeed%";
         };
       };
     };
