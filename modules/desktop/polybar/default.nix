@@ -44,13 +44,13 @@
           line-color = colors.pink;
 
           module-margin = 1;
-          separator = "|";
+          separator = "%{F${colors.comment}}◆%{F-}";
 
           font-0 = "FiraCode Nerd Font:size=10;0";
 
           modules-left = "cpu memory network battery";
           modules-center = "bspwm";
-          modules-right = "pulseaudio date";
+          modules-right = "pulseaudio date time";
 
           tray-position = "right";
           tray-padding = 2;
@@ -66,14 +66,11 @@
           adapter = "ACAD";
           time-format = "%H:%M";
 
-          format-charging = "<animation-charging>  <label-charging>";
-          format-charging-foreground = colors.green;
-
-          format-discharging = "<animation-discharging>  <label-discharging>";
-          format-discharging-foreground = colors.red;
-
-          format-full = "<label-full>";
-          format-full-foreground = colors.green;
+          format-charging =
+            "%{${colors.green}}<animation-charging>%{F-}  <label-charging>";
+          format-discharging =
+            "%{${colors.red}}<animation-discharging>%{F-} <label-discharging>";
+          format-full = "%{${colors.green}}%{F-} <label-full>";
 
           label-charging = "%percentage%% %time% remaining";
           label-discharging = "%percentage%% %time% remaining";
@@ -121,9 +118,20 @@
         "module/cpu" = {
           type = "internal/cpu";
           interval = 2;
-          format-prefix = " ";
+          format-prefix = " ";
           format-prefix-foreground = colors.red;
           label = "%percentage:2%%";
+        };
+        "module/time" = {
+          type = "internal/date";
+          interval = 1;
+
+          time = "%H:%M";
+          time-alt = "%H:%M:%S";
+
+          label = "%time%";
+          format-prefix = " ";
+          format-prefix-foreground = colors.cyan;
         };
         "module/date" = {
           type = "internal/date";
@@ -132,12 +140,10 @@
           date = "%A";
           date-alt = "%Y-%m-%d";
 
-          time = "%H:%M";
-          time-alt = "%H:%M:%S";
+          label = "%date%";
+          format-prefix = " ";
+          format-prefix-foreground = colors.orange;
 
-          label = "%date% %time%";
-
-          click-middle = "${pkgs.kitty}/bin/kitty cal -m3";
         };
         "module/memory" = {
           type = "internal/memory";
@@ -145,7 +151,7 @@
           format-prefix = " ";
           format-prefix-foreground = colors.green;
 
-          label = "%percentage_used%%";
+          label = "%gb_used%";
         };
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
