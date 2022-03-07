@@ -16,4 +16,5 @@ in {
   "spotifyd.age".publicKeys = users ++ hosts;
   "email-desktop.age".publicKeys = users ++ hosts;
   "email-laptop.age".publicKeys = users ++ hosts;
+  "home-vpn.age".publicKeys = users ++ hosts;
 }

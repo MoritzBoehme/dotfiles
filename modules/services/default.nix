@@ -9,6 +9,7 @@
     ./jupyter.nix
     ./kdeconnect.nix
     ./keyring.nix
+    ./openvpn.nix
     ./picom.nix
   ];
 
