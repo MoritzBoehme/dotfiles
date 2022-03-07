@@ -118,8 +118,15 @@
         "module/cpu" = {
           type = "internal/cpu";
           interval = 2;
-          format-prefix = " ";
-          format-prefix-foreground = colors.red;
+          format = "<ramp-load><label>";
+
+          ramp-load-0 = " ";
+          ramp-load-0-foreground = colors.green;
+          ramp-load-1 = " ";
+          ramp-load-1-foreground = colors.orange;
+          ramp-load-2 = " ";
+          ramp-load-2-foreground = colors.red;
+
           label = "%percentage:2%%";
         };
         "module/time" = {
@@ -148,8 +155,15 @@
         "module/memory" = {
           type = "internal/memory";
           interval = 2;
-          format-prefix = " ";
-          format-prefix-foreground = colors.green;
+          format = "<ramp-used><label>";
+
+          ramp-used-0 = " ";
+          ramp-used-0-foreground = colors.green;
+          ramp-used-1 = " ";
+          ramp-used-1-foreground = colors.orange;
+          ramp-used-2 = " ";
+          ramp-used-2-foreground = colors.red;
+          ramp-used-3 = " ";
 
           label = "%gb_used%";
         };
