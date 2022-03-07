@@ -67,27 +67,27 @@
           time-format = "%H:%M";
 
           format-charging =
-            "%{${colors.green}}<animation-charging>%{F-}  <label-charging>";
+            "%{F${colors.green}}<animation-charging>%{F-} <label-charging>";
           format-discharging =
-            "%{${colors.red}}<animation-discharging>%{F-} <label-discharging>";
-          format-full = "%{${colors.green}}%{F-} <label-full>";
+            "%{F${colors.red}}<animation-discharging>%{F-} <label-discharging>";
+          format-full = "%{F${colors.green}} %{F-} <label-full>";
 
           label-charging = "%percentage%% %time% remaining";
           label-discharging = "%percentage%% %time% remaining";
           label-full = "Fully charged";
 
-          animation-charging-0 = "";
-          animation-charging-1 = "";
-          animation-charging-2 = "";
-          animation-charging-3 = "";
-          animation-charging-4 = "";
+          animation-charging-0 = " ";
+          animation-charging-1 = " ";
+          animation-charging-2 = " ";
+          animation-charging-3 = " ";
+          animation-charging-4 = " ";
           animation-charging-framerate = 500;
 
-          animation-discharging-0 = "";
-          animation-discharging-1 = "";
-          animation-discharging-2 = "";
-          animation-discharging-3 = "";
-          animation-discharging-4 = "";
+          animation-discharging-0 = " ";
+          animation-discharging-1 = " ";
+          animation-discharging-2 = " ";
+          animation-discharging-3 = " ";
+          animation-discharging-4 = " ";
           animation-discharging-framerate = 500;
         };
         "module/bspwm" = {
@@ -174,8 +174,7 @@
           format-underline = colors.orange;
           label-volume = "%percentage%%";
 
-          label-muted = "婢 muted";
-          label-muted-foreground = colors.red;
+          label-muted = "%{F${colors.red}}婢 %{F-}muted";
           ramp-volume-0 = "奄";
           ramp-volume-0-foreground = colors.green;
           ramp-volume-1 = "奄";
