@@ -7,8 +7,8 @@
       package = pkgs.polybar.override { pulseSupport = true; };
       script = ''
         for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-                           MONITOR=$m polybar --reload bottom &
-                         done
+          MONITOR=$m polybar --reload bottom &
+        done
       '';
       config = let
         colors = {
