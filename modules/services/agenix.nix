@@ -18,5 +18,9 @@
       file = ../../secrets/spotifyd.age;
       owner = "1000";
     };
+    homeVPN = {
+      file = ../../secrets/home-vpn.age;
+      owner = "1000";
+    };
   };
 }
