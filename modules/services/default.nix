@@ -6,7 +6,6 @@
     ./diskstation
     ./dunst
     ./gpg.nix
-    ./jupyter.nix
     ./kdeconnect.nix
     ./keyring.nix
     ./openvpn.nix
