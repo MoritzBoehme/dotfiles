@@ -54,6 +54,26 @@
   services.tlp.enable = true;
   powerManagement.enable = true;
 
+  # Hibernare on low battery
+  systemd.timers.hibernate-on-low-battery = {
+    wantedBy = [ "multi-user.target" ];
+    timerConfig = {
+      OnUnitActiveSec = "120";
+      OnBootSec = "120";
+    };
+  };
+  systemd.services.hibernate-on-low-battery = let
+    batteryLevelSufficient = let batteryPath = "/sys/class/power_supply/BATT";
+    in pkgs.writeShellScriptBin "battery-level-sufficient" ''
+      test "$(cat ${batteryPath}/status)" != Discharging \
+        || test "$(cat ${batteryPath}/capacity)" -ge 5
+    '';
+  in {
+    serviceConfig.Type = "oneshot";
+    onFailure = [ "hibernate.target" ];
+    script = "${batteryLevelSufficient}/bin/battery-level-sufficient";
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -63,4 +83,3 @@
   system.stateVersion = "21.05"; # Did you read the comment?
 
 }
-
