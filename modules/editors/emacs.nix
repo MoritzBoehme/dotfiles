@@ -51,6 +51,7 @@ in {
 
       # :lang nix
       nixfmt # for formating nix
+      rnix-lsp
 
       # :lang markdown
       pandoc
