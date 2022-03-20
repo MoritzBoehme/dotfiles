@@ -22,5 +22,9 @@
       file = ../../secrets/home-vpn.age;
       owner = "1000";
     };
+    homeVPNPassword = {
+      file = ../../secrets/home-vpn-password.age;
+      owner = "1000";
+    };
   };
 }
