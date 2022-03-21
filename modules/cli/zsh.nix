@@ -50,15 +50,8 @@
           src = inputs.forgit-git;
         }];
       };
-      fzf = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-      starship = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-      command-not-found.enable = true;
+      fzfe.enableZshIntegration = true;
+      starship.enableZshIntegration = true;
     };
   };
 }

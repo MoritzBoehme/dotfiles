@@ -8,8 +8,14 @@ let
   randomWallpaper = import ./randomWallpaper.nix { inherit pkgs; };
   share = import ./share.nix { inherit pkgs; };
   sxhkdHelp = import ./sxhkdHelp.nix { inherit pkgs; };
-in
-{
-  home-manager.users.moritz.home.packages =
-    [ cheat cycleSinks git-switch protonge randomWallpaper share sxhkdHelp ];
+in {
+  home-manager.users.moritz.home.packages = [
+    # cheat
+    cycleSinks
+    git-switch
+    protonge
+    randomWallpaper
+    share
+    sxhkdHelp
+  ];
 }

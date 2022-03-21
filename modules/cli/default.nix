@@ -1,8 +1,16 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ ./bin ./adb.nix ./direnv.nix ./git.nix ./nix.nix ./ssh.nix ./zsh.nix ];
+  imports = [
+    ./adb.nix
+    ./bin
+    ./direnv.nix
+    ./fish.nix
+    ./git.nix
+    ./nix.nix
+    ./ssh.nix
+    # ./zsh.nix
+  ];
   home-manager.users.moritz = {
     home.packages = with pkgs; [
       # archives
@@ -11,6 +19,9 @@
       # file management
       ranger
       trash-cli
+
+      # monitoring
+      htop
 
       # fetcher
       neofetch
@@ -21,11 +32,17 @@
       # ripping
       abcde
       handbrake
+
+      # utility
+      cht-sh
     ];
     programs = {
-      exa.enable = true;
       bat.enable = true;
+      command-not-found.enable = true;
+      exa.enable = true;
+      fzf.enable = true;
       gpg.enable = true;
+      starship.enable = true;
     };
   };
 }

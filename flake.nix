@@ -18,6 +18,13 @@
 
     statix.url = "github:nerdypepper/statix";
 
+    # Fish specific
+    dracula-fish = {
+      url = "github:dracula/fish";
+      flake = false;
+    };
+
+    # Zsh specific
     forgit-git = {
       url = "github:wfxr/forgit";
       flake = false;
