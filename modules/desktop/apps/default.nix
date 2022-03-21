@@ -18,6 +18,7 @@
     home.packages = with pkgs; [
       anki
       calibre
+      gparted
       keepassxc
       libreoffice
       neofetch
