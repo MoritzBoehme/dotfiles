@@ -28,6 +28,7 @@
         "Zathura" = { state = "tiled"; };
         "Emacs" = { state = "tiled"; };
         "feh" = { state = "floating"; };
+        "Vampire_Survivors" = { state = "fullscreen"; };
       };
       settings = {
         border_width = 2;
