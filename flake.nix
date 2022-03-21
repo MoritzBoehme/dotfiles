@@ -6,7 +6,7 @@
   ##############
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nur.url = "github:nix-community/NUR";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
