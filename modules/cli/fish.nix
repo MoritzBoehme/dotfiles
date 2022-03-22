@@ -51,6 +51,9 @@
           # The following variable can be used to configure cursor shape in
           # visual mode, but due to fish_cursor_default, is redundant here
           set fish_cursor_visual block
+
+          # Variables
+          set -x EDITOR TERM=kitty-direct emacsclient -t  # HACK to fix 24bit color support with kitty
         '';
         functions = {
           gi = ''
