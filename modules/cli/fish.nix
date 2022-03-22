@@ -27,6 +27,8 @@
           cat = "bat";
           feh = "feh --auto-zoom --scale-down";
           grep = "rg";
+          rm = "rm -i";
+          mv = "mv -i";
 
           ssh = "TERM=xterm-color command ssh";
 
