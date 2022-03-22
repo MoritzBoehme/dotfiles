@@ -6,7 +6,10 @@
   programs.fish.enable = true;
   home-manager.users.moritz = {
     programs = {
-      fish = {
+      fish = let
+        # HACK to fix 24bit color support with kitty
+        editor = "TERM=kitty-direct emacsclient -t -a 'emacs -t'";
+      in {
         enable = true;
         shellAbbrs = {
           us = "systemctl --user";
@@ -30,12 +33,15 @@
           rm = "rm -i";
           mv = "mv -i";
 
+          # HACK to fix kitty not being recongized
           ssh = "TERM=xterm-color command ssh";
 
           nix-switch = "doas nixos-rebuild switch --flake ~/.dotfiles";
           nix-boot = "doas nixos-rebuild boot --flake ~/.dotfiles";
           nix-lock =
             "doas nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
+
+          emacs = editor;
         };
         shellInit = ''
           fzf_configure_bindings --git_log=\cg
@@ -55,7 +61,7 @@
           set fish_cursor_visual block
 
           # Variables
-          set -x EDITOR TERM=kitty-direct emacsclient -t  # HACK to fix 24bit color support with kitty
+          set -x EDITOR ${editor}
         '';
         functions = {
           gi = ''
