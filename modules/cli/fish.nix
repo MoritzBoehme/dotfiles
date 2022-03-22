@@ -74,6 +74,8 @@
           src = inputs.dracula-fish;
         }];
       };
+      fzf.enableFishIntegration = true;
+      starship.enableFishIntegration = true;
     };
     home.packages = with pkgs.fishPlugins; [ fzf-fish pisces ];
   };
