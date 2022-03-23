@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-    ./spotify.nix
   imports = [ ./email.nix ./firefox.nix ./kitty.nix ./rofi ./zathura.nix ];
   home-manager.users.moritz = {
     services.nextcloud-client = {

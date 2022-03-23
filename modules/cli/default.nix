@@ -1,8 +1,16 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ ./adb.nix ./bin ./direnv.nix ./git.nix ./nix.nix ./ssh.nix ./shell ];
+  imports = [
+    ./adb.nix
+    ./bin
+    ./direnv.nix
+    ./git.nix
+    ./nix.nix
+    ./ssh.nix
+    ./shell
+    ./spotify.nix
+  ];
   modules.cli.shell = let
     # HACK to fix 24bit color support with kitty
     editor = "TERM=kitty-direct emacsclient -t -a 'emacs -t'";
