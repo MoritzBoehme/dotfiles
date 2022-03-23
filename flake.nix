@@ -75,27 +75,11 @@
         agenix.nixosModules.age
       ];
 
-      hosts.nixos-laptop.modules = [
-        ./hosts/nixos-laptop
-        {
-          age.secrets.email = {
-            file = ./secrets/email-laptop.age;
-            owner = "1000";
-          };
-        }
-      ];
+      hosts.nixos-laptop.modules =
+        [ ./hosts/nixos-laptop ./config/nixos-laptop.nix ];
 
-      hosts.nixos-desktop.modules = [
-        {
-          age.secrets.email = {
-            file = ./secrets/email-desktop.age;
-            owner = "1000";
-          };
-        }
-        ./hosts/nixos-desktop
-        self.nixosModules.containers
-        self.nixosModules.gaming
-      ];
+      hosts.nixos-desktop.modules =
+        [ ./hosts/nixos-desktop ./config/nixos-desktop.nix ];
 
       ###############
       ### Outputs ###
