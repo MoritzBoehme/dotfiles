@@ -4,7 +4,7 @@
   imports = [
     ./agenix.nix
     ./diskstation
-    ./dunst
+    ./dunst.nix
     ./gpg.nix
     ./kdeconnect.nix
     ./keyring.nix
