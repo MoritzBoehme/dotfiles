@@ -1,15 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./email.nix
-    ./firefox.nix
-    ./kitty.nix
-    ./rofi
     ./spotify.nix
-    ./xdg-mime.nix
-    ./zathura.nix
-  ];
+  imports = [ ./email.nix ./firefox.nix ./kitty.nix ./rofi ./zathura.nix ];
   home-manager.users.moritz = {
     services.nextcloud-client = {
       enable = true;
@@ -32,7 +25,6 @@
       xfce.xfconf
     ];
   };
-  users.extraGroups.vboxusers.members = [ "moritz" ];
   services.gvfs = {
     enable = true;
     package = lib.mkForce pkgs.gnome3.gvfs;
