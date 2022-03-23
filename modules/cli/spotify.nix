@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  age.secrets.spotifyd = {
+    file = ../../secrets/spotifyd.age;
+    owner = "1000";
+  };
   home-manager.users.moritz = {
     home.packages = with pkgs; [ spotify-tui sptlrx ];
     services.spotifyd = {
