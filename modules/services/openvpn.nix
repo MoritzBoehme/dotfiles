@@ -18,4 +18,10 @@
       updateResolvConf = true;
     };
   };
+  systemd.services.openvpn-homeVPN-password = {
+    description = "Enter homeVPN password";
+    script = "cat /run/agenix/homeVPNPassword | systemd-tty-ask-password-agent";
+    wantedBy = [ "openvpn-homeVPN.service" ];
+    after = [ "openvpn-homeVPN.service" ];
+  };
 }
