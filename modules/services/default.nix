@@ -3,7 +3,6 @@
 {
   imports = [
     ./agenix.nix
-    ./diskstation
     ./dunst.nix
     ./gpg.nix
     ./kdeconnect.nix
