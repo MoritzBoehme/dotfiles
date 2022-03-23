@@ -75,7 +75,7 @@
       }
     ];
   };
-  security.sudo.enable = lib.mkDefault (!config.security.doas.enable);
+  security.sudo.enable = !config.security.doas.enable;
 
   # Disable ssh password login
   services.openssh.passwordAuthentication = lib.mkDefault false;
