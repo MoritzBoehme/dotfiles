@@ -1,8 +1,15 @@
 { lib, pkgs, ... }:
 
 {
-  imports =
-    [ ./cachix.nix ./cli ./desktop ./editors ./services ./security.nix ];
+  imports = [
+    ./cachix.nix
+    ./cli
+    ./desktop
+    ./editors
+    ./gaming.nix
+    ./security.nix
+    ./services
+  ];
 
   # USERS
   users.users.moritz = {
