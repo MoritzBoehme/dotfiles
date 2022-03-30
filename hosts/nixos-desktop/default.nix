@@ -60,6 +60,8 @@
     }
   ];
 
+  console.keyMap = "de";
+
   # Powersaving
   services.tlp.enable = true;
   powerManagement.enable = true;
