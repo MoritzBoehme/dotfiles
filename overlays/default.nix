@@ -3,6 +3,7 @@
 final: prev: {
   python-dev = import ./python.nix final prev;
   fish = final.master.fish;
+  nix-flake-tools = inputs.nix-flake-tools.packages.${prev.system}.extension;
   master = import inputs.master {
     inherit (prev) system;
     config.allowUnfree = true;

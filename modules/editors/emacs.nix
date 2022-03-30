@@ -1,12 +1,20 @@
 { config, lib, pkgs, inputs, ... }:
 
+with lib;
 let
   emacs = with pkgs;
     ((emacsPackagesFor emacsGcc).emacsWithPackages
       (epkgs: [ epkgs.vterm epkgs.emacsql-sqlite3 ]));
-  cfg = config.modules.editors;
+  cfg = config.modules.editors.emacs;
 in {
-  config = lib.mkIf cfg.emacs {
+  options.modules.editors = {
+    emacs = mkOption {
+      default = true;
+      type = types.bool;
+      example = false;
+    };
+  };
+  config = mkIf cfg {
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
     home-manager.users.moritz = {
@@ -34,10 +42,11 @@ in {
         ## Module dependencies
         # :checkers spell
         # (aspellWithDicts (ds: with ds; [ en en-computers en-science de ]))
-        hunspell
-        hunspellDicts.en_GB-ize
-        hunspellDicts.en_US
-        hunspellDicts.de_DE
+        (hunspellWithDicts [
+          hunspellDicts.en_GB-ize
+          hunspellDicts.en_US
+          hunspellDicts.de_DE
+        ])
 
         # :checkers grammar
         languagetool
@@ -71,6 +80,14 @@ in {
         # :email
         mu
         isync
+
+        # :lang haskell
+        haskell-language-server
+        (haskellPackages.ghcWithPackages (p:
+          # general
+          [ p.brittany ] ++
+          # xmonad
+          [ p.xmonad p.xmonad-contrib p.xmonad-extras p.xmobar ]))
       ];
     };
   };

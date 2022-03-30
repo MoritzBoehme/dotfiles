@@ -30,6 +30,9 @@
       url = "github:wfxr/forgit";
       flake = false;
     };
+
+    # VSCode plugin
+    nix-flake-tools.url = "github:rastertail/nix-flake-tools";
   };
 
   outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
