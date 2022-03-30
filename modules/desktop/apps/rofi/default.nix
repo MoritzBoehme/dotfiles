@@ -5,8 +5,10 @@
 
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi.override { plugins = with pkgs; [ rofi-calc ]; };
+      package =
+        pkgs.rofi.override { plugins = with pkgs; [ rofi-calc rofi-emoji ]; };
       theme = ./dracula.rasi;
+      extraConfig = { combi-modi = "drun,window,emoji"; };
     };
     home.packages = with pkgs;
       [
