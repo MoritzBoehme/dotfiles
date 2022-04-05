@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 let cfg = config.modules.desktop;
 in {
-  imports = [ ./apps ./bspwm ./gtk.nix ./xmonad ];
+  imports = [ ./apps ./bspwm ./gtk.nix ./xmonad ./sway ];
 
   options.modules.desktop = {
     name = lib.mkOption {
       default = "bspwm";
-      type = lib.types.enum [ "bspwm" "xmonad" ];
+      type = lib.types.enum [ "bspwm" "xmonad" "sway" ];
     };
   };
 
