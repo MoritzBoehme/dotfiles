@@ -49,6 +49,10 @@
   };
 
   time.timeZone = "Europe/Berlin";
+  console.keyMap = "de";
+
+  # needed for enabling hibernation
+  security.protectKernelImage = false;
 
   # Powersaving
   services.tlp.enable = true;
