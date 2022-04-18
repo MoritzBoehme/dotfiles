@@ -61,6 +61,7 @@
 
       # monitoring
       htop
+      bottom
 
       # fetcher
       neofetch
