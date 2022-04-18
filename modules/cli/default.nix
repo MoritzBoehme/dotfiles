@@ -10,6 +10,7 @@
     ./ssh.nix
     ./shell
     ./spotify.nix
+    ./yubikey.nix
   ];
   modules.cli.shell = let
     # HACK to fix 24bit color support with kitty
