@@ -31,9 +31,6 @@
       flake = false;
     };
 
-    # VSCode plugin
-    nix-flake-tools.url = "github:rastertail/nix-flake-tools";
-
     # Laptop Touchpad
     asus-touchpad-numpad-driver = {
       url = "github:mohamed-badaoui/asus-touchpad-numpad-driver";

@@ -20,7 +20,6 @@ in {
           dracula-theme.theme-dracula
           esbenp.prettier-vscode
           github.copilot
-          pkgs.nix-flake-tools
           pkief.material-icon-theme
           vscodevim.vim
         ];
