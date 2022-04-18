@@ -9,5 +9,7 @@
       dates = "weekly";
     };
     optimise.automatic = true;
+
+    settings.trusted-users = [ "root" "@wheel" ];
   };
 }
