@@ -49,6 +49,9 @@
     "net.ipv4.tcp_syncookies" = 1;
     # Incomplete protection again TIME-WAIT assassination
     "net.ipv4.tcp_rfc1337" = 1;
+    # Log martian packages
+    "net.ipv4.conf.all.log_martians" = 1;
+    "net.ipv4.conf.default.log_martians" = 1;
 
     ## TCP optimization
     # TCP Fast Open is a TCP extension that reduces network latency by packing
@@ -77,6 +80,19 @@
   };
   security.sudo.enable = !config.security.doas.enable;
 
-  # Disable ssh password login
-  services.openssh.passwordAuthentication = lib.mkDefault false;
+  # SSH
+  services.openssh = {
+    # Disable ssh password login
+    passwordAuthentication = lib.mkDefault false;
+    logLevel = "VERBOSE";
+    extraConfig = ''
+      AllowAgentForwarding no
+      AllowTcpForwarding no
+      ClientAliveCountMax 2
+      Compression no
+      MaxAuthTries 3
+      MaxSessions 2
+      TCPKeepAlive no
+    '';
+  };
 }
