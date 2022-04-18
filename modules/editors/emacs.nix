@@ -3,7 +3,8 @@
 with lib;
 let
   myEmacs = with pkgs;
-    ((emacsPackagesFor emacsGcc).emacsWithPackages (epkgs: [ epkgs.vterm ]));
+    ((emacsPackagesFor emacsPgtkGcc).emacsWithPackages
+      (epkgs: [ epkgs.vterm ]));
   cfg = config.modules.editors.emacs;
 in {
   options.modules.editors = {
