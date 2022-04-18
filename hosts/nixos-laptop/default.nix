@@ -104,6 +104,30 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [{
+      hostName = "builder";
+      system = "x86_64-linux";
+      maxJobs = 6;
+      speedFactor = 2;
+      supportedFeatures = [ "nixos.test" "benchmark" "big-parallel" "kvm" ];
+    }];
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
+  };
+
+  programs.ssh.extraConfig = ''
+    Host builder
+      Hostname 192.168.0.14
+      Port 22
+      User moritz
+
+      IdentitiesOnly yes
+      IdentityFile /etc/ssh/ssh_host_ed25519_key
+  '';
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
