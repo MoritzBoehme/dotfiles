@@ -15,4 +15,5 @@ in {
   "email-laptop.age".publicKeys = users ++ hosts;
   "home-vpn.age".publicKeys = users ++ hosts;
   "home-vpn-password.age".publicKeys = users ++ hosts;
+  "github.age".publicKeys = users ++ hosts;
 }

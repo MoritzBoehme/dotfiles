@@ -47,6 +47,10 @@
         "doas nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
 
       emacs = editor;
+
+      nixpkgs-pr = "nixpkgs-review pr --token ${
+          if (config.modules.cli.shell.name == "fish") then "" else "$"
+        }(cat /run/agenix/github)";
     };
     variables = { EDITOR = editor; };
   };
@@ -75,6 +79,7 @@
 
       # utility
       cht-sh
+      nixpkgs-review
     ];
     programs = {
       bat.enable = true;
@@ -83,6 +88,12 @@
       fzf.enable = true;
       gpg.enable = true;
       starship.enable = true;
+    };
+  };
+  age.secrets = {
+    github = {
+      file = ../../secrets/github.age;
+      owner = "1000";
     };
   };
 }
