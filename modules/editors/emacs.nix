@@ -2,9 +2,8 @@
 
 with lib;
 let
-  emacs = with pkgs;
-    ((emacsPackagesFor emacsGcc).emacsWithPackages
-      (epkgs: [ epkgs.vterm epkgs.emacsql-sqlite3 ]));
+  myEmacs = with pkgs;
+    ((emacsPackagesFor emacsGcc).emacsWithPackages (epkgs: [ epkgs.vterm ]));
   cfg = config.modules.editors.emacs;
 in {
   options.modules.editors = {
@@ -21,13 +20,13 @@ in {
       home.sessionPath = [ "/home/moritz/.config/emacs/bin/" ];
       services.emacs = {
         enable = true;
-        package = emacs;
+        package = myEmacs;
       };
 
       home.packages = with pkgs; [
         ## Emacs itself
         binutils # native-comp needs 'as', provided by this
-        emacs
+        myEmacs
 
         ## Doom dependencies
         git
@@ -41,7 +40,6 @@ in {
 
         ## Module dependencies
         # :checkers spell
-        # (aspellWithDicts (ds: with ds; [ en en-computers en-science de ]))
         (hunspellWithDicts [
           hunspellDicts.en_GB-ize
           hunspellDicts.en_US
@@ -53,6 +51,8 @@ in {
 
         # :tools lookup & :lang org +roam
         sqlite
+        gcc # HACK to get emacsqlite binary
+
         wordnet
         graphviz
 
@@ -80,14 +80,6 @@ in {
         # :email
         mu
         isync
-
-        # :lang haskell
-        haskell-language-server
-        (haskellPackages.ghcWithPackages (p:
-          # general
-          [ p.brittany ] ++
-          # xmonad
-          [ p.xmonad p.xmonad-contrib p.xmonad-extras p.xmobar ]))
       ];
     };
   };
