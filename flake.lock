@@ -34,6 +34,22 @@
         "type": "github"
       }
     },
+    "arkenfox-userjs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649497545,
+        "narHash": "sha256-ScO19N/EVpmMzdN2kkfjYIJN7c0CQdZJ9qMZReqMpI4=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "4ff931781a1bf012e0e7e2ec89dc5c2a9bedd890",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "dracula-fish": {
       "flake": false,
       "locked": {
@@ -88,21 +104,6 @@
       }
     },
     "flake-utils": {
-      "locked": {
-        "lastModified": 1644229661,
-        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
       "locked": {
         "lastModified": 1644229661,
         "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
@@ -187,26 +188,6 @@
         "type": "github"
       }
     },
-    "nix-flake-tools": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3",
-        "npmlock2nix-repo": "npmlock2nix-repo"
-      },
-      "locked": {
-        "lastModified": 1648440407,
-        "narHash": "sha256-CfqLEAaMKYbT4Zozv02egfAQ7eni2yqys6Nm2zszhNM=",
-        "owner": "rastertail",
-        "repo": "nix-flake-tools",
-        "rev": "37512db32ea23fc3f125ab70555af75ad5bb18e9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rastertail",
-        "repo": "nix-flake-tools",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1638587357,
@@ -239,22 +220,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1647893727,
-        "narHash": "sha256-pOi7VdCb+s5Cwh5CS7YEZVRgH9uCmE87J5W7iXv29Ck=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "1ec61dd4167f04be8d05c45780818826132eea0d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1647350163,
         "narHash": "sha256-OcMI+PFEHTONthXuEQNddt16Ml7qGvanL3x8QOl2Aao=",
         "owner": "nixos",
@@ -269,7 +234,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1645013224,
         "narHash": "sha256-b7OEC8vwzJv3rsz9pwnTX2LQDkeOWz2DbKypkVvNHXc=",
@@ -282,22 +247,6 @@
         "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "npmlock2nix-repo": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1647281121,
-        "narHash": "sha256-rYFK7a6jzbuJ3Gq9NTDQXnTYOCed6FrMNwdWYm47pQg=",
-        "owner": "nix-community",
-        "repo": "npmlock2nix",
-        "rev": "30ae63fe48ae066df1c135801b66f50ee3d1a0f2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "npmlock2nix",
         "type": "github"
       }
     },
@@ -320,13 +269,13 @@
       "inputs": {
         "agenix": "agenix",
         "asus-touchpad-numpad-driver": "asus-touchpad-numpad-driver",
+        "arkenfox-userjs": "arkenfox-userjs",
         "dracula-fish": "dracula-fish",
         "emacs-overlay": "emacs-overlay",
         "forgit-git": "forgit-git",
         "home-manager": "home-manager",
         "master": "master",
-        "nix-flake-tools": "nix-flake-tools",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nur": "nur",
         "stable": "stable",
         "statix": "statix",
@@ -370,7 +319,7 @@
       "inputs": {
         "fenix": "fenix",
         "gitignore": "gitignore",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1645337357,
@@ -388,7 +337,7 @@
     },
     "utils": {
       "inputs": {
-        "flake-utils": "flake-utils_2"
+        "flake-utils": "flake-utils"
       },
       "locked": {
         "lastModified": 1647259887,

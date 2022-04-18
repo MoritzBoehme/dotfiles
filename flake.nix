@@ -36,6 +36,11 @@
       url = "github:mohamed-badaoui/asus-touchpad-numpad-driver";
       flake = false;
     };
+
+    arkenfox-userjs = {
+      url = "github:arkenfox/user.js";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
