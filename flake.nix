@@ -33,6 +33,12 @@
 
     # VSCode plugin
     nix-flake-tools.url = "github:rastertail/nix-flake-tools";
+
+    # Laptop Touchpad
+    asus-touchpad-numpad-driver = {
+      url = "github:mohamed-badaoui/asus-touchpad-numpad-driver";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
