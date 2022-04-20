@@ -14,6 +14,9 @@ let
     # sanitisation
     "privacy.clearOnShutdown.history" = false;
 
+    # disable letterboxing
+    "privacy.resistFingerprinting.letterboxing" = false;
+
     ## OTHER
     # Dont show warning when accessing about:config
     "browser.aboutConfig.showWarning" = false;
