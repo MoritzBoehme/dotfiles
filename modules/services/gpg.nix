@@ -1,10 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  home-manager.users.moritz = {
-    services.gpg-agent = {
+  programs = {
+    ssh.startAgent = false;
+    gnupg.agent = {
       enable = true;
-      defaultCacheTtl = 3600;
+      enableSSHSupport = true;
     };
   };
   services.pcscd.enable = true;
