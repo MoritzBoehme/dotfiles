@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 let
-  arkenfox = builtins.readFile (inputs.arkenfox-userjs + "/user.js");
+  arkenfox = builtins.readFile "${inputs.arkenfox-userjs}/user.js";
   overrides = {
     ## arkenfox overrides
     # automatic search
