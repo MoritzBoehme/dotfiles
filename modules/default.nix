@@ -9,6 +9,7 @@
     ./gaming.nix
     ./security.nix
     ./services
+    ./theming.nix
   ];
 
   # USERS

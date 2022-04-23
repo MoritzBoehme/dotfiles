@@ -50,6 +50,42 @@
         "type": "github"
       }
     },
+    "base16": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1643556194,
+        "narHash": "sha256-mU/pD30cIRcodLROhbIpRuEoEsO9aV5lDrYav0ZSIUA=",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "rev": "abc25e69d0e18ce54dbe6d95a531c4d63ed59932",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "type": "github"
+      }
+    },
+    "asus-touchpad-numpad-driver": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646981564,
+        "narHash": "sha256-qanPTmP2Sctq4ybiUFzIiADP2gZH8HhajBORUSIXb04=",
+        "owner": "mohamed-badaoui",
+        "repo": "asus-touchpad-numpad-driver",
+        "rev": "a2bada610ebb3fc002fceb53ddf93bc799241867",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mohamed-badaoui",
+        "repo": "asus-touchpad-numpad-driver",
+        "type": "github"
+      }
+    },
     "dracula-fish": {
       "flake": false,
       "locked": {
@@ -270,6 +306,7 @@
         "agenix": "agenix",
         "arkenfox-userjs": "arkenfox-userjs",
         "asus-touchpad-numpad-driver": "asus-touchpad-numpad-driver",
+        "base16": "base16",
         "dracula-fish": "dracula-fish",
         "emacs-overlay": "emacs-overlay",
         "forgit-git": "forgit-git",

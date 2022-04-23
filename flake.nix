@@ -41,9 +41,15 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
+
+    # Theming
+    base16 = {
+      url = "github:SenchoPens/base16.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, ... }:
+  outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, base16, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -84,6 +90,7 @@
         }
         self.nixosModules.default
         agenix.nixosModules.age
+        base16.nixosModule
       ];
 
       hosts.nixos-laptop.modules =

@@ -34,7 +34,7 @@ in {
           "feh" = { state = "floating"; };
           "Vampire_Survivors" = { state = "fullscreen"; };
         };
-        settings = {
+        settings = with config.scheme.withHashtag; {
           border_width = 2;
           window_gap = 5;
           borderless_monocle = true;
@@ -42,9 +42,9 @@ in {
           focus_follows_pointer = true;
 
           # Dracula theme #
-          focused_border_color = "#bd93f9";
-          normal_border_color = "#44475a";
-          active_border_color = "#6272a4";
+          focused_border_color = base0D;
+          normal_border_color = base03;
+          active_border_color = base03;
         };
         startupPrograms = [
           "${pkgs.systemd}/bin/systemctl --user start polybar.service"
