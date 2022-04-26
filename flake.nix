@@ -33,7 +33,7 @@
 
     # Laptop Touchpad
     asus-touchpad-numpad-driver = {
-      url = "github:mohamed-badaoui/asus-touchpad-numpad-driver";
+      url = "github:MoritzBoehme/asus-touchpad-numpad-driver/german-layout";
       flake = false;
     };
 

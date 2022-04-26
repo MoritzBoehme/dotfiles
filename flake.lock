@@ -37,15 +37,16 @@
     "asus-touchpad-numpad-driver": {
       "flake": false,
       "locked": {
-        "lastModified": 1646981564,
-        "narHash": "sha256-qanPTmP2Sctq4ybiUFzIiADP2gZH8HhajBORUSIXb04=",
-        "owner": "mohamed-badaoui",
+        "lastModified": 1650967375,
+        "narHash": "sha256-Ftl4I1USponJHG9oepxBvBC3EqNsYQOsrfPsbaJwd7U=",
+        "owner": "MoritzBoehme",
         "repo": "asus-touchpad-numpad-driver",
-        "rev": "a2bada610ebb3fc002fceb53ddf93bc799241867",
+        "rev": "6ff9f7443bc8f4a56df972827c89013f1d7f1bde",
         "type": "github"
       },
       "original": {
-        "owner": "mohamed-badaoui",
+        "owner": "MoritzBoehme",
+        "ref": "german-layout",
         "repo": "asus-touchpad-numpad-driver",
         "type": "github"
       }
@@ -67,22 +68,6 @@
       "original": {
         "owner": "SenchoPens",
         "repo": "base16.nix",
-        "type": "github"
-      }
-    },
-    "asus-touchpad-numpad-driver": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1646981564,
-        "narHash": "sha256-qanPTmP2Sctq4ybiUFzIiADP2gZH8HhajBORUSIXb04=",
-        "owner": "mohamed-badaoui",
-        "repo": "asus-touchpad-numpad-driver",
-        "rev": "a2bada610ebb3fc002fceb53ddf93bc799241867",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mohamed-badaoui",
-        "repo": "asus-touchpad-numpad-driver",
         "type": "github"
       }
     },
