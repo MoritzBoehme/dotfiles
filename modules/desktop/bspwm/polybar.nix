@@ -110,9 +110,11 @@ in {
             ramp-load-0 = " ";
             ramp-load-0-foreground = base0B;
             ramp-load-1 = " ";
-            ramp-load-1-foreground = base0A;
+            ramp-load-1-foreground = base0B;
             ramp-load-2 = " ";
-            ramp-load-2-foreground = base08;
+            ramp-load-2-foreground = base0A;
+            ramp-load-3 = " ";
+            ramp-load-3-foreground = base08;
 
             label = "%percentage:2%%";
           };
@@ -147,10 +149,11 @@ in {
             ramp-used-0 = " ";
             ramp-used-0-foreground = base0B;
             ramp-used-1 = " ";
-            ramp-used-1-foreground = base0A;
+            ramp-used-1-foreground = base0B;
             ramp-used-2 = " ";
-            ramp-used-2-foreground = base08;
+            ramp-used-2-foreground = base0A;
             ramp-used-3 = " ";
+            ramp-used-3-foreground = base08;
 
             label = "%gb_used%";
           };
