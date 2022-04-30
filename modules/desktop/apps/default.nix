@@ -18,6 +18,7 @@
       anki
       calibre
       gparted
+      jellyfin-media-player
       keepassxc
       libreoffice
       neofetch
