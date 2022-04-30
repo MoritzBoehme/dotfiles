@@ -19,6 +19,8 @@
 
     statix.url = "github:nerdypepper/statix";
 
+    nixpkgs-review-checks.url = "github:SuperSandro2000/nixpkgs-review-checks";
+
     # Fish specific
     dracula-fish = {
       url = "github:dracula/fish";

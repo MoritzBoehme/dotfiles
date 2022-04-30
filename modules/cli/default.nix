@@ -49,6 +49,8 @@
 
       emacs = editor;
 
+      nixpkgs-review = "nixpkgs-review-checks";
+
       nixpkgs-pr = "nixpkgs-review pr --token ${
           if (config.modules.cli.shell.name == "fish") then "" else "$"
         }(cat /run/agenix/github)";
