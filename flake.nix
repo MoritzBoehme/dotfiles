@@ -126,7 +126,7 @@
               nixpkgs-fmt
               statix
               # Secrets
-              agenix.defaultPackage.x86_64-linux
+              agenix
               # chachix
               cachix
             ];
