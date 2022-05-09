@@ -21,6 +21,8 @@
 
     nixpkgs-review-checks.url = "github:SuperSandro2000/nixpkgs-review-checks";
 
+    comma.url = "github:nix-community/comma";
+
     # Fish specific
     dracula-fish = {
       url = "github:dracula/fish";

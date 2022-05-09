@@ -83,6 +83,8 @@
       # utility
       cht-sh
       nixpkgs-review
+      comma
+      nix-index
     ];
     programs = {
       bat.enable = true;
