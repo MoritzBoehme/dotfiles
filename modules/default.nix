@@ -7,6 +7,7 @@
     ./desktop
     ./editors
     ./gaming.nix
+    ./podman.nix
     ./security.nix
     ./services
     ./theming.nix
