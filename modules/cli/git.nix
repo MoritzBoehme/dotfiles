@@ -12,6 +12,7 @@
         key = "0x970C6E89EB0547A9";
         signByDefault = true;
       };
+      lfs.enable = true;
     };
   };
   programs.git = {
