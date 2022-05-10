@@ -9,7 +9,7 @@
       extraConfig.init.defaultBranch = "main";
       delta.enable = true;
       signing = {
-        key = "0xE4F362A3F5C338A0";
+        key = "0x970C6E89EB0547A9";
         signByDefault = true;
       };
     };
