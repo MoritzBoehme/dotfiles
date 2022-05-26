@@ -17,8 +17,12 @@
   users.users.moritz = {
     isNormalUser = true;
     home = "/home/moritz";
-    extraGroups =
-      [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "dialout"
+    ]; # Enable ‘sudo’ for the user.
     initialPassword = "password"; # CHANGE ME PLEASE
   };
 

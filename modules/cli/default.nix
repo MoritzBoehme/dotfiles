@@ -82,6 +82,7 @@
 
       # utility
       cht-sh
+      arduino
       nixpkgs-review
       comma
       nix-index
