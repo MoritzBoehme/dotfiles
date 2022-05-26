@@ -60,6 +60,7 @@
     home.packages = with pkgs; [
       # archives
       p7zip
+      unzip
 
       # file management
       ranger
@@ -82,7 +83,13 @@
       # utility
       cht-sh
       du-dust
+      duf
+      up
+      viu
+
       arduino
+
+      # nix
       nixpkgs-review
       comma
       nix-index
