@@ -18,4 +18,5 @@ in {
   "home-vpn.age".publicKeys = users ++ hosts;
   "home-vpn-password.age".publicKeys = users ++ hosts;
   "github.age".publicKeys = users ++ hosts;
+  "uni-vpn.age".publicKeys = users ++ hosts;
 }

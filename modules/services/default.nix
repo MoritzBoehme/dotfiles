@@ -9,6 +9,7 @@
     ./keyring.nix
     ./openvpn.nix
     ./picom.nix
+    ./openconnect.nix
   ];
 
   services = {
