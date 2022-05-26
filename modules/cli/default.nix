@@ -31,7 +31,6 @@
       gs = "git status";
     };
     aliases = {
-      du = "dust";
       ls = "exa -lh --icons --git";
       cat = "bat";
       feh = "feh --auto-zoom --scale-down";
@@ -82,6 +81,7 @@
 
       # utility
       cht-sh
+      du-dust
       arduino
       nixpkgs-review
       comma
