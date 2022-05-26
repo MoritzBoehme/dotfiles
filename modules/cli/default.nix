@@ -28,6 +28,8 @@
       gd = "git diff";
       gds = "git diff --staged";
       gp = "git push";
+      gf = "git fetch";
+      gF = "git pull";
       gs = "git status";
     };
     aliases = {
