@@ -128,7 +128,7 @@
               nixpkgs-fmt
               statix
               # Secrets
-              agenix
+              pkgs.agenix
               # chachix
               cachix
             ];
