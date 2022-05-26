@@ -9,19 +9,46 @@
     master.url = "github:nixos/nixpkgs";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-21.11";
-    nur.url = "github:nix-community/NUR";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-    agenix.url = "github:ryantm/agenix";
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    home-manager.url = "github:nix-community/home-manager";
+    utils = {
+      url = "github:gytis-ivaskevicius/flake-utils-plus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    statix.url = "github:nerdypepper/statix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nixpkgs-review-checks.url = "github:SuperSandro2000/nixpkgs-review-checks";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    comma.url = "github:nix-community/comma";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    statix = {
+      url = "github:nerdypepper/statix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-review-checks = {
+      url = "github:SuperSandro2000/nixpkgs-review-checks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    comma = {
+      url = "github:nix-community/comma";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Fish specific
     dracula-fish = {
