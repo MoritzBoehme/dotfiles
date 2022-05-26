@@ -15,6 +15,7 @@
       startInBackground = true;
     };
     home.packages = with pkgs; [
+      tlaplusToolbox
       anki
       calibre
       gparted
