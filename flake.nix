@@ -8,7 +8,7 @@
   inputs = {
     master.url = "github:nixos/nixpkgs";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-21.11";
+    stable.url = "github:nixos/nixpkgs/nixos-22.05";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -80,7 +80,7 @@
     };
   };
 
-  outputs = inputs@{ self, agenix, home-manager, nixpkgs, utils, base16, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -91,7 +91,7 @@
       ################
 
       overlay = import ./overlays { inherit inputs; };
-      overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
+      # overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
       channels.nixpkgs.overlaysBuilder = channels: [
         self.overlay
@@ -104,14 +104,10 @@
       ### Modules ###
       ###############
 
-      nixosModules = utils.lib.exportModules [
-        ./modules/default.nix
-        ./modules/containers
-        ./modules/gaming
-      ];
-
+      nixosModules = utils.lib.exportModules [ ./modules/default.nix ];
       hostDefaults.modules = [
-        home-manager.nixosModule
+        ./modules
+        inputs.home-manager.nixosModule
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -120,8 +116,8 @@
           };
         }
         self.nixosModules.default
-        agenix.nixosModules.age
-        base16.nixosModule
+        inputs.agenix.nixosModules.age
+        inputs.base16.nixosModule
       ];
 
       hosts.nixos-laptop.modules =
