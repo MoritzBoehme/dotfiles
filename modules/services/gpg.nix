@@ -8,5 +8,4 @@
       enableSSHSupport = true;
     };
   };
-  services.pcscd.enable = true;
 }
