@@ -90,6 +90,7 @@
       up
       viu
       entr
+      tmux
 
       arduino
 
