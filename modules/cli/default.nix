@@ -12,7 +12,12 @@
     ./spotify.nix
     ./yubikey.nix
   ];
-  modules.cli.shell = let editor = "emacsclient -t -a 'emacs -t'";
+  modules.cli.shell = let
+    editor = "emacsclient -t -a 'emacs -t'";
+    cmdSub = command:
+      "${
+        if (config.modules.cli.shell.name == "fish") then "" else "$"
+      }${command}";
   in {
     name = "fish";
     abbreviations = {
@@ -50,9 +55,8 @@
 
       nixpkgs-review = "nixpkgs-review-checks";
 
-      nixpkgs-pr = "nixpkgs-review pr --token ${
-          if (config.modules.cli.shell.name == "fish") then "" else "$"
-        }(cat /run/agenix/github)";
+      nixpkgs-pr =
+        "nixpkgs-review pr --token ${cmdSub "cat /run/agenix/github"}";
 
       latexwatch =
         ''find -type f -name "*.tex" | entr -c latexmk -pdf -silent'';
