@@ -12,9 +12,7 @@
     ./spotify.nix
     ./yubikey.nix
   ];
-  modules.cli.shell = let
-    # HACK to fix 24bit color support with kitty
-    editor = "TERM=kitty-direct emacsclient -t -a 'emacs -t'";
+  modules.cli.shell = let editor = "emacsclient -t -a 'emacs -t'";
   in {
     name = "fish";
     abbreviations = {

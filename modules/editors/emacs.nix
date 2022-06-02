@@ -3,7 +3,7 @@
 with lib;
 let
   myEmacs = with pkgs;
-    ((emacsPackagesFor emacsNativeComp).emacsWithPackages
+    ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
       (epkgs: [ epkgs.vterm ]));
   cfg = config.modules.editors.emacs;
 in {
