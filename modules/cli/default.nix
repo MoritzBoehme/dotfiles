@@ -53,6 +53,9 @@
       nixpkgs-pr = "nixpkgs-review pr --token ${
           if (config.modules.cli.shell.name == "fish") then "" else "$"
         }(cat /run/agenix/github)";
+
+      latexwatch =
+        ''find -type f -name "*.tex" | entr -c latexmk -pdf -silent'';
     };
     variables = { EDITOR = editor; };
   };
@@ -86,6 +89,7 @@
       duf
       up
       viu
+      entr
 
       arduino
 
