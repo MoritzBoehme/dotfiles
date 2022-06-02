@@ -12,7 +12,6 @@
     yubikey-manager
     yubikey-personalization
     paperkey
-    stable.haskellPackages.hopenpgp-tools
     # graphical
     yubikey-manager-qt
     yubikey-personalization-gui
