@@ -43,8 +43,7 @@
       rm = "rm -i";
       mv = "mv -i";
 
-      # HACK to fix kitty not being recongized
-      ssh = "TERM=xterm-color command ssh";
+      ssh = "kitty +kitten ssh";
 
       nix-switch = "doas nixos-rebuild switch --flake ~/.dotfiles";
       nix-boot = "doas nixos-rebuild boot --flake ~/.dotfiles";
