@@ -3,6 +3,7 @@
 {
   networking.openconnect.interfaces = {
     university = {
+      autoStart = false;
       gateway = "vpn.uni-leipzig.de";
       protocol = "anyconnect";
       user = "mb18cele@uni-leipzig.de";
