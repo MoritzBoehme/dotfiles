@@ -81,6 +81,9 @@ in {
         # :email
         mu
         isync
+
+        # :lang ledger
+        ledger
       ];
     };
   };
