@@ -6,10 +6,11 @@
     ./bin
     ./direnv.nix
     ./git.nix
+    ./ledger
     ./nix.nix
-    ./ssh.nix
     ./shell
     ./spotify.nix
+    ./ssh.nix
     ./yubikey.nix
   ];
   modules.cli.shell = let
@@ -60,18 +61,8 @@
       latexwatch =
         ''find -type f -name "*.tex" | entr -c latexmk -pdf -silent'';
 
-      ledger = "command ledger --strict --explicit";
-      bal = "ledger -R bal";
-      balcash = "bal -X € --current --flat ^assets:bank ^liabilities";
-      balnet = "bal -X € --current --depth 2 ^assets ^liabilities";
-      bud = "ledger --budget bal ^expenses";
-      budr = ''ledger --budget --real reg -d "d>=[this month]" ^expenses'';
-      reg = "ledger reg -R --tail 15";
     };
-    variables = {
-      EDITOR = editor;
-      LEDGER_FILE = "/home/moritz/Notes/ledger/main.ledger";
-    };
+    variables = { EDITOR = editor; };
   };
   home-manager.users.moritz = {
     home.packages = with pkgs; [
