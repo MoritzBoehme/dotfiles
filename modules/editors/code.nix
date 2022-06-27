@@ -19,7 +19,6 @@ in {
           bbenoist.nix
           dracula-theme.theme-dracula
           esbenp.prettier-vscode
-          github.copilot
           pkief.material-icon-theme
           vscodevim.vim
         ];
