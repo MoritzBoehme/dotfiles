@@ -48,8 +48,7 @@
 
       nix-switch = "doas nixos-rebuild switch --flake ~/.dotfiles";
       nix-boot = "doas nixos-rebuild boot --flake ~/.dotfiles";
-      nix-lock =
-        "doas nixos-rebuild dry-activate --flake ~/.dotfiles --recreate-lock-file";
+      nix-lock = "pushd ~/.dotfiles && nix flake update && popd";
 
       emacs = editor;
 
