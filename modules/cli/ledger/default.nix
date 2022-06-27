@@ -16,7 +16,7 @@
         text = builtins.readFile ./ledger.fish;
       };
       "ledger/ledgerrc".text = ''
-        --pedantic
+        --strict
         --explicit
         --payee note
         --file ~/Notes/ledger/main.ledger
