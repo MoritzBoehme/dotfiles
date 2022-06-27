@@ -8,6 +8,10 @@ let
     "browser.search.suggest.enabled" = true;
     "browser.urlbar.suggest.searches" = true;
 
+    # startup page
+    "browser.startup.homepage" = "https://searxng.moritzboeh.me/";
+    "browser.startup.page" = 1;
+
     # drm
     "media.eme.enabled" = true;
 
