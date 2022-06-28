@@ -25,62 +25,69 @@ in {
       };
 
       home.packages = with pkgs; [
-        ## Emacs itself
+        ### Emacs itself
         binutils # native-comp needs 'as', provided by this
         myEmacs
 
-        ## Doom dependencies
+        ### Doom dependencies
         git
         (ripgrep.override { withPCRE2 = true; })
         gnutls # for TLS connectivity
 
-        ## Optional dependencies
+        ### Optional dependencies
         fd # faster projectile indexing
         imagemagick # for image-dired
         zstd # for undo-fu-session/undo-tree compression
 
-        ## Module dependencies
-        # :checkers spell
+        ### Module dependencies
+        ## :checkers
+        # spell
         (hunspellWithDicts [
           hunspellDicts.en_GB-ize
           hunspellDicts.en_US
           hunspellDicts.de_DE
         ])
 
-        # :checkers grammar
+        # grammar
         languagetool
 
-        # :tools lookup & :lang org +roam
+        ## : tools
+        # lookup & org +roam
         sqlite
         gcc # HACK to get emacsqlite binary
-
         wordnet
         graphviz
 
-        # :lang latex & :lang org (latex previews)
+        ## :lang
+        # latex & org (latex previews)
         texlive.combined.scheme-full
         texlab
 
-        # :lang nix
+        # nix
         nixfmt # for formating nix
         rnix-lsp
 
-        # :lang markdown
+        # markdown & org +pandoc
         pandoc
 
-        # :app everywhere
+        # python
+        nodePackages.pyright
+        python-dev
+
+        # sh
+        nodePackages.bash-language-server
+
+        ## :email
+        # mu4e
+        mu
+        isync
+
+        ## :app
+        # everywhere
         xdotool
         xorg.xwininfo
         xclip
         xorg.xprop
-
-        # :lang python
-        nodePackages.pyright
-        python-dev
-
-        # :email
-        mu
-        isync
       ];
     };
   };
