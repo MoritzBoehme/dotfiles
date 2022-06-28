@@ -15,7 +15,8 @@
   services = {
     printing = {
       enable = true;
-      drivers = with pkgs; [ epson-escpr2 epson-escpr ];
+      drivers = with pkgs;
+        [ stable.epson-escpr2 ]; # HACK to fix broken upstream package
     };
     avahi = lib.mkIf config.services.printing.enable {
       enable = true;
