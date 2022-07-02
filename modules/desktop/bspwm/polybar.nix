@@ -13,27 +13,24 @@ in {
           done
         '';
         config = with config.scheme.withHashtag; {
-          "global/wm" = { margin-top = 5; };
           "bar/bottom" = {
             # position
             monitor = "\${env:MONITOR}";
             bottom = true;
-            width = "100%:-20";
-            heigth = 25;
+            width = "100%";
+            heigth = 20;
+
             background = base00;
             foreground = base05;
-            radius = 10;
-            offset-x = 10;
-            offset-y = 5;
-            padding = 1;
 
-            line-size = 3;
-            line-color = base06;
+            border-size = 5;
+            border-color = base00;
 
-            module-margin = 1;
-            separator = "%{F${base03}}◆%{F-}";
+            separator = " ";
 
-            font-0 = "FiraCode Nerd Font:size=10;0";
+            font-0 = "FiraCode Nerd Font:size=9;0";
+            font-1 = "FiraCode Nerd Font:size=9;1";
+            font-2 = "FiraCode Nerd Font:size=9;2";
 
             modules-left = "cpu memory network battery";
             modules-center = "bspwm";
@@ -53,11 +50,9 @@ in {
             adapter = "ACAD";
             time-format = "%H:%M";
 
-            format-charging =
-              "%{F${base0B}}<animation-charging>%{F-} <label-charging>";
-            format-discharging =
-              "%{F${base08}}<animation-discharging>%{F-} <label-discharging>";
-            format-full = "%{F${base08}} %{F-} <label-full>";
+            format-charging = "<animation-charging> <label-charging>";
+            format-discharging = "<animation-discharging> <label-discharging>";
+            format-full = " <label-full>";
 
             label-charging = "%percentage%% %time% remaining";
             label-discharging = "%percentage%% %time% remaining";
@@ -105,16 +100,17 @@ in {
           "module/cpu" = {
             type = "internal/cpu";
             interval = 2;
+
             format = "<ramp-load><label>";
+            format-foreground = base00;
+            format-background = base0B;
+            format-padding = 1;
+            format-font = 3;
 
             ramp-load-0 = " ";
-            ramp-load-0-foreground = base0B;
             ramp-load-1 = " ";
-            ramp-load-1-foreground = base0B;
             ramp-load-2 = " ";
-            ramp-load-2-foreground = base0A;
             ramp-load-3 = " ";
-            ramp-load-3-foreground = base08;
 
             label = "%percentage:2%%";
           };
@@ -127,54 +123,66 @@ in {
 
             label = "%time%";
             format-prefix = " ";
-            format-prefix-foreground = base0C;
+            format-prefix-font = 2;
+            format-foreground = base00;
+            format-background = base0C;
+            format-padding = 1;
+            label-font = 3;
           };
           "module/date" = {
             type = "internal/date";
             interval = 5;
 
+            format = "<label>";
+            format-prefix = " ";
+            format-prefix-font = 2;
+            format-foreground = base00;
+            format-background = base0A;
+            format-padding = 1;
+            format-font = 3;
+
             date = "%A";
             date-alt = "%Y-%m-%d";
 
             label = "%date%";
-            format-prefix = " ";
-            format-prefix-foreground = base0A;
+            label-font = 3;
 
           };
           "module/memory" = {
             type = "internal/memory";
             interval = 2;
-            format = "<ramp-used><label>";
 
-            ramp-used-0 = " ";
-            ramp-used-0-foreground = base0B;
-            ramp-used-1 = " ";
-            ramp-used-1-foreground = base0B;
-            ramp-used-2 = " ";
-            ramp-used-2-foreground = base0A;
-            ramp-used-3 = " ";
-            ramp-used-3-foreground = base08;
+            format = "<label>";
+            format-prefix = " ";
+            format-foreground = base00;
+            format-background = base0C;
+            format-padding = 1;
+            format-font = 2;
 
             label = "%gb_used%";
+            label-font = 3;
           };
           "module/pulseaudio" = {
             type = "internal/pulseaudio";
 
             format-volume = "<ramp-volume> <label-volume>";
-            format-underline = base0A;
             label-volume = "%percentage%%";
 
-            label-muted = "%{F${base08}}婢 %{F-}muted";
+            format-volume-foreground = base00;
+            format-volume-background = base04;
+            format-volume-padding = 1;
+            format-volume-font = 2;
+
+            label-muted = "%{F${base08}}婢 %{F${base00}}muted";
+            format-muted-foreground = base00;
+            format-muted-background = base04;
+            format-muted-padding = 1;
+            format-muted-font = 2;
             ramp-volume-0 = "奄";
-            ramp-volume-0-foreground = base0B;
             ramp-volume-1 = "奄";
-            ramp-volume-1-foreground = base0B;
             ramp-volume-2 = "奔";
-            ramp-volume-2-foreground = base0B;
             ramp-volume-3 = "墳";
-            ramp-volume-3-foreground = base0A;
             ramp-volume-4 = "墳";
-            ramp-volume-4-foreground = base08;
 
             click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
@@ -184,8 +192,12 @@ in {
               builtins.head (builtins.attrNames config.networking.interfaces);
             interval = 3;
             format-connected = "<label-connected>";
-            label-connected =
-              "%{F${base0E}}祝%{F-} %upspeed% %{F${base06}}%{F-} %downspeed%";
+            label-connected = "%{T2}祝%{T3} %upspeed% %{T2}%{T3} %downspeed%";
+
+            format-connected-foreground = base00;
+            format-connected-background = base0E;
+            format-connected-padding = 1;
+            format-connected-font = 3;
           };
         };
       };
