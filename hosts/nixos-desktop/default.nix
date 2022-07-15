@@ -65,6 +65,11 @@
   services.tlp.enable = true;
   powerManagement.enable = true;
 
+  # sensors
+  hardware.enableAllFirmware = true;
+  environment.systemPackages = with pkgs; [ lm_sensors ];
+  boot.kernelModules = [ "lm92" "drivetemp" ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
