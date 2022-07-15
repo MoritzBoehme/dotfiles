@@ -54,9 +54,6 @@
 
       nixpkgs-review = "nixpkgs-review-checks";
 
-      nixpkgs-pr =
-        "nixpkgs-review pr --token ${cmdSub "cat /run/agenix/github"}";
-
       latexwatch =
         ''find -type f -name "*.tex" | entr -c latexmk -pdf -silent'';
 
@@ -68,6 +65,7 @@
       # archives
       p7zip
       unzip
+      zip
 
       # file management
       ranger
@@ -77,31 +75,27 @@
       htop
       bottom
 
-      # fetcher
-      neofetch
-
-      # typing
-      ttyper
-
       # ripping
       abcde
       handbrake
-
-      # utility
-      cht-sh
-      du-dust
-      duf
-      up
-      viu
-      entr
-      tmux
-
-      arduino
 
       # nix
       nixpkgs-review
       comma
       nix-index
+
+      # other
+      arduino
+      cht-sh
+      du-dust
+      duf
+      entr
+      hub
+      neofetch
+      tmux
+      ttyper
+      up
+      viu
     ];
     programs = {
       bat.enable = true;
