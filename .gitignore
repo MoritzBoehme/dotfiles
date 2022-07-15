@@ -3,3 +3,4 @@
 *.log
 tmp/
 .direnv/
+.pre-commit-config.yaml

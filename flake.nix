@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,7 +82,12 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, ... }:
+  outputs =
+    inputs @ { self
+    , nixpkgs
+    , utils
+    , ...
+    }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -90,11 +97,9 @@
       ### Overlays ###
       ################
 
-      overlay = import ./overlays { inherit inputs; };
-      # overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
-
+      overlays.default = import ./overlays { inherit inputs; };
       channels.nixpkgs.overlaysBuilder = channels: [
-        self.overlay
+        self.overlays.default
         inputs.utils.overlay
         inputs.emacs-overlay.overlay
         inputs.nur.overlay
@@ -104,9 +109,14 @@
       ### Modules ###
       ###############
 
-      nixosModules = utils.lib.exportModules [ ./modules/default.nix ];
+      nixosModules = utils.lib.exportModules [
+        ./modules/profiles/base.nix
+        ./modules/profiles/gaming.nix
+        ./modules/profiles/desktop.nix
+      ];
       hostDefaults.modules = [
-        ./modules
+        ./modules/default.nix
+        self.nixosModules.base
         inputs.home-manager.nixosModule
         {
           home-manager = {
@@ -115,16 +125,19 @@
             extraSpecialArgs = { inherit inputs self; };
           };
         }
-        self.nixosModules.default
         inputs.agenix.nixosModules.age
         inputs.base16.nixosModule
       ];
 
-      hosts.nixos-laptop.modules =
-        [ ./hosts/nixos-laptop ./config/nixos-laptop.nix ];
-
-      hosts.nixos-desktop.modules =
-        [ ./hosts/nixos-desktop ./config/nixos-desktop.nix ];
+      hosts.nixos-laptop.modules = [
+        ./hosts/nixos-laptop
+        self.nixosModules.desktop
+      ];
+      hosts.nixos-desktop.modules = [
+        ./hosts/nixos-desktop
+        self.nixosModules.desktop
+        self.nixosModules.gaming
+      ];
 
       ###############
       ### Outputs ###
@@ -132,29 +145,23 @@
 
       outputsBuilder = channels:
         with channels.nixpkgs; {
-          devShell = mkShell {
+          devShells.default = mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
             name = "dotfiles";
-            shellHook = ''
-              alias "lint"='echo "Running nixpkgs-fmt ..."
-                            nixpkgs-fmt --check $(find . -name "*.nix")
-                            echo ""
-                            echo "Running statix ..."
-                            statix check'
-              alias "fix"='echo "Running nixpkgs-fmt ..."
-                            nixpkgs-fmt $(find . -name "*.nix")
-                            echo ""
-                            echo "Running statix ..."
-                            statix fix'
-            '';
             packages = [
-              # Linting
-              nixpkgs-fmt
-              statix
               # Secrets
               pkgs.agenix
-              # chachix
+              # cachix
               cachix
             ];
+          };
+          checks.pre-commit-check = inputs.pre-commit-hooks.lib."${system}".run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+              statix.enable = true;
+              shellcheck.enable = true;
+            };
           };
         };
     };

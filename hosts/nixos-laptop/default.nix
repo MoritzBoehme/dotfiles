@@ -1,14 +1,21 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
-{
+{ config
+, pkgs
+, inputs
+, ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+
+  # MY MODULES
+  my.email = {
+    enable = true;
+    passwordFile = ../../secrets/email-desktop.age;
+  };
 
   # BOOT
   boot = {
@@ -65,32 +72,35 @@
       OnBootSec = "120";
     };
   };
-  systemd.services.hibernate-on-low-battery = let
-    batteryLevelSufficient = let batteryPath = "/sys/class/power_supply/BATT";
-    in pkgs.writeShellScriptBin "battery-level-sufficient" ''
-      test "$(cat ${batteryPath}/status)" != Discharging \
-        || test "$(cat ${batteryPath}/capacity)" -ge 5
-    '';
-  in {
-    serviceConfig.Type = "oneshot";
-    onFailure = [ "hibernate.target" ];
-    script = "${batteryLevelSufficient}/bin/battery-level-sufficient";
-  };
+  systemd.services.hibernate-on-low-battery =
+    let
+      batteryLevelSufficient =
+        let
+          batteryPath = "/sys/class/power_supply/BATT";
+        in
+        pkgs.writeShellScriptBin "battery-level-sufficient" ''
+          test "$(cat ${batteryPath}/status)" != Discharging \
+            || test "$(cat ${batteryPath}/capacity)" -ge 5
+        '';
+    in
+    {
+      serviceConfig.Type = "oneshot";
+      onFailure = [ "hibernate.target" ];
+      script = "${batteryLevelSufficient}/bin/battery-level-sufficient";
+    };
 
   # Trackpad
   # i2c for https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
   hardware.i2c.enable = true;
   systemd.services.asus-touchpad-numpad = {
-    description =
-      "Activate Numpad inside the touchpad with top right corner switch";
-    documentation =
-      [ "https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver" ];
+    description = "Activate Numpad inside the touchpad with top right corner switch";
+    documentation = [ "https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver" ];
     path = [ pkgs.i2c-tools ];
     script = ''
       cd ${inputs.asus-touchpad-numpad-driver}
       # In the last argument here you choose your layout.
       ${
-        pkgs.python3.withPackages (ps: [ ps.libevdev ])
+        pkgs.python3.withPackages (ps: [ps.libevdev])
       }/bin/python asus_touchpad.py m433ia
     '';
     # Probably needed because it fails on boot seemingly because the driver
@@ -105,13 +115,15 @@
 
   nix = {
     distributedBuilds = true;
-    buildMachines = [{
-      hostName = "builder";
-      system = "x86_64-linux";
-      maxJobs = 6;
-      speedFactor = 2;
-      supportedFeatures = [ "nixos.test" "benchmark" "big-parallel" "kvm" ];
-    }];
+    buildMachines = [
+      {
+        hostName = "builder";
+        system = "x86_64-linux";
+        maxJobs = 6;
+        speedFactor = 2;
+        supportedFeatures = [ "nixos.test" "benchmark" "big-parallel" "kvm" ];
+      }
+    ];
     extraOptions = ''
       builders-use-substitutes = true
     '';
@@ -134,5 +146,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
