@@ -1,18 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./adb.nix
-    ./bin
-    ./direnv.nix
-    ./git.nix
-    ./ledger
-    ./nix.nix
-    ./shell
-    ./spotify.nix
-    ./ssh.nix
-    ./yubikey.nix
-  ];
+  imports = [ ./bin ./shell ./yubikey.nix ];
   modules.cli.shell = let
     editor = "emacsclient -t -a 'emacs -t'";
     cmdSub = command:

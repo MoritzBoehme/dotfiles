@@ -90,11 +90,9 @@
       ### Overlays ###
       ################
 
-      overlay = import ./overlays { inherit inputs; };
-      # overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
-
+      overlays.default = import ./overlays { inherit inputs; };
       channels.nixpkgs.overlaysBuilder = channels: [
-        self.overlay
+        self.overlays.default
         inputs.utils.overlay
         inputs.emacs-overlay.overlay
         inputs.nur.overlay
@@ -104,9 +102,14 @@
       ### Modules ###
       ###############
 
-      nixosModules = utils.lib.exportModules [ ./modules/default.nix ];
+      nixosModules = utils.lib.exportModules [
+        ./modules/profiles/base.nix
+        ./modules/profiles/gaming.nix
+        ./modules/profiles/desktop.nix
+      ];
       hostDefaults.modules = [
-        ./modules
+        ./modules/default.nix
+        self.nixosModules.base
         inputs.home-manager.nixosModule
         {
           home-manager = {
@@ -115,7 +118,6 @@
             extraSpecialArgs = { inherit inputs self; };
           };
         }
-        self.nixosModules.default
         inputs.agenix.nixosModules.age
         inputs.base16.nixosModule
       ];
@@ -132,20 +134,8 @@
 
       outputsBuilder = channels:
         with channels.nixpkgs; {
-          devShell = mkShell {
+          devShells.default = mkShell {
             name = "dotfiles";
-            shellHook = ''
-              alias "lint"='echo "Running nixpkgs-fmt ..."
-                            nixpkgs-fmt --check $(find . -name "*.nix")
-                            echo ""
-                            echo "Running statix ..."
-                            statix check'
-              alias "fix"='echo "Running nixpkgs-fmt ..."
-                            nixpkgs-fmt $(find . -name "*.nix")
-                            echo ""
-                            echo "Running statix ..."
-                            statix fix'
-            '';
             packages = [
               # Linting
               nixpkgs-fmt

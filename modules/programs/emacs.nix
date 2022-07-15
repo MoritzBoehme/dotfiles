@@ -1,20 +1,21 @@
 { config, lib, pkgs, inputs, ... }:
 
 with lib;
+
 let
+  cfg = config.our.programs.emacs;
   myEmacs = with pkgs;
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
       (epkgs: [ epkgs.vterm ]));
-  cfg = config.modules.editors.emacs;
 in {
-  options.modules.editors = {
-    emacs = mkOption {
-      default = true;
+  options.our.programs.emacs = {
+    enable = mkOption {
+      default = false;
       type = types.bool;
-      example = false;
+      example = true;
     };
   };
-  config = mkIf cfg {
+  config = mkIf cfg.enable {
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
     home-manager.users.moritz = {

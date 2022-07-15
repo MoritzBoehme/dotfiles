@@ -1,16 +1,16 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.modules.editors;
+let cfg = config.our.programs.code;
 in {
-  options.modules.editors = {
-    code = mkOption {
+  options.our.programs.code = {
+    enable = mkOption {
       default = false;
       type = types.bool;
       example = true;
     };
   };
-  config = mkIf cfg.code {
+  config = mkIf cfg.enable {
     home-manager.users.moritz = {
       programs.vscode = {
         enable = true;

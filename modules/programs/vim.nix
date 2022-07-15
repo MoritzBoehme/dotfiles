@@ -1,25 +1,21 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.modules.editors;
+
+let cfg = config.our.programs.vim;
 in {
-  options.modules.editors = {
-    vim = mkOption {
+  options.our.programs.vim = {
+    enable = mkOption {
       default = true;
       type = types.bool;
       example = false;
     };
   };
-  config = mkIf cfg.vim {
+  config = mkIf cfg.enable {
     home-manager.users.moritz.programs.neovim = {
       enable = true;
       vimAlias = true;
       vimdiffAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
-        coc-nvim
-        dracula-vim
-      ];
       withNodeJs = true;
       withPython3 = true;
     };

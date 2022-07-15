@@ -10,6 +10,14 @@
     ./hardware-configuration.nix
   ];
 
+  # OUR MODULES
+  our = {
+    email = {
+      enable = true;
+      passwordFile = ../secrets/email-desktop.age;
+    };
+  };
+
   # BOOT
   boot = {
     supportedFilesystems = [ "btrfs" "ntfs" ];
@@ -51,6 +59,7 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
   services.xserver.xrandrHeads = [
     { output = "HDMI-1"; }
     {
