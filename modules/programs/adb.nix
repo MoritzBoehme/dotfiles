@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
-
-let cfg = config.our.programs.adb;
-in {
-  options.our.programs.adb = {
+let
+  cfg = config.my.programs.adb;
+in
+{
+  options.my.programs.adb = {
     enable = mkOption {
       default = false;
       type = types.bool;

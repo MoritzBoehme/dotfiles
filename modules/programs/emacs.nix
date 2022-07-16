@@ -1,14 +1,18 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config
+, lib
+, pkgs
+, inputs
+, ...
+}:
 
 with lib;
-
 let
-  cfg = config.our.programs.emacs;
-  myEmacs = with pkgs;
-    ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
-      (epkgs: [ epkgs.vterm ]));
-in {
-  options.our.programs.emacs = {
+  cfg = config.my.programs.emacs;
+  myEmacs = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
+    (epkgs: [ epkgs.vterm ]));
+in
+{
+  options.my.programs.emacs = {
     enable = mkOption {
       default = false;
       type = types.bool;
@@ -16,6 +20,9 @@ in {
     };
   };
   config = mkIf cfg.enable {
+    my.shell.aliases = {
+      emacs = "emacsclient -t -a 'emacs -t'";
+    };
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
     home-manager.users.moritz = {

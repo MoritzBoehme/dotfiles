@@ -1,14 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 {
   imports = [
-    ./cli
     ./config
-    ./config
-    ./desktop
-    ./editors
-    ./gaming.nix
+    ./programs
     ./security
     ./services
+    ./virtualisation
   ];
 }

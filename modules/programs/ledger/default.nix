@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
-let cfg = config.our.programs.ledger;
-in {
-  options.our.programs.ledger = {
+let
+  cfg = config.my.programs.ledger;
+in
+{
+  options.my.programs.ledger = {
     enable = mkOption {
       default = false;
       type = types.bool;
@@ -12,7 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    modules.cli.shell.aliases = {
+    my.shell.aliases = {
       bal = "ledger bal";
       balcash = "ledger bal -R -X € --current --flat ^assets:bank ^liabilities";
       balnet = "ledger bal -R -X € --current --depth 2 ^assets ^liabilities";

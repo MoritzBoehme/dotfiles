@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,7 +82,12 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, ... }:
+  outputs =
+    inputs @ { self
+    , nixpkgs
+    , utils
+    , ...
+    }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -122,11 +129,15 @@
         inputs.base16.nixosModule
       ];
 
-      hosts.nixos-laptop.modules =
-        [ ./hosts/nixos-laptop ./config/nixos-laptop.nix ];
-
-      hosts.nixos-desktop.modules =
-        [ ./hosts/nixos-desktop ./config/nixos-desktop.nix ];
+      hosts.nixos-laptop.modules = [
+        ./hosts/nixos-laptop
+        self.nixosModules.desktop
+      ];
+      hosts.nixos-desktop.modules = [
+        ./hosts/nixos-desktop
+        self.nixosModules.desktop
+        self.nixosModules.gaming
+      ];
 
       ###############
       ### Outputs ###
@@ -135,16 +146,22 @@
       outputsBuilder = channels:
         with channels.nixpkgs; {
           devShells.default = mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
             name = "dotfiles";
             packages = [
-              # Linting
-              nixpkgs-fmt
-              statix
               # Secrets
               pkgs.agenix
-              # chachix
+              # cachix
               cachix
             ];
+          };
+          checks.pre-commit-check = inputs.pre-commit-hooks.lib."${system}".run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+              statix.enable = true;
+              shellcheck.enable = true;
+            };
           };
         };
     };

@@ -1,36 +1,54 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
+with lib;
+let
+  cfg = config.my.services.picom;
+in
 {
-  home-manager.users.moritz = {
-    services.picom = {
-      enable = true;
-      package = pkgs.picom-next;
-      blur = true;
-      blurExclude = [ "class_g = 'Polybar'" ];
-      experimentalBackends = true;
-      inactiveOpacity = "0.97";
-      opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
-      vSync = true;
-      extraOptions = ''
-        # improve performance
-        glx-no-rebind-pixmap = true;
-        glx-no-stencil = true;
+  options.my.services.picom = {
+    enable = mkOption {
+      default = false;
+      type = types.bool;
+      example = true;
+    };
+  };
 
-        # fastest swap method
-        glx-swap-method = 1;
+  config = lib.mkIf cfg.enable {
+    home-manager.users.moritz = {
+      services.picom = {
+        enable = true;
+        package = pkgs.picom-next;
+        blur = true;
+        blurExclude = [ "class_g = 'Polybar'" ];
+        experimentalBackends = true;
+        inactiveOpacity = "0.97";
+        opacityRule = [ "100:fullscreen" "100:class_g   = 'Polybar'" ];
+        vSync = true;
+        extraOptions = ''
+          # improve performance
+          glx-no-rebind-pixmap = true;
+          glx-no-stencil = true;
 
-        # dual kawase blur
-        blur-background-fixed = false;
-        blur-method = "dual_kawase";
-        blur-strength = 2;
+          # fastest swap method
+          glx-swap-method = 1;
 
-        # group wintypes and don't focus a menu (Telegram)
-        detect-transient = true;
-        detect-client-leader = true;
+          # dual kawase blur
+          blur-background-fixed = false;
+          blur-method = "dual_kawase";
+          blur-strength = 2;
 
-        # needed for nvidia with glx backend
-        xrender-sync-fence = true;
-      '';
+          # group wintypes and don't focus a menu (Telegram)
+          detect-transient = true;
+          detect-client-leader = true;
+
+          # needed for nvidia with glx backend
+          xrender-sync-fence = true;
+        '';
+      };
     };
   };
 }

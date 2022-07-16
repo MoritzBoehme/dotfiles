@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
-let cfg = config.our.programs.code;
-in {
-  options.our.programs.code = {
+let
+  cfg = config.my.programs.code;
+in
+{
+  options.my.programs.code = {
     enable = mkOption {
       default = false;
       type = types.bool;

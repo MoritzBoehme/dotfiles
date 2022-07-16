@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
-
-let cfg = config.our.programs.direnv;
-in {
-  options.our.programs.direnv = {
+let
+  cfg = config.my.programs.direnv;
+in
+{
+  options.my.programs.direnv = {
     enable = mkOption {
       default = true;
       type = types.bool;

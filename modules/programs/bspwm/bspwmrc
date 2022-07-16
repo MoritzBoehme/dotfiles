@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+mapfile -t monitors < <(bspc query -M --names | sort -r)
+desktops=$(( 10 / ${#monitors[@]} ))
+start=1
+end=$desktops
+for monitor in "${monitors[@]}"; do
+    bspc monitor "$monitor" -d $(seq -s ' ' $start $end)
+    start=$(( start + desktops ))
+    end=$(( end + desktops ))
+done

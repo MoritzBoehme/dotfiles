@@ -1,5 +1,11 @@
-{ config, lib, pkgs, ... }:
-
+{ config
+, lib
+, pkgs
+, ...
+}:
 {
-  imports = [ ./podman.nix ];
+  imports = [
+    ./podman.nix
+    ./virtualisation.nix
+  ];
 }

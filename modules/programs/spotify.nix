@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
-
-let cfg = config.our.programs.spotify;
-in {
-  options.our.programs.spotify = {
+let
+  cfg = config.my.programs.spotify;
+in
+{
+  options.my.programs.spotify = {
     enable = mkOption {
       default = false;
       type = types.bool;
@@ -26,13 +31,11 @@ in {
           global = {
             # A command that gets executed and can be used to
             # retrieve your username.
-            username_cmd =
-              "${pkgs.coreutils}/bin/head -n 1 /run/agenix/spotifyd";
+            username_cmd = "${pkgs.coreutils}/bin/head -n 1 /run/agenix/spotifyd";
 
             # A command that gets executed and can be used to
             # retrieve your password.
-            password_cmd =
-              "${pkgs.coreutils}/bin/tail -n 1 /run/agenix/spotifyd";
+            password_cmd = "${pkgs.coreutils}/bin/tail -n 1 /run/agenix/spotifyd";
 
             # The name that gets displayed under the connect tab on
             # official clients. Spaces are not allowed!

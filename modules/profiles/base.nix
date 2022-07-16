@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
+with lib;
 {
-  imports = [ <nixpkgs/nixos/modules/profiles/base.nix> ];
-
-  # USERS
   users.users.moritz = {
     isNormalUser = true;
     home = "/home/moritz";
@@ -19,20 +21,97 @@
 
   time.timeZone = "Europe/Berlin";
 
-  # fonts.fonts = with pkgs;
-  #   [
-  #     (nerdfonts.override {
-  #       fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
-  #     })
-  #   ];
+  my = {
+    shell = {
+      abbreviations = {
+        us = "systemctl --user";
+        rs = "doas systemctl";
+      };
+      aliases = {
+        ls = "exa -lh --icons --git";
+        cat = "bat";
+        grep = "rg";
+        rm = "rm -i";
+        mv = "mv -i";
 
-  environment.systemPackages = with pkgs; [ wget git ];
-  programs.mtr.enable = true;
+        nix-switch = "doas nixos-rebuild switch --flake ~/.dotfiles";
+        nix-boot = "doas nixos-rebuild boot --flake ~/.dotfiles";
+        nix-lock = "pushd ~/.dotfiles && nix flake update && popd";
+
+        nixpkgs-review = "nixpkgs-review-checks";
+
+        latexwatch = ''find -type f -name "*.tex" | entr -c latexmk -pdf -silent'';
+      };
+      variables = { EDITOR = "vim"; };
+    };
+  };
+
+  console.keyMap = "de";
+
+  environment.systemPackages = with pkgs; [
+    # archives
+    p7zip
+    unzip
+    zip
+
+    # file management
+    ranger
+    trash-cli
+
+    # monitoring
+    htop
+    bottom
+
+    # nix
+    comma
+    nix-index
+    nixpkgs-fmt
+    statix
+
+    # other
+    arduino
+    bat
+    cht-sh
+    du-dust
+    duf
+    entr
+    exa
+    gparted
+    hub
+    neofetch
+    tmux
+    ttyper
+    up
+    viu
+    wget
+  ];
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
+    })
+  ];
+
+  programs = {
+    mtr.enable = true;
+    command-not-found.enable = true;
+  };
+
+  services = {
+    sshd.enable = true; # for agenix
+    btrfs.autoScrub.enable =
+      lib.mkDefault
+        (builtins.any (filesystem: filesystem.fsType == "btrfs")
+          (builtins.attrValues config.fileSystems));
+  };
 
   home-manager.users.moritz = {
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-
+    programs = {
+      # Let Home Manager install and manage itself.
+      home-manager.enable = true;
+      fzf.enable = true;
+      starship.enable = true;
+    };
     home = {
       username = "moritz";
       homeDirectory = "/home/moritz";
