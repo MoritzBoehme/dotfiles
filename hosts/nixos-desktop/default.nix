@@ -14,7 +14,7 @@
   # MY MODULES
   my.email = {
     enable = true;
-    passwordFile = ../secrets/email-desktop.age;
+    passwordFile = ../../secrets/email-desktop.age;
   };
 
   # BOOT
@@ -62,7 +62,6 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
   services.xserver.xrandrHeads = [
     { output = "HDMI-1"; }
     {

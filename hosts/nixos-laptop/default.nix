@@ -14,7 +14,7 @@
   # MY MODULES
   my.email = {
     enable = true;
-    passwordFile = ../secrets/email-desktop.age;
+    passwordFile = ../../secrets/email-desktop.age;
   };
 
   # BOOT

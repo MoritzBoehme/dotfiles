@@ -13,6 +13,11 @@ with lib; {
       feh = "feh --auto-zoom --scale-down";
     };
 
+    virtualisation = {
+      podman.enable = true;
+      libvirtd.enable = true;
+    };
+
     programs = {
       adb.enable = true;
       bspwm.enable = true;
