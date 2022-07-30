@@ -102,14 +102,15 @@ with lib; {
     picard
 
     # other
-    tlaplusToolbox
     anki
     calibre
     jellyfin-media-player
     keepassxc
     libreoffice
+    logseq
     pavucontrol
     signal-desktop
+    tlaplusToolbox
     vlc
   ];
 
