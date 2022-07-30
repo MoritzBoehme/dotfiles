@@ -30,6 +30,9 @@ alt + shift + c
 alt + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
+# switch layout
+alt + space
+	bsp-layout next --layouts wide,tall,tiled
 
 # Focus/Swap Nodes
 # focus the node in the given direction

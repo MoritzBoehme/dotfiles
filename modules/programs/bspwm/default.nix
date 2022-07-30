@@ -73,7 +73,7 @@ in
         };
       };
 
-      home.packages = with pkgs; [ feh playerctl pamixer brightnessctl ];
+      home.packages = with pkgs; [ feh playerctl pamixer brightnessctl bsp-layout ];
     };
   };
 }
