@@ -44,55 +44,7 @@ in
     };
 
     # Email Applications
-    home-manager.users.moritz = {
-      home.packages = with pkgs; [ thunderbird ];
-      programs = {
-        msmtp.enable = true;
-        mbsync.enable = true;
-      };
-      services.mbsync = {
-        enable = true;
-        frequency = "*:0/15";
-        preExec = "${pkgs.isync}/bin/mbsync -Ha";
-        postExec = "${pkgs.mu}/bin/mu index -m ${mailDirectory}";
-      };
-      accounts.email = {
-        maildirBasePath = mailDirectory;
-        accounts.default = {
-          address = email;
-          userName = email;
-          flavor = "plain";
-          primary = true;
-          passwordCommand = "${pkgs.coreutils}/bin/cat /run/agenix/email";
-          mbsync = {
-            enable = true;
-            create = "both";
-            expunge = "both";
-            patterns = [ "*" ];
-          };
-          realName = name;
-          msmtp.enable = true;
-          imap = {
-            host = "127.0.0.1";
-            port = 1143;
-            tls = {
-              enable = true;
-              useStartTls = true;
-              certificatesFile = "/home/moritz/.config/protonmail/bridge/cert.pem";
-            };
-          };
-          smtp = {
-            host = "127.0.0.1";
-            port = 1025;
-            tls = {
-              enable = true;
-              useStartTls = true;
-              certificatesFile = "/home/moritz/.config/protonmail/bridge/cert.pem";
-            };
-          };
-        };
-      };
-    };
+    home-manager.users.moritz.home.packages = with pkgs; [ thunderbird ];
     networking.firewall.allowedTCPPorts = [ 33728 1025 1143 ];
   };
 }
