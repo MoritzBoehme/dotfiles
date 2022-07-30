@@ -17,7 +17,7 @@ in
     services = {
       printing = {
         enable = true;
-        drivers = with pkgs; [ stable.epson-escpr2 ]; # HACK to fix broken upstream package
+        drivers = with pkgs; [ epson-escpr2 ];
       };
       avahi = {
         enable = true;
